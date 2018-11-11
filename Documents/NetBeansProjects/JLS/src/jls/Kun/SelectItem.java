@@ -34,7 +34,6 @@ public class SelectItem extends javax.swing.JFrame {
         ddlFlower = new javax.swing.JComboBox<>();
         txtQty = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        lblQtyError = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -52,8 +51,6 @@ public class SelectItem extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("Flore FlowerShop");
         jLabel3.setToolTipText("");
-
-        lblQtyError.setForeground(new java.awt.Color(255, 0, 0));
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
         jButton1.setText("Proceed");
@@ -92,11 +89,9 @@ public class SelectItem extends javax.swing.JFrame {
                             .addComponent(lblItem)
                             .addComponent(lblQty))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblQtyError, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(ddlFlower, 0, 161, Short.MAX_VALUE)
-                                .addComponent(txtQty)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ddlFlower, 0, 161, Short.MAX_VALUE)
+                            .addComponent(txtQty))))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,9 +107,7 @@ public class SelectItem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblQty)
                     .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblQtyError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -128,20 +121,19 @@ public class SelectItem extends javax.swing.JFrame {
         String qty = txtQty.getText();
 
         if(txtQty.getText().isEmpty()){
-            lblQtyError.setText("Quantity is required.");
+            JOptionPane.showMessageDialog(rootPane, "Quantity is required.");
         }
         else if(!txtQty.getText().isEmpty()){
             int countQty = Integer.parseInt(qty);
-            if(countQty <= 0 || countQty > 100){
-                lblQtyError.setText("Please enter quantity between 1-99 only.");
+            if(countQty <= 0 || countQty > 1000){
+                JOptionPane.showMessageDialog(rootPane, "Please enter quantity between 1-1000 only.");
             }
             else{
-                lblQtyError.setText("");
-                JOptionPane.showMessageDialog(null,"You placed an order!!");
+                JOptionPane.showMessageDialog(rootPane,"You placed an order!!");
             }
         }
         else{
-            JOptionPane.showMessageDialog(null,"You placed an order!!");
+            JOptionPane.showMessageDialog(rootPane,"You placed an order!!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -175,7 +167,6 @@ public class SelectItem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblItem;
     private javax.swing.JLabel lblQty;
-    private javax.swing.JLabel lblQtyError;
     private javax.swing.JTextField txtQty;
     // End of variables declaration//GEN-END:variables
 }
