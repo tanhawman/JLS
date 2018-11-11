@@ -250,7 +250,8 @@ public class CustOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-  if (jCheckBox1.isSelected()){
+  try{
+        if (jCheckBox1.isSelected()){
         int rose = Integer.parseInt(jTextField2.getText()) * 2;
         String r = String.valueOf(rose);
         jLabel8.setText(r);
@@ -281,6 +282,10 @@ public class CustOrder extends javax.swing.JFrame {
             String t = String.valueOf(0);
        jLabel10.setText(t); 
         }
+  }
+  catch (NumberFormatException e) {
+      JOptionPane.showMessageDialog(new JFrame(), "Enter Integer You DumbAss!!!","Warning",JOptionPane.ERROR_MESSAGE);
+}
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
