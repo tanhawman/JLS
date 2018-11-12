@@ -81,7 +81,7 @@ public class CustOrder4 extends javax.swing.JFrame {
         jLabel9.setText("Less Than 99,Mean You Change Le");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setText("No Buy Any Of These,Mean I Vry Fast Zap Lap");
+        jLabel10.setText("No Buy Any Of These,Mean I Very Fast Zap Lap");
 
         jButton1.setText("Finally Done");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
