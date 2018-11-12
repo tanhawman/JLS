@@ -6,7 +6,6 @@
 package jls.CusOrder;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author user
