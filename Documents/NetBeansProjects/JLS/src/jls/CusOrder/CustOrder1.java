@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package jls.CusOrder;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
