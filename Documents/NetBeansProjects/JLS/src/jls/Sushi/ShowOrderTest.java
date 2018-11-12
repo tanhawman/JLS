@@ -14,6 +14,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -29,6 +30,7 @@ public class ShowOrderTest extends JFrame {
   public ShowOrderTest() {
     //super("JButtonTable Example");
 
+    super("Order List");
     DefaultTableModel dm = new DefaultTableModel();
     dm.setDataVector(new Object[][] { { "C001", "I001","Delivered","Edit" },
         { "C002", "T002,I003","Pending","Edit" },{"C003","I003","Pending","Edit"}}, new Object[] { "CustID", "ItemID", "Status","Option"});
