@@ -503,7 +503,7 @@ public class SelectItem extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
-                int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if (select == 0){
                     JOptionPane.showMessageDialog(rootPane, "You place an order!!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);
                 }
