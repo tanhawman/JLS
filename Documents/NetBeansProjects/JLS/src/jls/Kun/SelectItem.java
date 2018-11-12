@@ -114,6 +114,7 @@ public class SelectItem extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Select Items and Quantity");
 
         lblShop.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblShop.setText("Flore FlowerShop");
