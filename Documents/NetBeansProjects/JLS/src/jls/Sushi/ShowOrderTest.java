@@ -24,9 +24,9 @@ import javax.swing.table.TableCellRenderer;
 /**
  * @version 1.0 11/09/98
  */
-public class ShowOrder1 extends JFrame {
+public class ShowOrderTest extends JFrame {
 
-  public ShowOrder1() {
+  public ShowOrderTest() {
     //super("JButtonTable Example");
 
     DefaultTableModel dm = new DefaultTableModel();
@@ -44,7 +44,7 @@ public class ShowOrder1 extends JFrame {
   }
 
   public static void main(String[] args) {
-    ShowOrder1 frame = new ShowOrder1();
+    ShowOrderTest frame = new ShowOrderTest();
     frame.addWindowListener(new WindowAdapter() {
       public void windowClosing(WindowEvent e) {
         System.exit(0);
