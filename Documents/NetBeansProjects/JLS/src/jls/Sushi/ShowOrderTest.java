@@ -28,6 +28,8 @@ import javax.swing.table.TableCellRenderer;
 public class ShowOrderTest extends JFrame {
 
   public ShowOrderTest() {
+    //super("JButtonTable Example");
+
     super("Order List");
     DefaultTableModel dm = new DefaultTableModel();
     dm.setDataVector(new Object[][] { { "C001", "I001","Delivered","Edit" },
