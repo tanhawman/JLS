@@ -31,7 +31,7 @@ public class ShowOrderTest extends JFrame {
     super("Order List");
     DefaultTableModel dm = new DefaultTableModel();
     dm.setDataVector(new Object[][] { { "C001", "I001","Delivered","Edit" },
-        { "C002", "T002,I003","Pending","Edit" },{"C003","I003","Pending","Edit"}}, new Object[] { "CustID", "ItemID", "Status","Option"});
+        { "Cqweqweqwewqeqe002", "T002,I003","Pending","Edit" },{"C003","I003","Pending","Edit"}}, new Object[] { "CustID", "ItemID", "Status","Option"});
 
     JTable table = new JTable(dm);
     table.getColumn("Option").setCellRenderer(new ButtonRenderer());
