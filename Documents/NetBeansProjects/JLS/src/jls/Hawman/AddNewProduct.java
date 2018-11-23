@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author hawma
+ * @author hawma HELLO
  */
 public class AddNewProduct extends javax.swing.JFrame {
 
