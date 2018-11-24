@@ -5,6 +5,18 @@ import javax.swing.JOptionPane;
 
 public class RegisterForm extends javax.swing.JFrame {
 
+//  jTextField1 = name
+//  jRadioButton2 = female
+//  jRadioButton3 = male
+//  jRadioButton1 = consumer
+//  jRadioButton4 = corp cust
+//  jTextField4 = I.C
+//  jTextArea1 = address
+//  jTextField5 = phone
+//  jTextField2 = email
+//  jPasswordField1 = pass
+//  jTextField3 = mon_credit
+    
     private String u_name;
     private String u_gender;
     private String u_type;
