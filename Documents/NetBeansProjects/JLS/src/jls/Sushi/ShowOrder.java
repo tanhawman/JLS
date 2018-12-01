@@ -6,6 +6,8 @@
 package jls.Sushi;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,12 +15,33 @@ import javax.swing.JOptionPane;
  * @author Sushi
  */
 public class ShowOrder extends javax.swing.JFrame { 
+    
+    private String[] neworder = null;
     /**
      * Creates new form ShowOrderJF
+     * @param editorder
      */
+    public ShowOrder(String[] editorder) {
+        if(editorder != null){
+        String[] neworder = editorder;
+//        //update the table data
+//        for (int i=0; i<jTable1.getModel().getRowCount();i++){
+//            for(int j=0; j<5;j++){
+//                if(   jTable1.getModel().getValueAt(i,j).equals(neworder)){
+//                    jTable1.getModel().setValueAt(neworder, i, j);
+//                    }
+//                }
+//            }
+        this.neworder = neworder;
+        }
+        initComponents();
+    }
+
     public ShowOrder() {
         initComponents();
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,12 +53,10 @@ public class ShowOrder extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -51,27 +72,6 @@ public class ShowOrder extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Order List");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"C001", "I001", "01/11/2018", "Delivered"},
-                {"C002", "I001,I002", "24/11/2018", "Pending"},
-                {"C003", "I003", "26/11/2018", "Pending"}
-            },
-            new String [] {
-                "CustID", "ItemID", "Date", "DeliveryStatus"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setRowHeight(18);
-        jScrollPane1.setViewportView(jTable1);
-
         jButton1.setText("Edit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,78 +79,79 @@ public class ShowOrder extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Edit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Edit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
         jLabel1.setText("Order List");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"O001","C001", "I001", "01/11/2018", "Delivered"},
+                {"O002","C002", "I001,I002", "", "Pending"},
+                {"O003","C003", "I003", "", "Pending"}
+            },
+            new String [] {
+                "OrderID", "CustID", "ItemID", "Date", "DeliveryStatus"
+            }
+        ));
+        //update the table data
+        if(neworder != null){
+            for (int i=0; i<jTable1.getModel().getRowCount();i++){
+                for(int j=0; j<5;j++){
+                    if(jTable1.getModel().getValueAt(i,j).equals(neworder)){
+                        jTable1.getModel().setValueAt(neworder, i, j);
+                    }
+                }
+            }
+        }
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(301, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45))))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(161, 161, 161))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(167, 167, 167))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(jButton2, "Go to edit page (will add afterward)");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-          JOptionPane.showMessageDialog(jButton1, "Status cant edit because already delivered!","WARNING!!!",JOptionPane.ERROR_MESSAGE);
+        if(jTable1.getSelectedRow() != -1){
+//            String[] string = new String[5];
+//            for (int i=0; i<5;i++){
+//                string[i] = (String)jTable1.getModel().getValueAt(jTable1.getSelectedRow(), i);
+//                //new EditOrder(string).setVisible(true);
+//            }
+            new EditOrder(jTable1.getModel(),jTable1.getSelectedRow()).setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(new JFrame(), "Please select 1 Row from the table to edit","Warning",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(jButton3, "Go to edit page (will add afterward)");
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      *
@@ -180,7 +181,6 @@ public class ShowOrder extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -191,8 +191,6 @@ public class ShowOrder extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
