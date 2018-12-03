@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class ShowOrder extends javax.swing.JFrame { 
     
-    private String[] neworder = null;
+//    private String[] neworder = null;
     /**
      * Creates new form ShowOrderJF
-     * @param editorder
+     * @param 
      */
-    public ShowOrder(String[] editorder) {
-        if(editorder != null){
-        String[] neworder = editorder;
+//    public ShowOrder(String[] editorder) {
+//        if(editorder != null){
+//        String[] neworder = editorder;
 //        //update the table data
 //        for (int i=0; i<jTable1.getModel().getRowCount();i++){
 //            for(int j=0; j<5;j++){
@@ -32,10 +32,10 @@ public class ShowOrder extends javax.swing.JFrame {
 //                    }
 //                }
 //            }
-        this.neworder = neworder;
-        }
-        initComponents();
-    }
+//        this.neworder = neworder;
+//        }
+//        initComponents();
+//    }
 
     public ShowOrder() {
         initComponents();
