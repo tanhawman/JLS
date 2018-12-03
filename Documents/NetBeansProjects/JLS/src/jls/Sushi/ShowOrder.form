@@ -104,7 +104,7 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="//update the table data&#xa;if(neworder != null){&#xa;         for (int i=0; i&lt;jTable1.getModel().getRowCount();i++){&#xa;            for(int j=0; j&lt;5;j++){&#xa;               if(jTable1.getModel().getValueAt(i,j).equals(neworder)){&#xa;                    jTable1.getModel().setValueAt(neworder, i, j);&#xa;                    }&#xa;               }&#xa;            }&#xa;        }">
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;O001&quot;,&quot;C001&quot;, &quot;I001&quot;, &quot;01/11/2018&quot;, &quot;Delivered&quot;},&#xa;        {&quot;O002&quot;,&quot;C002&quot;, &quot;I001,I002&quot;, &quot;&quot;, &quot;Pending&quot;},&#xa;        {&quot;O003&quot;,&quot;C003&quot;, &quot;I003&quot;, &quot;&quot;, &quot;Pending&quot;}&#xa;    },&#xa;    new String [] {&#xa;        &quot;OrderID&quot;, &quot;CustID&quot;, &quot;ItemID&quot;, &quot;Date&quot;, &quot;DeliveryStatus&quot;&#xa;    }&#xa;)" type="code"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

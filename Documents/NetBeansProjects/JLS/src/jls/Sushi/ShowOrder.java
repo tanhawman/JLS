@@ -92,16 +92,6 @@ public class ShowOrder extends javax.swing.JFrame {
                 "OrderID", "CustID", "ItemID", "Date", "DeliveryStatus"
             }
         ));
-        //update the table data
-        if(neworder != null){
-            for (int i=0; i<jTable1.getModel().getRowCount();i++){
-                for(int j=0; j<5;j++){
-                    if(jTable1.getModel().getValueAt(i,j).equals(neworder)){
-                        jTable1.getModel().setValueAt(neworder, i, j);
-                    }
-                }
-            }
-        }
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
