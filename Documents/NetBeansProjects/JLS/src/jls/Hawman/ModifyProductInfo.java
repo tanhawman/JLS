@@ -13,12 +13,13 @@ import javax.swing.JOptionPane;
  * @author hawma
  */
 public class ModifyProductInfo extends javax.swing.JFrame {
-
+    ModifyProductInfo2 p1;
     /**
      * Creates new form ModifyProductInfo
      */
     public ModifyProductInfo() {
         initComponents();
+        p1 = new ModifyProductInfo2();
     }
 
     /**
@@ -161,12 +162,61 @@ public class ModifyProductInfo extends javax.swing.JFrame {
         if (buttonGroup1.getSelection() != null) {
             buttonGroup1.getSelection().toString();
             name = buttonGroup1.getSelection().toString();
-            ModifyProductInfo2 modifyProductInfo2 = new ModifyProductInfo2();
-            modifyProductInfo2.setVisible(true);
+            p1.setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(rootPane, "Please select an item.");
         }
+        
+        if (jRadioButton1.isSelected() == true) {
+            p1.jTextField1.setText("Rose");
+            p1.jTextArea1.setText("Beautiful rose.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        else if (jRadioButton2.isSelected() == true) {
+            p1.jTextField1.setText("Lily");
+            p1.jTextArea1.setText("Beautiful lily.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        else if (jRadioButton3.isSelected() == true) {
+            p1.jTextField1.setText("Chrysanthemum");
+            p1.jTextArea1.setText("Beautiful chrysanthemum.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        else if (jRadioButton4.isSelected() == true) {
+            p1.jTextField1.setText("Rose bouquet");
+            p1.jTextArea1.setText("Beautiful rose bouquet.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        else if (jRadioButton5.isSelected() == true) {
+            p1.jTextField1.setText("Lily bouquet");
+            p1.jTextArea1.setText("Beautiful lily bouquet.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        else if (jRadioButton6.isSelected() == true) {
+            p1.jTextField1.setText("Chrysanthemum bouquet");
+            p1.jTextArea1.setText("Beautiful chrysanthemum bouquet.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        else if (jRadioButton7.isSelected() == true) {
+            p1.jTextField1.setText("Teddy bear");
+            p1.jTextArea1.setText("Nice cute teddy bear.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        else if (jRadioButton8.isSelected() == true) {
+            p1.jTextField1.setText("Heart balloon");
+            p1.jTextArea1.setText("Lovely balloon.");
+            p1.jTextField2.setText("6.20");
+            p1.jTextField3.setText("17");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -215,10 +265,10 @@ public class ModifyProductInfo extends javax.swing.JFrame {
     public javax.swing.JRadioButton jRadioButton1;
     public static javax.swing.JRadioButton jRadioButton2;
     public javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
+    public javax.swing.JRadioButton jRadioButton4;
+    public javax.swing.JRadioButton jRadioButton5;
+    public javax.swing.JRadioButton jRadioButton6;
+    public javax.swing.JRadioButton jRadioButton7;
+    public javax.swing.JRadioButton jRadioButton8;
     // End of variables declaration//GEN-END:variables
 }

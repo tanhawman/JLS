@@ -151,6 +151,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Rose bouquet"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButton5">
       <Properties>
@@ -159,6 +162,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Lily bouquet"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButton6">
       <Properties>
@@ -167,6 +173,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Chrysanthemum bouquet"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -183,6 +192,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Teddy bear"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButton8">
       <Properties>
@@ -191,6 +203,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Heart balloon"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
