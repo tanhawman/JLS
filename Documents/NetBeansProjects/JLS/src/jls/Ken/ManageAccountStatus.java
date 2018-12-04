@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
-
+// fixing erorr
 public class ManageAccountStatus extends javax.swing.JFrame {
 
         Object[][] rowData = {{"Tong Chun Ken", 20.00, 2.00, "Freeze"},
