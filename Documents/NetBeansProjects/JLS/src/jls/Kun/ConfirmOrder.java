@@ -168,6 +168,12 @@ public class ConfirmOrder extends javax.swing.JFrame {
             if(p1.jXDatePicker1.getDate() == null){
                 JOptionPane.showMessageDialog(rootPane, "Please choose a Pick-Up Date.", "Warning", JOptionPane.WARNING_MESSAGE);
             }
+            else{
+                int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+                if (select == 0){
+                    JOptionPane.showMessageDialog(rootPane, "You place an order!!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);                                   
+                }
+            }
         }
         else{
             int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);

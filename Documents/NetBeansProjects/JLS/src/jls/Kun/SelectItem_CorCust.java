@@ -247,7 +247,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1qty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
-            double p1price = Double.parseDouble(p1.jTable1.getValueAt(i, 2).toString());
+            int p1price = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
             
 
@@ -256,10 +256,10 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                 break;
             }
             else if(p1chkOrder == true && p1qty > 0){
-                double total = p1price * p1qty;
+                int total = p1price * p1qty;
                 p1.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
-                lblTotalPrice.setText(Double.toString(totalPrice));
+                lblTotalPrice.setText(Integer.toString(totalPrice));
             }
             else if(p1chkOrder == false && p1qty > 0){
                 p1.jTable1.setValueAt(empty, i, 4);
@@ -270,7 +270,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(i, 1);
             int p2qty = Integer.parseInt(p2.jTable1.getValueAt(i, 3).toString());
-            double p2price = Double.parseDouble(p2.jTable1.getValueAt(i, 2).toString());
+            int p2price = Integer.parseInt(p2.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
             
 
@@ -279,10 +279,10 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                 break;
             }
             else if(p2chkOrder == true && p2qty > 0){
-                double total = p2price * p2qty;
+                int total = p2price * p2qty;
                 p2.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
-                lblTotalPrice.setText(Double.toString(totalPrice));
+                lblTotalPrice.setText(Integer.toString(totalPrice));
             }
             else if(p2chkOrder == false && p2qty > 0){
                 p2.jTable1.setValueAt(empty, i, 4);
