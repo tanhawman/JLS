@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templatess
- * and open the template in the editor.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.jyjyjhfjf
  */
 package jls.Hawman;
 
@@ -19,7 +19,7 @@ public class ModifyProductInfo extends javax.swing.JFrame {
      */
     public ModifyProductInfo() {
         initComponents();
-        p1 = new ModifyProductInfo2();
+        p1 = new ModifyProductInfo2(this);
     }
 
     /**
@@ -158,10 +158,7 @@ public class ModifyProductInfo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String name = "";
         if (buttonGroup1.getSelection() != null) {
-            buttonGroup1.getSelection().toString();
-            name = buttonGroup1.getSelection().toString();
             p1.setVisible(true);
         }
         else {
@@ -263,7 +260,7 @@ public class ModifyProductInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JRadioButton jRadioButton1;
-    public static javax.swing.JRadioButton jRadioButton2;
+    public javax.swing.JRadioButton jRadioButton2;
     public javax.swing.JRadioButton jRadioButton3;
     public javax.swing.JRadioButton jRadioButton4;
     public javax.swing.JRadioButton jRadioButton5;

@@ -16,9 +16,9 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
     /**
      * Creates new form ModifyProductInfo2
      */
-    public ModifyProductInfo2() {
+    public ModifyProductInfo2(ModifyProductInfo a) {
         initComponents();    
-        p2 = new ModifyProductInfo();
+        p2 = a;
     }
 
     /**
@@ -50,12 +50,6 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
         jLabel1.setText("Modify Product Information");
 
         jLabel2.setText("Product name:");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Description: ");
 
@@ -219,10 +213,6 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-    
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -253,7 +243,7 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModifyProductInfo2().setVisible(true);
+                new ModifyProductInfo2(new ModifyProductInfo()).setVisible(true);
             }
         });
     }
