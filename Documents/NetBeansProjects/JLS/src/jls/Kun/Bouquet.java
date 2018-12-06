@@ -26,11 +26,11 @@ public class Bouquet extends javax.swing.JPanel {
     public class Item{
     public String item;
     public boolean order;
-    public int price;
+    public Double price;
     public int quantity;
-    public int total;
+    public Double total;
         
-        public Item(String Item, boolean Order, int Price, int Quantity, int Total){
+        public Item(String Item, boolean Order, Double Price, int Quantity, Double Total){
             this.item = Item;
             this.order = Order;
             this.price = Price;
@@ -41,8 +41,8 @@ public class Bouquet extends javax.swing.JPanel {
     
     public ArrayList ListItem(){
         ArrayList<Item> list = new ArrayList<Item>();
-        Item flower = new Item("Rose-B", false, 120, 0, 0);
-        Item flower1 = new Item("Lily-B", false, 130, 0, 0);
+        Item flower = new Item("Rose-B", false, 120.00, 0, 0.00);
+        Item flower1 = new Item("Lily-B", false, 130.00, 0, 0.00);
         list.add(flower);
         list.add(flower1);
         return list;
@@ -84,7 +84,7 @@ public class Bouquet extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Boolean.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, true, false, true, false
