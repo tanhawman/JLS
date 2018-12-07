@@ -6,6 +6,7 @@ import java.util.Date;
  */
 public class Order {
     private String orderid;
+    private String cust_name;
     private String[] item_name;
     private String[] quantity;
     private String priority;
@@ -18,8 +19,9 @@ public class Order {
     public Order() {
     }
 
-    public Order(String orderid, String[] item_name, String[] quantity, String priority, Date deliverydate, String deliverystatus, Double total_bill, Date pickupdate, String time) {
+    public Order(String orderid, String cust_name, String[] item_name, String[] quantity, String priority, Date deliverydate, String deliverystatus, Double total_bill, Date pickupdate, String time) {
         this.orderid = orderid;
+        this.cust_name = cust_name;
         this.item_name = item_name;
         this.quantity = quantity;
         this.priority = priority;
@@ -32,6 +34,10 @@ public class Order {
 
     public String getOrderid() {
         return orderid;
+    }
+
+    public String getCust_name() {
+        return cust_name;
     }
 
     public String[] getItem_name() {
@@ -68,6 +74,10 @@ public class Order {
 
     public void setOrderid(String orderid) {
         this.orderid = orderid;
+    }
+
+    public void setCust_name(String cust_name) {
+        this.cust_name = cust_name;
     }
 
     public void setItem_name(String[] item_name) {

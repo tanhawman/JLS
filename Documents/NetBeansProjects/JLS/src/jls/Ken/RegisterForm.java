@@ -23,10 +23,8 @@ public class RegisterForm extends javax.swing.JFrame {
     private String u_ic;
     private String u_phone;
     private String u_email;
-    private String u_password;
     private double u_mon_credit;
     
-    private String passText;
     private String val_msg;
     private String con_msg;
     
@@ -288,7 +286,6 @@ public class RegisterForm extends javax.swing.JFrame {
             u_ic = jTextField4.getText();
             u_phone = jTextField5.getText();
             u_email = jTextField2.getText();
-            u_password = passText;
             
             con_msg = "Your account has been created:\n" + "\nName: " + u_name +"\nType: " + u_type +
                      "\nPhone: " + u_phone + "\nEmail : " + u_email;
@@ -308,9 +305,8 @@ public class RegisterForm extends javax.swing.JFrame {
         String error = "";
         int email_val = 0;
         
-        passText = new String(jPasswordField1.getPassword());
         
-        if( jTextField1.getText().isEmpty() || jTextField4.getText().isEmpty() || jTextField5.getText().isEmpty() || jTextField2.getText().isEmpty() ||passText.isEmpty())
+        if( jTextField1.getText().isEmpty() || jTextField4.getText().isEmpty() || jTextField5.getText().isEmpty() || jTextField2.getText().isEmpty())
             error += "\nAll field is required, please fill in all field.";
         if(!(jTextField5.getText().matches("\\d{10,11}")))
             error += "\nPhone contact only required numbers.(\"-\" is not needed)";
