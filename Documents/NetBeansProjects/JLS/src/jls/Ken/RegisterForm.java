@@ -295,6 +295,10 @@ public class RegisterForm extends javax.swing.JFrame {
             
             
             JOptionPane.showMessageDialog(null, con_msg, "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+            
+            // STORE INTO OBJECT ???
+            this.dispose();
+            new CustomerInvoiceMain().setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null, "Looks like you mis-entered some information.\nPlease revise your input." + val_msg, "Opss..", JOptionPane.INFORMATION_MESSAGE);
             val_msg = "";

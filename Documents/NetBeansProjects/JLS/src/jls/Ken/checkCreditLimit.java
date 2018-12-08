@@ -38,6 +38,7 @@ public class checkCreditLimit extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        ModMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +80,13 @@ public class checkCreditLimit extends javax.swing.JFrame {
                 jButton1.setVisible(true);
             }}
         );
+        
+        ModMenu.setText("Back to Menu");
+        ModMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModMenuActionPerformed(evt);
+            }
+        });
         
         // Search Funtions
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +139,8 @@ public class checkCreditLimit extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addComponent(ModMenu)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(83, 83, 83)
                             .addComponent(jLabel1))
@@ -153,15 +163,21 @@ public class checkCreditLimit extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(19, 19, 19)
+                    .addGap(10, 10, 10)
+                        .addComponent(ModMenu)
+            )      
         );
 
         pack();
     }// </editor-fold>                        
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
+                
+    private void ModMenuActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // STORE / ADD / UPDATE DO WHATEVER YOU WANNA DO BEFORE GOING BACK.
+        this.dispose();
+        new CustomerInvoiceMain().setVisible(true);
+    }    
+        
 
     /**
      * @param args the command line arguments
@@ -206,5 +222,6 @@ public class checkCreditLimit extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+     private javax.swing.JButton ModMenu;
     // End of variables declaration                   
 }

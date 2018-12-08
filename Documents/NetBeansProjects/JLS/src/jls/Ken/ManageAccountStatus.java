@@ -30,6 +30,7 @@ public class ManageAccountStatus extends javax.swing.JFrame {
         Account = new javax.swing.JTable();
         Instruction = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        ModMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,7 +53,7 @@ public class ManageAccountStatus extends javax.swing.JFrame {
         status.setCellEditor(new DefaultCellEditor(comboBox));
         
         Instruction.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Instruction.setText("<html>\n<h3><strong><span style=\"text-decoration: underline;\">Instruction</span></strong></h3>\n<p>1. <strong>Credit limit</strong> shows the monthly credit limits of that customer.</p>\n<p>2. <strong>Remaining credits&nbsp;</strong>shows the remain credit limit of the customer within this month.</p>\n<p>3. <strong>Status&nbsp;</strong>can be <strong><em>Active</em></strong> or <strong><em>Freeze.</em></strong></p>\n<p><strong><em>&nbsp; &nbsp; &nbsp; &nbsp; Active&nbsp; -&nbsp;</em></strong>The user is enabled to continue purchase products with their remaining credits.</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<em><strong>Freeze -&nbsp;</strong></em>The user's account is unable to make any purchase until they pay his/her invoice.</p>\n<p>4. Freeze the user's account by changing the status and click Update.</p>\n</html>");
+        Instruction.setText("<html>\n<h3><strong><span style=\"text-decoration: underline;\">Instruction</span></strong></h3>\n<p>1. <strong>Status&nbsp;</strong>can be <strong><em>Active</em></strong> or <strong><em>Freeze.</em></strong></p>\n<p><strong><em>&nbsp; &nbsp; &nbsp; &nbsp; Active&nbsp; -&nbsp;</em></strong>The user is enabled to continue purchase products with their remaining credits.</p>\n<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<em><strong>Freeze -&nbsp;</strong></em>The user's account is unable to make any purchase until they pay his/her invoice.</p>\n<p>2. Freeze the user's account by changing the status and click Update.</p>\n</html>");
 
         jButton1.setText("Update");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +62,13 @@ public class ManageAccountStatus extends javax.swing.JFrame {
             }
         });
 
+                ModMenu.setText("Back to Menu");
+        ModMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModMenuActionPerformed(evt);
+            }
+        });
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,7 +88,9 @@ public class ManageAccountStatus extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(10, 10, 10)
+                    .addComponent(ModMenu))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,12 +103,20 @@ public class ManageAccountStatus extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(10, 10, 10)
+                .addComponent(ModMenu)
+            )
         );
 
         pack();
     }// </editor-fold>                        
     
+    private void ModMenuActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // STORE / ADD / UPDATE DO WHATEVER YOU WANNA DO BEFORE GOING BACK.
+        this.dispose();
+        new CustomerInvoiceMain().setVisible(true);
+    }    
+        
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
         int confirm = JOptionPane.showConfirmDialog(null, "Proceed with updates ? ", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -119,7 +137,7 @@ public class ManageAccountStatus extends javax.swing.JFrame {
 //                }
 //            }
 
-            JOptionPane.showMessageDialog(null, "Update Completed.", "Confirm", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, "Update Completed.", "Confirm", JOptionPane.INFORMATION_MESSAGE);
             
         }else if(confirm == JOptionPane.NO_OPTION ){
             Account.setModel(new DefaultTableModel(rowData,columnNames));
@@ -172,5 +190,6 @@ public class ManageAccountStatus extends javax.swing.JFrame {
     private javax.swing.JLabel Title;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton ModMenu;
     // End of variables declaration                   
 }
