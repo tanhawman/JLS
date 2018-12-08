@@ -7,6 +7,10 @@ package jls.Sushi;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,13 +24,20 @@ public class ShowOrder extends javax.swing.JFrame {
     GridBagLayout layout = new GridBagLayout();
     PickUp pu ;
     Delivery de;
+    Arrangement ar;
 
     public ShowOrder() {
         initComponents();
+        //user need to select the date 1st then only will disply the table
+        //jTable3.setVisible(false);
+       // jButton3.setVisible(false);
+        
         jRadioButton1.setSelected(true);
         pu = new PickUp();
         de = new Delivery();
+        ar = new Arrangement();
         empty.setLayout(layout);
+        empty2.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;
         c.gridy = 0;
@@ -34,6 +45,10 @@ public class ShowOrder extends javax.swing.JFrame {
         c.gridx = 0;
         c.gridy = 0;
         empty.add(de, c);
+        c.gridx = 0;
+        c.gridy = 0;
+        empty2.add(ar,c);
+        ar.setVisible(false);
         pu.setVisible(true);
         de.setVisible(false);
     }
@@ -58,9 +73,9 @@ public class ShowOrder extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         empty = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel2 = new javax.swing.JLabel();
+        empty2 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -133,51 +148,56 @@ public class ShowOrder extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Customer", jPanel1);
+        jTabbedPane1.addTab("Order List", jPanel1);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"O001","C001", "I001", "01/11/2018","Delivered", "High"},
-                {"O002","C002", "I001,I002", "", "Pending", "High"},
-                {"O003","C003", "I003", "", "Pending", "Low"}
-            },
-            new String [] {
-                "OrderID", "Customer ID", "ItemID", "Date", "Delivery Status", "Priority"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        jButton3.setText("Edit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jXDatePicker1ActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Choose Date :");
+
+        javax.swing.GroupLayout empty2Layout = new javax.swing.GroupLayout(empty2);
+        empty2.setLayout(empty2Layout);
+        empty2Layout.setHorizontalGroup(
+            empty2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        empty2Layout.setVerticalGroup(
+            empty2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+                .addGap(61, 61, 61)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(252, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(empty2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(empty2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(22, 22, 22))
         );
 
-        jTabbedPane1.addTab("Consumer", jPanel2);
+        jTabbedPane1.addTab("Arrangement List", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,16 +227,6 @@ public class ShowOrder extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        if(jTable3.getSelectedRow() != -1){
-            new EditOrder(jTable3.getModel(),jTable3.getSelectedRow()).setVisible(true);
-        }
-//        else{
-//            jButton3.setVisible(false);
-//        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
         pu.setVisible(true);
@@ -228,6 +238,21 @@ public class ShowOrder extends javax.swing.JFrame {
         pu.setVisible(false);
         de.setVisible(true);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
+        // TODO add your handling code here:
+        Calendar cal = Calendar. getInstance();
+        Date date1 = cal.getTime();
+        Date date2 =jXDatePicker1.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String selecteddate = dateFormat.format(date2);
+        String todaydate = dateFormat.format(date1);
+        if(selecteddate != null){
+            ar.setVisible(true);
+//            jTable3.setVisible(true);
+//            jButton3.setVisible(true);
+        }
+    }//GEN-LAST:event_jXDatePicker1ActionPerformed
 
     /**
      *
@@ -268,15 +293,15 @@ public class ShowOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel empty;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel empty2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable3;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }

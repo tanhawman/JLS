@@ -18,20 +18,33 @@ import javax.swing.table.TableModel;
 public class EditOrder extends javax.swing.JFrame {
 
         private TableModel tablemodel;
-    private int rownumber;
+        private int rownumber;
     /**
      * Creates new form EditOrder
      */
 
     public EditOrder(TableModel dtm, int rownumber) {
         initComponents();
+        if(dtm.getColumnCount()== 5 ){
         jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
         jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
         jLabel8.setText((String)dtm.getValueAt(rownumber, 2));
         jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
         jLabel10.setText((String)dtm.getValueAt(rownumber, 4));
+        jLabel11.setVisible(false);
+        jLabel12.setVisible(false);
         this.tablemodel = dtm;
         this.rownumber =rownumber;
+        }else if (dtm.getColumnCount() == 6){
+        jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
+        jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
+        jLabel8.setText((String)dtm.getValueAt(rownumber, 2));
+        jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
+        jLabel10.setText((String)dtm.getValueAt(rownumber, 4));
+        jLabel12.setText((String)dtm.getValueAt(rownumber, 5));
+        this.tablemodel = dtm;
+        this.rownumber =rownumber;
+        }
         
     }
 
@@ -44,6 +57,8 @@ public class EditOrder extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -56,6 +71,21 @@ public class EditOrder extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +123,10 @@ public class EditOrder extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setText("Priority            :");
+
+        jLabel12.setText("jLabel12");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,6 +140,7 @@ public class EditOrder extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -117,7 +152,8 @@ public class EditOrder extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel10))))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel12))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,7 +179,11 @@ public class EditOrder extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel10))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -156,27 +196,20 @@ public class EditOrder extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Calendar cal = Calendar. getInstance();
-        Date date=cal. getTime();
+        Date date=cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String updatedate=dateFormat.format(date);
         String status = "Delivered";
-//        list[3] = status;
-//        list[4] = updatedate;
-        tablemodel.setValueAt(status, rownumber, 4);
-        tablemodel.setValueAt(updatedate, rownumber, 3);
+        if(tablemodel.getColumnCount() == 5){
+            tablemodel.setValueAt(updatedate, rownumber, 3);
+            tablemodel.setValueAt(status, rownumber, 4);
+        }else if (tablemodel.getColumnCount()==6){
+            tablemodel.setValueAt(updatedate, rownumber, 3);
+            tablemodel.setValueAt(status, rownumber, 4);
+        }
+        
         dispose();
-        //jLabel9.setText(status);
-        //jLabel10.setText(updatedate);
-        
-//        JLabel list[] = new JLabel[5];
-//        labelarray[0] = jLabel6;
-//        labelarray[1] = jLabel7;
-//        labelarray[2] = jLabel8;
-//        labelarray[3] = jLabel9;
-//        labelarray[4] = jLabel10;
-//       
-//        new ShowOrder(labelarray).setVisible(true);
-        
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -193,6 +226,8 @@ public class EditOrder extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -201,5 +236,7 @@ public class EditOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

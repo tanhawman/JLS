@@ -31,6 +31,8 @@ public class PickUp extends javax.swing.JPanel {
         jTable2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(550, 180));
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"O001","C001", "I001", "01/11/2018", "Delivered"},
@@ -59,7 +61,7 @@ public class PickUp extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
