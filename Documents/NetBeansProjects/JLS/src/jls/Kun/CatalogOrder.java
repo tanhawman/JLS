@@ -15,11 +15,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CatalogOrder extends javax.swing.JFrame {
 
+    CatalogSalesOrder p1;
     /**
      * Creates new form CatalogOrder
      */
     public CatalogOrder() {
         initComponents();
+        p1  = new CatalogSalesOrder();
         addRowToJTable();
     }
     
@@ -80,7 +82,6 @@ public class CatalogOrder extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(730, 548));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Catalog Order");
@@ -146,7 +147,14 @@ public class CatalogOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model  = (DefaultTableModel)jTable1.getModel();
+        int selectedRowIndex = jTable1.getSelectedRow();
+        
+        p1.jLabel10.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        p1.jLabel11.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        p1.jLabel14.setText(model.getValueAt(selectedRowIndex, 4).toString());
+        
+        new CatalogSalesOrder().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -193,6 +201,6 @@ public class CatalogOrder extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

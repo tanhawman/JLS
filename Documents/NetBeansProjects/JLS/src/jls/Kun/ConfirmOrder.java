@@ -39,6 +39,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
         
     }
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,7 +172,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
             else{
                 int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if (select == 0){
-                    new SalesOrder(p1.p1, p2.p2).setVisible(true);                             
+                    new SalesOrder(p1.p1, p2.p2, this).setVisible(true);                             
                 }
             }
         }
@@ -179,7 +180,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
             int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
                 
-                new SalesOrder(p1.p1, p2.p2).setVisible(true);
+                    new SalesOrder(p1.p1, p2.p2, this).setVisible(true);
             }
         }
         
