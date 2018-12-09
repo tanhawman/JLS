@@ -7,9 +7,17 @@ package jls.Sushi;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -21,7 +29,7 @@ public class DeliveryRoute extends javax.swing.JFrame {
      */
     public DeliveryRoute() {
         initComponents();
-        jTable1.setVisible(false);
+//        jTable1.setVisible(false);
     }
 
     /**
@@ -43,15 +51,21 @@ public class DeliveryRoute extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"O001", "12/12/18","100"},
-                {"O002", "18/12/18","200"},
-                {"O003", "18/12/18","300"},
-                {"O004", "18/12/18","400"}
+                {"O001","12/12/18","100"},
+                {"O002","18/12/18","200"},
+                {"O003","18/12/18","300"},
+                {"O004","18/12/18","400"}
             },
             new String [] {
                 "Order ID","Date", "Distance"
             }
         ));
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
+        jTable1.setRowSorter(sorter);
+
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+        sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
@@ -109,20 +123,28 @@ public class DeliveryRoute extends javax.swing.JFrame {
         Date date2 =jXDatePicker1.getDate();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         String selecteddate = dateFormat.format(date2);
-//        String todaydate = dateFormat.format(date1);
-        if(selecteddate != null ){
+        String todaydate = dateFormat.format(date1);
+        if(date2 != null && date2.after(date1) ){
             for(int i =0; i <jTable1.getRowCount();i++){
-                if(jTable1.getModel().getValueAt(i, 1) == selecteddate){
-                    //jTable1.addRow();
+//                if(jTable1.getModel().getValueAt(i, 1) == selecteddate){
+//                    jTable1.addRow();
 //                    DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
 //                    model.addRow(new Object[i]);
-                    
-                }else{
-                     DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
-                     model.removeRow(i);
+//                    
+//                }else{
+                if(!selecteddate.equals(jTable1.getModel().getValueAt(i, 1))){
+//                       ((DefaultTableModel) jTable1.getModel()).removeRow(i);
+                    DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
+                    model.removeRow(i);
                 }
-            jTable1.setVisible(true);
+//                else{
+//                    ((DefaultTableModel) jTable1.getModel()).addRow(Object[i]);
+//                }
+            
+            }
         }
+        else{
+                JOptionPane.showMessageDialog(new JFrame(), "Invalid date selected!!!","Warning",JOptionPane.ERROR_MESSAGE);    
         }
     }//GEN-LAST:event_jXDatePicker1ActionPerformed
 

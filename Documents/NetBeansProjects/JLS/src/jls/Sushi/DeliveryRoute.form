@@ -72,9 +72,12 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;O001&quot;, &quot;12/12/18&quot;,&quot;100&quot;},&#xa;        {&quot;O002&quot;, &quot;18/12/18&quot;,&quot;200&quot;},&#xa;        {&quot;O003&quot;, &quot;18/12/18&quot;,&quot;300&quot;},&#xa;        {&quot;O004&quot;, &quot;18/12/18&quot;,&quot;400&quot;}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Order ID&quot;,&quot;Date&quot;, &quot;Distance&quot;&#xa;    }&#xa;)" type="code"/>
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;O001&quot;,&quot;12/12/18&quot;,&quot;100&quot;},&#xa;        {&quot;O002&quot;,&quot;18/12/18&quot;,&quot;200&quot;},&#xa;        {&quot;O003&quot;,&quot;18/12/18&quot;,&quot;300&quot;},&#xa;        {&quot;O004&quot;,&quot;18/12/18&quot;,&quot;400&quot;}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Order ID&quot;,&quot;Date&quot;, &quot;Distance&quot;&#xa;    }&#xa;)" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;TableModel&gt;(jTable1.getModel());&#xa;            jTable1.setRowSorter(sorter);&#xa;&#xa;            List&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;&gt;(25);&#xa;            sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));&#xa;            sorter.setSortKeys(sortKeys);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
