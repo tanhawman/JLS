@@ -183,6 +183,9 @@
       </AuxValues>
     </Component>
     <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePicker1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXDatePicker1ActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>

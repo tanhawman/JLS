@@ -171,14 +171,15 @@ public class ConfirmOrder extends javax.swing.JFrame {
             else{
                 int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if (select == 0){
-                    JOptionPane.showMessageDialog(rootPane, "You place an order!!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);                                   
+                    new SalesOrder(p1.p1, p2.p2).setVisible(true);                             
                 }
             }
         }
         else{
             int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
-                JOptionPane.showMessageDialog(rootPane, "You place an order!!", "Congratulations", JOptionPane.INFORMATION_MESSAGE);                                   
+                
+                new SalesOrder(p1.p1, p2.p2).setVisible(true);
             }
         }
         
@@ -226,7 +227,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel;
-    private javax.swing.JRadioButton rdDelivery;
-    private javax.swing.JRadioButton rdpickup;
+    public javax.swing.JRadioButton rdDelivery;
+    public javax.swing.JRadioButton rdpickup;
     // End of variables declaration//GEN-END:variables
 }

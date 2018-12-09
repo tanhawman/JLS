@@ -5,9 +5,12 @@
  */
 package jls.Kun;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import org.jdesktop.swingx.table.DatePickerCellEditor;
 
 /**
  *
@@ -20,10 +23,32 @@ public class SelfPickup extends javax.swing.JPanel {
      * Creates new form SelfPickup
      */
     public SelfPickup(Fresh fresh, Bouquet bouquet) {
-        initComponents();
+        initComponents();  
+        Date date = new Date();
+        jXDatePicker1.getMonthView().setLowerBound(date);
         p1 = fresh;
         p2 = bouquet;
         addRowToJTable();
+    }
+    
+    public class BoundDatePickerCellEditor extends DatePickerCellEditor {
+
+    public BoundDatePickerCellEditor() {
+        super();
+    }
+
+    public BoundDatePickerCellEditor(DateFormat dateFormat) {
+        super(dateFormat);
+    }
+
+    public void setLowerBound(Date date) {
+        datePicker.getMonthView().setLowerBound(date);          
+    }
+
+    public void setUpperBound(Date date) {
+        datePicker.getMonthView().setLowerBound(date);          
+    }
+
     }
     
     public void addRowToJTable(){
@@ -127,6 +152,12 @@ public class SelfPickup extends javax.swing.JPanel {
         jLabel3.setText("Time:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10.00 am", "11.00 am", "12.00 pm", "1.00 pm", "2.00 pm", "3.00 pm", "4.00 pm", "5.00 pm" }));
+
+        jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXDatePicker1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
