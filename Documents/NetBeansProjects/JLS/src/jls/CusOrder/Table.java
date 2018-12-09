@@ -51,7 +51,7 @@ public class Table extends javax.swing.JFrame {
         Object[] row = new Object[2];
         row[0] = id;
         row[1] = Priority;
-        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.addRow(row);
         
        JTable table1 = new JTable(model1);
