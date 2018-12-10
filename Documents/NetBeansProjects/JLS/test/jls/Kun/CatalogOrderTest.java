@@ -29,11 +29,17 @@ public class CatalogOrderTest {
     @Test
     public void testListItem() {
         System.out.println("ListItem");
-        String expResult = "Tan Yee Kun";
-        String result = "Tan Yee Kun";
-        assertEquals(expResult, result);
+        String result = concatenate("one", "two");
+        assertEquals("onetwo", result);
         // TODO review the generated test code and remove the default call to fail.
     }
+    
+
+
+    public String concatenate(String one, String two){
+        return one + two;
+    }
+
 
     /**
      * Test of addRowToJTable method, of class CatalogOrder.
