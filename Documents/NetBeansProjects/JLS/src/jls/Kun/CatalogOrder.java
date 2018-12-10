@@ -8,6 +8,7 @@ package jls.Kun;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import jls.HomePage;
 
 /**
  *
@@ -102,7 +103,7 @@ public class CatalogOrder extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cancel");
+        jButton2.setText("Back to Main Menu");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -147,12 +148,13 @@ public class CatalogOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        
+        this.dispose();
         new CatalogSalesOrder(this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
+        this.dispose();
+        new HomePage().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
