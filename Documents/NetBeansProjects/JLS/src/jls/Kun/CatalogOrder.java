@@ -15,13 +15,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CatalogOrder extends javax.swing.JFrame {
 
-    CatalogSalesOrder p1;
+
     /**
      * Creates new form CatalogOrder
      */
     public CatalogOrder() {
         initComponents();
-        p1  = new CatalogSalesOrder();
         addRowToJTable();
     }
     
@@ -147,14 +146,9 @@ public class CatalogOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DefaultTableModel model  = (DefaultTableModel)jTable1.getModel();
-        int selectedRowIndex = jTable1.getSelectedRow();
+       
         
-        p1.jLabel10.setText(model.getValueAt(selectedRowIndex, 1).toString());
-        p1.jLabel11.setText(model.getValueAt(selectedRowIndex, 2).toString());
-        p1.jLabel14.setText(model.getValueAt(selectedRowIndex, 4).toString());
-        
-        new CatalogSalesOrder().setVisible(true);
+        new CatalogSalesOrder(this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
