@@ -5,7 +5,7 @@
  */
 package jls.CusOrder;
 
-import com.placeholder.PlaceHolder;
+
 import java.awt.FlowLayout;
 import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
@@ -18,7 +18,7 @@ import javax.swing.table.TableModel;
  * @author user
  */
 public class NewJFrame extends javax.swing.JFrame {
-PlaceHolder text1;
+
 String style;
 String style_price;
   private TableModel tablemodel;
