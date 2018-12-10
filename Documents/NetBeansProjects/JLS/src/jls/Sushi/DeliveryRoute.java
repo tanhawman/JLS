@@ -5,12 +5,15 @@
  */
 package jls.Sushi;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
@@ -27,9 +30,24 @@ public class DeliveryRoute extends javax.swing.JFrame {
     /**
      * Creates new form DeliveryRoute
      */
+    GridBagLayout layout = new GridBagLayout();
+    DeliveryList dl;
+    AddNewTable ant;
+    
     public DeliveryRoute() {
         initComponents();
-//        jTable1.setVisible(false);
+        dl = new DeliveryList();
+        ant = new AddNewTable();
+        empty.setLayout(layout);
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 150;
+        c.gridy = 0;
+        empty.add(dl, c);
+        c.gridx = 0;
+        c.gridy = 0;
+        empty.add(ant, c);
+        ant.setVisible(false);
+        dl.setVisible(true);
     }
 
     /**
@@ -41,32 +59,13 @@ public class DeliveryRoute extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel2 = new javax.swing.JLabel();
+        empty = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"O001","12/12/18","100"},
-                {"O002","18/12/18","200"},
-                {"O003","18/12/18","300"},
-                {"O004","18/12/18","400"}
-            },
-            new String [] {
-                "Order ID","Date", "Distance"
-            }
-        ));
-        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
-        jTable1.setRowSorter(sorter);
-
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
-        sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
-        sorter.setSortKeys(sortKeys);
-        jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
         jLabel1.setText("Delivery Route");
@@ -80,6 +79,24 @@ public class DeliveryRoute extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Choose Date :");
 
+        javax.swing.GroupLayout emptyLayout = new javax.swing.GroupLayout(empty);
+        empty.setLayout(emptyLayout);
+        emptyLayout.setHorizontalGroup(
+            emptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        emptyLayout.setVerticalGroup(
+            emptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 132, Short.MAX_VALUE)
+        );
+
+        jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,17 +104,21 @@ public class DeliveryRoute extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 214, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(empty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(75, 75, 75))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,10 +128,11 @@ public class DeliveryRoute extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jXDatePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(empty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -118,35 +140,52 @@ public class DeliveryRoute extends javax.swing.JFrame {
 
     private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
         // TODO add your handling code here:
+        dl.setVisible(false);
+
         Calendar cal = Calendar. getInstance();
         Date date1 = cal.getTime();
         Date date2 =jXDatePicker1.getDate();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         String selecteddate = dateFormat.format(date2);
-        String todaydate = dateFormat.format(date1);
-        if(date2 != null && date2.after(date1) ){
-            for(int i =0; i <jTable1.getRowCount();i++){
-//                if(jTable1.getModel().getValueAt(i, 1) == selecteddate){
-//                    jTable1.addRow();
-//                    DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
-//                    model.addRow(new Object[i]);
-//                    
-//                }else{
-                if(!selecteddate.equals(jTable1.getModel().getValueAt(i, 1))){
-//                       ((DefaultTableModel) jTable1.getModel()).removeRow(i);
-                    DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
-                    model.removeRow(i);
-                }
-//                else{
-//                    ((DefaultTableModel) jTable1.getModel()).addRow(Object[i]);
-//                }
-            
+        int j =0;
+        for(int i =0; i <dl.jTable1.getRowCount();i++){
+                if(selecteddate.equals(dl.jTable1.getModel().getValueAt(i, 1))){
+                j++;
             }
+        }
+        if(date2 != null && date2.after(date1) ){
+//            ant.setVisible(true);
+                if(j>=1){
+                    Object newData[] = new Object[j];
+                    for(int i = 0;i<dl.jTable1.getRowCount();i++){
+                    if(selecteddate.equals(dl.jTable1.getModel().getValueAt(i, 1))){
+
+                        DefaultTableModel model =(DefaultTableModel)ant.jTable1.getModel();
+                        newData[0] = dl.jTable1.getModel().getValueAt(i, 0);
+                        newData[1] = dl.jTable1.getModel().getValueAt(i, 1);
+                        newData[2] = dl.jTable1.getModel().getValueAt(i, 2);
+                        model.addRow(newData);
+                    
+                    }
+                   }
+                    ant.setVisible(true);
+                }
         }
         else{
                 JOptionPane.showMessageDialog(new JFrame(), "Invalid date selected!!!","Warning",JOptionPane.ERROR_MESSAGE);    
         }
     }//GEN-LAST:event_jXDatePicker1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ant.setVisible(false);
+        dl.setVisible(true);
+        jXDatePicker1.setDate(null);
+        for(int i =0; i <ant.jTable1.getModel().getRowCount();i++){
+        DefaultTableModel model =(DefaultTableModel)ant.jTable1.getModel();
+        model.removeRow(i);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      *
@@ -185,11 +224,11 @@ public class DeliveryRoute extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel empty;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    public org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }
 
