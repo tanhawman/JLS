@@ -26,7 +26,7 @@ public class InvoicePayment extends javax.swing.JFrame {
     String s_date ="";
     public static String[] inv_month = {"2018:Nov - Dec"};
     JFrame frame = new JFrame("Input Dialog Example 3");
-    
+    String temp ="";
     double change = 0.00;
     
     public InvoicePayment() {
@@ -60,7 +60,8 @@ public class InvoicePayment extends javax.swing.JFrame {
         jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        setTitle("Invoice Payment");
+        
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Monthly Credit Debt Payment ");
 
@@ -300,15 +301,31 @@ public class InvoicePayment extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // PAYMENT confirm button
-        if(Double.parseDouble(Cust_Pay.getText()) < bill){     
-            JOptionPane.showMessageDialog(null, "Please pay the staff with sufficient payment.", "Payment", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            change = Double.parseDouble(Cust_Pay.getText()) - bill;
-            JOptionPane.showMessageDialog(null, "Payment completed.\nChanges:\t RM" + change, "Payment", JOptionPane.INFORMATION_MESSAGE);
+        double haha = Cal_Change(bill, Cust_Pay.getText());
+        if(haha<bill)
+            JOptionPane.showMessageDialog(null, temp, "Payment", JOptionPane.INFORMATION_MESSAGE);
+        else{
+            JOptionPane.showMessageDialog(null, temp, "Payment", JOptionPane.INFORMATION_MESSAGE);
             onSwitch();
         }
+        
     }                                        
 
+    public double Cal_Change(Double bill, String cust){
+        try{
+            if(Double.parseDouble(Cust_Pay.getText()) < bill){     
+                temp = "Please pay the staff with sufficient payment.";
+            }else{
+                change = Double.parseDouble(Cust_Pay.getText()) - bill;
+                temp = "Payment completed.\nChanges:\t RM" + change;
+            }
+            
+        }catch(NumberFormatException ex){
+            temp = "Enter Numbers only !";
+        }
+        return change;
+    }
+    
     public void onSwitch(){
         jTable2.setModel(new DefaultTableModel(empty, columnNames));
         err_msg.setVisible(false);

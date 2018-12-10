@@ -41,7 +41,7 @@ public class checkCreditLimit extends javax.swing.JFrame {
         ModMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        setTitle("Check Credit Limit");
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(rowData, columnNames) {
             Class[] types = new Class [] {

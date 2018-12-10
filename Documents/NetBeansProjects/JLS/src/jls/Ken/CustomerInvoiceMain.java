@@ -20,6 +20,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         backMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Customer Maintain & Invoice Payment");
 
         accState.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         accState.setText("Manage Account Status");

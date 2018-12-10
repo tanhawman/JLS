@@ -33,7 +33,8 @@ public class ManageAccountStatus extends javax.swing.JFrame {
         ModMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        setTitle("Manage Account Status");
+        
         Title.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         Title.setText("Manage Account Status");
 
