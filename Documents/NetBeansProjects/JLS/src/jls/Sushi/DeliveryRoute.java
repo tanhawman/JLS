@@ -27,13 +27,14 @@ import javax.swing.table.TableRowSorter;
  * @author Sushi
  */
 public class DeliveryRoute extends javax.swing.JFrame {
+
     /**
      * Creates new form DeliveryRoute
      */
     GridBagLayout layout = new GridBagLayout();
     DeliveryList dl;
     AddNewTable ant;
-    
+
     public DeliveryRoute() {
         initComponents();
         dl = new DeliveryList();
@@ -142,37 +143,41 @@ public class DeliveryRoute extends javax.swing.JFrame {
         // TODO add your handling code here:
         dl.setVisible(false);
 
-        Calendar cal = Calendar. getInstance();
+        Calendar cal = Calendar.getInstance();
         Date date1 = cal.getTime();
-        Date date2 =jXDatePicker1.getDate();
+        Date date2 = jXDatePicker1.getDate();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         String selecteddate = dateFormat.format(date2);
-        int j =0;
-        for(int i =0; i <dl.jTable1.getRowCount();i++){
-                if(selecteddate.equals(dl.jTable1.getModel().getValueAt(i, 1))){
+        int j = 0;
+        for (int i = 0; i < dl.jTable1.getRowCount(); i++) {
+            if (selecteddate.equals(dl.jTable1.getModel().getValueAt(i, 1))) {
                 j++;
             }
         }
-        if(date2 != null && date2.after(date1) ){
+        if (date2 != null && date2.after(date1)) {
 //            ant.setVisible(true);
-                if(j>=1){
-                    Object newData[] = new Object[j];
-                    for(int i = 0;i<dl.jTable1.getRowCount();i++){
-                    if(selecteddate.equals(dl.jTable1.getModel().getValueAt(i, 1))){
-
-                        DefaultTableModel model =(DefaultTableModel)ant.jTable1.getModel();
-                        newData[0] = dl.jTable1.getModel().getValueAt(i, 0);
-                        newData[1] = dl.jTable1.getModel().getValueAt(i, 1);
-                        newData[2] = dl.jTable1.getModel().getValueAt(i, 2);
-                        model.addRow(newData);
-                    
-                    }
-                   }
-                    ant.setVisible(true);
+            if (j >= 1) {
+                while (ant.jTable1.getModel().getRowCount() != 0) {
+                    DefaultTableModel model = (DefaultTableModel) ant.jTable1.getModel();
+                    model.removeRow(0);
                 }
-        }
-        else{
-                JOptionPane.showMessageDialog(new JFrame(), "Invalid date selected!!!","Warning",JOptionPane.ERROR_MESSAGE);    
+                Object newData[] = new Object[3];
+                for (int i = 0; i < dl.jTable1.getModel().getRowCount(); i++) {
+                    if (selecteddate.equals(dl.jTable1.getModel().getValueAt(i, 1))) {
+                        DefaultTableModel model = (DefaultTableModel) ant.jTable1.getModel();
+                        DefaultTableModel model2 = (DefaultTableModel) dl.jTable1.getModel();
+                        newData[0] = model2.getValueAt(i, 0);
+                        newData[1] = model2.getValueAt(i, 1);
+                        newData[2] = model2.getValueAt(i, 2);
+                        model.addRow(newData);
+
+                    }
+
+                }
+                ant.setVisible(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Invalid date selected!!!", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jXDatePicker1ActionPerformed
 
@@ -181,9 +186,9 @@ public class DeliveryRoute extends javax.swing.JFrame {
         ant.setVisible(false);
         dl.setVisible(true);
         jXDatePicker1.setDate(null);
-        for(int i =0; i <ant.jTable1.getModel().getRowCount();i++){
-        DefaultTableModel model =(DefaultTableModel)ant.jTable1.getModel();
-        model.removeRow(i);
+        for (int i = 0; i < ant.jTable1.getModel().getRowCount(); i++) {
+            DefaultTableModel model = (DefaultTableModel) ant.jTable1.getModel();
+            model.removeRow(i);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -228,8 +233,6 @@ public class DeliveryRoute extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    public org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }
-
-
