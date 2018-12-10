@@ -67,6 +67,7 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sales Order");
         setPreferredSize(new java.awt.Dimension(730, 548));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
