@@ -40,6 +40,7 @@ public class Fresh extends javax.swing.JPanel {
             this.quantity = Quantity;
             this.total = Total;
         }
+        
     }
     
     public ArrayList ListItem(){

@@ -280,7 +280,7 @@ public class SelectItem extends javax.swing.JFrame {
                 break;
             }
             else if(p1chkOrder == true && p1qty > 0){
-                int total = p1price * p1qty;
+                int total = Cal_subtotal(p1price, p1qty);
                 p1.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
@@ -423,4 +423,9 @@ public class SelectItem extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdFresh;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
+    public int Cal_subtotal(int p1price, int p1qty) {
+        int temp = p1price * p1qty;
+        return temp;
+    }
 }

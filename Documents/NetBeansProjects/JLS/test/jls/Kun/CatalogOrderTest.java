@@ -31,7 +31,6 @@ public class CatalogOrderTest {
         System.out.println("ListItem");
         String result = concatenate("S001", "Ken", "11/12/2018", "Pending");
         assertEquals("S001Ken11/12/2018Pending", result);
-        // TODO review the generated test code and remove the default call to fail.
     }
     
     public String concatenate(String one, String two,String three, String four){
