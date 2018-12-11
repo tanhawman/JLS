@@ -114,7 +114,7 @@ public class Price extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("jLabel08");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18Nqwe
         jLabel14.setText("...");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
