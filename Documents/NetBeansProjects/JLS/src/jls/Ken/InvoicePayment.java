@@ -62,10 +62,10 @@ public class InvoicePayment extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Invoice Payment");
         
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18Ni
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Monthly Credit Debt Payment ");
 
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18Ny
 
         jLabel2.setText("Name");
         ModMenu.setText("Back to Menu");
