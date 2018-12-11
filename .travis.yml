@@ -1,3 +1,5 @@
 language : java
 sudo : required
-before_script : cd Documents/NetBeansProjects/JLS
+before_script : 
+  - cd Documents/NetBeansProjects/JLS
+  - rm -rf test
