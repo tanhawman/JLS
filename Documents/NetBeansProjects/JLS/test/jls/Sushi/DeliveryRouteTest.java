@@ -6,7 +6,12 @@
 package jls.Sushi;
 
 import java.awt.Button;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -16,7 +21,14 @@ import static org.junit.Assert.*;
  * @author Sushi
  */
 public class DeliveryRouteTest {
-    
+    DeliveryList dl = new DeliveryList();
+        AddNewTable ant = new AddNewTable();
+        DeliveryRoute dr = new DeliveryRoute();
+   Calendar cal = Calendar.getInstance();
+        Date date1 = cal.getTime();
+         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+        String selecteddate = dateFormat.format(date1);
+        
     public DeliveryRouteTest() {
     }
     
@@ -50,9 +62,27 @@ public class DeliveryRouteTest {
     @Test
     public void testAddRowToJTable() {
         System.out.println("addRowToJTable");
-        DeliveryList dladdrow = new DeliveryList();
-        dladdrow.addRowToJTable();
+        DeliveryList dl = new DeliveryList();
+        AddNewTable ant = new AddNewTable();
+        DeliveryRoute dr = new DeliveryRoute();
+        
+        //dl.addRowToJTable();
+        Object newData[] = new Object[3];
+        for(int i =0; i <dl.jTable1.getModel().getRowCount();i++){
+        if(selecteddate.equals(dl.jTable1.getModel().getValueAt(i, 1))){
+            DefaultTableModel model = (DefaultTableModel) ant.jTable1.getModel();
+            DefaultTableModel model2 = (DefaultTableModel) dl.jTable1.getModel();
+            newData[0] = model2.getValueAt(i, 0);
+            newData[1] = model2.getValueAt(i, 1);
+            newData[2] = model2.getValueAt(i, 2);
+            model.addRow(newData);
+            assertTrue(dl.jTable1.getModel().getValueAt(i, 1).equals(date1));
+        }
+//       dl.addRowToJTable();
         // TODO review the generated test code and remove the default call to fail.
+    }
+        dl.addRowToJTable();
+
     }
     
 
