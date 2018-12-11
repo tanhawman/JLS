@@ -7,6 +7,7 @@ import java.awt.Container;
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import jls.Hawman.Menu;
 import jls.Ken.CustomerInvoiceMain;
 import jls.Kun.CatalogOrder;
 import jls.Sushi.DeliveryRoute;
@@ -62,6 +63,11 @@ PlaceHolder text1;
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Catalog Maintainance");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("<html><p>Customer maintain &<br>Invoice Payment<p></html>");
@@ -252,6 +258,12 @@ PlaceHolder text1;
         this.dispose();
         new DeliveryRoute().setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

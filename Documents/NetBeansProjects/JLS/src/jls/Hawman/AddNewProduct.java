@@ -6,6 +6,7 @@
 package jls.Hawman;
 
 import javax.swing.JOptionPane;
+import jls.HomePage;
 
 /**
  *
@@ -43,6 +44,7 @@ public class AddNewProduct extends javax.swing.JFrame {
         txtQty = new javax.swing.JTextField();
         btnConfirm = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +82,13 @@ public class AddNewProduct extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,13 +102,14 @@ public class AddNewProduct extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(74, 74, 74)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnReset)
-                                .addGap(43, 43, 43)
-                                .addComponent(btnConfirm)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(btnConfirm))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblName)
                                     .addComponent(lblDesc)
@@ -146,7 +156,8 @@ public class AddNewProduct extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirm)
-                    .addComponent(btnReset))
+                    .addComponent(btnReset)
+                    .addComponent(jButton1))
                 .addGap(71, 71, 71))
         );
 
@@ -184,6 +195,12 @@ public class AddNewProduct extends javax.swing.JFrame {
         txtPrice.setText("");
         txtQty.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +243,7 @@ public class AddNewProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnReset;
     private javax.swing.JComboBox<String> comboType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDesc;
     private javax.swing.JLabel lblName;
