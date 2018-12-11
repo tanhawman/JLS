@@ -32,9 +32,10 @@ public class DeliveryRouteTest {
     @Test
     public void testGetTheArrayList() {
         System.out.println("get the array list");
-        String[] array1 = {"one", "two", "three"};
-        String[] array2 = {"one", "two", "three"};
+        String[] array1 = {"O001","21/12/18","100"};
+        String[] array2 = {"O001","21/12/18","100"};
         assertArrayEquals(array1,array2);
+        assertSame(array2, array2);
     }  
     
     @Test
