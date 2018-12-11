@@ -33,7 +33,7 @@ public class Price extends javax.swing.JFrame {
          s3 = Integer.parseInt((String)flower.getValueAt(f_price, 1));
          s4 = Integer.parseInt((String)accessories.getValueAt(ass_price, 1));
          s5 = Integer.parseInt((String)priority.getValueAt(p_price, 1));
-         price =Integer.toString(s1+s2+s3+s4+s5);
+         price = Cal_total(s1,s2,s3,s4,s5);
          jLabel22.setText((String)style.getValueAt(s_price, 0));
          jLabel3.setText((String)style.getValueAt(s_price, 1)+".00");
          jLabel23.setText((String)size.getValueAt(size_price, 0));
@@ -331,6 +331,11 @@ public class Price extends javax.swing.JFrame {
         new Table(Priority).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private String Cal_total(int p1, int p2, int p3, int p4, int p5) {
+       int total = p1 + p2 + p3 + p4 + p5;
+       return price = Integer.toString(total);
+    }
+        
     /**
      * @param args the command line arguments
      */
@@ -397,4 +402,5 @@ public class Price extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 }
