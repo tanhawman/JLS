@@ -41,7 +41,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
             }
         });
 
-        reg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        reg.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18Naaa
         reg.setText("Registeration");
         reg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
