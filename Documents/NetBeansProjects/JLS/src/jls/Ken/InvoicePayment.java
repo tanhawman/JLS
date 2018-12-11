@@ -34,7 +34,7 @@ public class InvoicePayment extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code"> gfd                         
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
