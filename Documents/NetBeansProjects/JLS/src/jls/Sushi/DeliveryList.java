@@ -29,17 +29,6 @@ public class DeliveryList extends javax.swing.JPanel {
         addRowToJTable();
         //jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }
-    public class Delivery{
-        public String orderid;
-        public String date;
-        public int distance;
-        
-        public Delivery(String orderid, String date, int distance){
-            this.orderid=orderid;
-            this.date = date;
-            this.distance = distance;
-        }
-    }
         
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();

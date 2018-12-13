@@ -5,18 +5,20 @@
  */
 package jls.Sushi;
 
+import ADT.LList;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.table.TableModel;
+import jls.Order;
 
 /**
  *
  * @author Sushiiiiiiiiiiiiiiiiiiiiiiiii
  */
 public class EditOrder extends javax.swing.JFrame {
-
+        LList<Order> OrderList;
         private TableModel tablemodel;
         private int rownumber;
     /**
@@ -25,10 +27,11 @@ public class EditOrder extends javax.swing.JFrame {
 
     public EditOrder(TableModel dtm, int rownumber) {
         initComponents();
-        if(dtm.getColumnCount()== 5 ){
+        
+        if(dtm.getColumnCount()== 5){
         jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
         jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
-        jLabel8.setText((String)dtm.getValueAt(rownumber, 2));
+        jLabel8.setText((String)dtm.getValueAt(rownumber, 2).toString());
         jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
         jLabel10.setText((String)dtm.getValueAt(rownumber, 4));
         jLabel11.setVisible(false);
@@ -38,15 +41,28 @@ public class EditOrder extends javax.swing.JFrame {
         }else if (dtm.getColumnCount() == 6){
         jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
         jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
-        jLabel8.setText((String)dtm.getValueAt(rownumber, 2));
+        jLabel8.setText((String) dtm.getValueAt(rownumber, 2).toString());
         jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
         jLabel10.setText((String)dtm.getValueAt(rownumber, 4));
         jLabel12.setText((String)dtm.getValueAt(rownumber, 5));
         this.tablemodel = dtm;
         this.rownumber =rownumber;
         }
-        
+        this.tablemodel = dtm;
+        this.rownumber=rownumber;
     }
+    
+//    public String toString(){
+//        
+//        Object rowData[] = new Object[6];
+//        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
+//            if(!OrderList.getEntry(i).getPickup_date().equals("Delivery")){
+//                String string = OrderList.getEntry(i).getItem_name().toString();
+//                
+//            }
+//        }
+//        return string;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,13 +107,13 @@ public class EditOrder extends javax.swing.JFrame {
 
         jLabel1.setText("Order ID         :");
 
-        jLabel2.setText("Cust ID           :");
+        jLabel2.setText("Cust Name      :");
 
-        jLabel3.setText("Item ID           :");
+        jLabel3.setText("Item Name      :");
 
-        jLabel4.setText("Deliver Status :");
+        jLabel4.setText("Status             :");
 
-        jLabel5.setText("Time                :");
+        jLabel5.setText("Date                :");
 
         jLabel6.setText("jLabel6");
 
@@ -123,7 +139,7 @@ public class EditOrder extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("Priority            :");
+        jLabel11.setText("Time                :");
 
         jLabel12.setText("jLabel12");
 
@@ -139,21 +155,22 @@ public class EditOrder extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel11))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel12))))
+                            .addComponent(jLabel10))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,17 +190,20 @@ public class EditOrder extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -197,15 +217,19 @@ public class EditOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
         Calendar cal = Calendar. getInstance();
         Date date=cal.getTime();
+        Date time = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat timeFormat = new SimpleDateFormat("HH:MM");
+        String updatetime = timeFormat.format(time);
         String updatedate=dateFormat.format(date);
         String status = "Delivered";
         if(tablemodel.getColumnCount() == 5){
             tablemodel.setValueAt(updatedate, rownumber, 3);
             tablemodel.setValueAt(status, rownumber, 4);
         }else if (tablemodel.getColumnCount()==6){
-            tablemodel.setValueAt(updatedate, rownumber, 3);
-            tablemodel.setValueAt(status, rownumber, 4);
+            tablemodel.setValueAt(updatetime, rownumber, 3);
+            tablemodel.setValueAt(updatedate, rownumber, 4);
+            tablemodel.setValueAt(status, rownumber, 5);
         }
         
         dispose();

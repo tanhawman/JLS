@@ -5,19 +5,43 @@
  */
 package jls.Sushi;
 
+import ADT.LList;
+import javax.swing.table.DefaultTableModel;
+import jls.Order;
+
 /**
  *
  * @author Sushi
  */
 public class PickUp extends javax.swing.JPanel {
-
+    LList<Order> OrderList;
     /**
      * Creates new form PickUp
      */
-    public PickUp() {
+    public PickUp(LList<Order> OrderList) {
         initComponents();
+        this.OrderList = OrderList;
+        addRowToJTable();
     }
 
+    public void addRowToJTable(){
+    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+    
+    Object rowData[] = new Object[6];
+        
+        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
+            if(!OrderList.getEntry(i).getPickup_date().equals("Delivery") && !OrderList.getEntry(i).getPickup_time().equals("Delivery")){
+            rowData[0] = OrderList.getEntry(i).getOrder_ID();
+            rowData[1] = OrderList.getEntry(i).getCust_name();
+            rowData[2] = OrderList.getEntry(i).getItem_name();
+            rowData[3] = OrderList.getEntry(i).getPickup_time();
+            rowData[4] = OrderList.getEntry(i).getPickup_date();
+            rowData[5] = OrderList.getEntry(i).getStatus();
+
+            model.addRow(rowData);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,14 +59,27 @@ public class PickUp extends javax.swing.JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"O001","C001", "I001", "01/11/2018", "Delivered"},
-                {"O002","C002", "I001,I002", "", "Pending"},
-                {"O003","C003", "I003", "", "Pending"}
+
             },
             new String [] {
-                "OrderID", "CustID", "ItemID", "Date", "DeliveryStatus"
+                "OrderID", "CustName", "ItemName", "Time", "Date", "Status"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setText("Edit");

@@ -27,7 +27,7 @@ public class ShowOrder extends javax.swing.JFrame {
     GridBagLayout layout = new GridBagLayout();
     PickUp pu ;
     Delivery de;
-    Arrangement ar;
+//    Arrangement ar;
 
     public ShowOrder(LList<Order> OrderList) {
         initComponents();
@@ -36,11 +36,11 @@ public class ShowOrder extends javax.swing.JFrame {
        // jButton3.setVisible(false);
         this.OrderList = OrderList;
         jRadioButton1.setSelected(true);
-        pu = new PickUp();
-        de = new Delivery();
-        ar = new Arrangement();
+        pu = new PickUp(OrderList);
+        de = new Delivery(OrderList);
+//        ar = new Arrangement();
         empty.setLayout(layout);
-        empty2.setLayout(layout);
+//        empty2.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;
         c.gridy = 0;
@@ -50,8 +50,8 @@ public class ShowOrder extends javax.swing.JFrame {
         empty.add(de, c);
         c.gridx = 0;
         c.gridy = 0;
-        empty2.add(ar,c);
-        ar.setVisible(false);
+//        empty2.add(ar,c);
+//        ar.setVisible(false);
         pu.setVisible(true);
         de.setVisible(false);
     }
@@ -75,10 +75,6 @@ public class ShowOrder extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         empty = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        jLabel2 = new javax.swing.JLabel();
-        empty2 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -153,55 +149,6 @@ public class ShowOrder extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Order List", jPanel1);
 
-        jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXDatePicker1ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Choose Date :");
-
-        javax.swing.GroupLayout empty2Layout = new javax.swing.GroupLayout(empty2);
-        empty2.setLayout(empty2Layout);
-        empty2Layout.setHorizontalGroup(
-            empty2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        empty2Layout.setVerticalGroup(
-            empty2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(empty2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(empty2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
-        );
-
-        jTabbedPane1.addTab("Arrangement List", jPanel2);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -242,35 +189,16 @@ public class ShowOrder extends javax.swing.JFrame {
         de.setVisible(true);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
-        // TODO add your handling code here:
-        Calendar cal = Calendar. getInstance();
-        Date date1 = cal.getTime();
-        Date date2 =jXDatePicker1.getDate();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String selecteddate = dateFormat.format(date2);
-        String todaydate = dateFormat.format(date1);
-        if(selecteddate != null){
-            ar.setVisible(true);
-//            jTable3.setVisible(true);
-//            jButton3.setVisible(true);
-        }
-    }//GEN-LAST:event_jXDatePicker1ActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel empty;
-    private javax.swing.JPanel empty2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }
