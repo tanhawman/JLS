@@ -1,20 +1,20 @@
 package jls;
 
-/**
- *
- * @author Sushi
- */
 public class Product {
    private String name;
    private String desc;
+   private String category;
    private int in_stock;
-   private double price;
+   private int price;
+   private int dis_rate;
 
-    public Product(String name, String desc, int in_stock, double price) {
+    public Product(String name, String desc, String category, int in_stock, int price, int dis_rate) {
         this.name = name;
         this.desc = desc;
+        this.category = category;
         this.in_stock = in_stock;
         this.price = price;
+        this.dis_rate = dis_rate;
     }
 
     public Product() {
@@ -24,32 +24,47 @@ public class Product {
         return name;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public int getIn_stock() {
-        return in_stock;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     public void setDesc(String desc) {
         this.desc = desc;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getIn_stock() {
+        return in_stock;
+    }
+
     public void setIn_stock(int in_stock) {
         this.in_stock = in_stock;
     }
 
-    public void setPrice(double price) {
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
         this.price = price;
     }
-   
+
+    public int getDis_rate() {
+        return dis_rate;
+    }
+
+    public void setDis_rate(int dis_rate) {
+        this.dis_rate = dis_rate;
+    }
 }

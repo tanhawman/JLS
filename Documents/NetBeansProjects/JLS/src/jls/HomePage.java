@@ -1,5 +1,6 @@
 package jls;
 
+import ADT.Queue;
 import com.placeholder.PlaceHolder;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -12,21 +13,99 @@ import jls.Ken.CustomerInvoiceMain;
 import jls.Kun.CatalogOrder;
 import jls.Sushi.DeliveryRoute;
 
-public class HomePage extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame {  
+    // 5 dummy
+    Customer c1 = new Customer("Tong Chun Ken","male","corp_cust","910102-24-6533","No.123 Jalan awda","0123456789","Active", 300, 500);
+    Customer c2 = new Customer("Soh Shi Yee","male","consumer","910102-12-1234","No.987 Taman Big","0123452341", "Active", 0, 0);
+    Customer c3 = new Customer("Tan Yee Kun","male","consumer","900706-24-6533","No.123 Jalan awda","0123456789", "Active", 0, 0);
+    Customer c4 = new Customer("Tan Haw Man","male","corp_cust","921102-14-2313","No.10 Kampung Room","0162837465", "Active", 100, 200); 
+    Customer c5 = new Customer("Teo Jun Jie","female","corp_cust","801212-10-2222","No. 2 Monster Hunter World Iceborne","0112312221", "Freeze", 0, 100);
+    Customer c6 = new Customer("Teo Zhuo Yang","male","consumer","890813-16-5412","No.27 Mie Jin Long","0124312889", "Active", 0, 0);
+    
+    String[] item_name_o1 = {"Lily", "Rose"};
+    int[] quantity_o1 ={3,5};
+    
+    String[] item_name_o2 = {"Chrysanthemum", "Rose bouquet"};
+    int[] quantity_o2 ={5,1};
+    
+    String[] item_name_o3 = {"Lily bouquet", "Chrysanthemum bouquet"};
+    int[] quantity_o3 ={1,2};
+    
+    String[] item_name_o4 = {"Rose", "Chrysanthemum"};
+    int[] quantity_o4 ={10,10};
+    
+    String[] item_name_o5 = {"Rose", "Lily", "Chrysanthemum", "Lily bouquet"};
+    int[] quantity_o5 ={5,5,5,2};
+    
+    String[] item_name_o6 = {"Rose bouquet", "Lily bouquet", "Chrysanthemum bouquet"};
+    int[] quantity_o6 ={1,2,3};
+ 
+    // public Order(String order_ID, String[] item_name, int[] quantity, String address, String priority, String del_date, String status, int distance, String pickup_date, String pickup_time, boolean isPaid, int total_bill, String cust_name)
+    Order o1 = new Order("O001", item_name_o1, quantity_o1, "Jalan Tak Ada, 53300 Kuala Lumpur", "Express", " ", "Pending", 250, "Delivery", "Delivery", true, 117, "Tan Yee Kun");
+    Order o2 = new Order("O002", item_name_o2, quantity_o2, "No.123 Jalan awda", "Express", "1/12/18", "Delivered", 300, "Delivery", "Delivery", false, 150,"Tong Chun Ken");
+    Order o3 = new Order("O003", item_name_o3, quantity_o3, "Self Pick-Up", "Normal", " ", "Pending", 0, "20/12/18", "10.00 am", true, 225, "Teo Zhuo Yang");
+    Order o4 = new Order("O004", item_name_o4, quantity_o4, "Self Pick-Up", "Flexi", "3/12/18", "Delivered", 0, "3/12/18", "12:00 pm", false, 290, "Tan Haw Man");
+    Order o5 = new Order("O005", item_name_o5, quantity_o5, "No. 2 Monster Hunter World Iceborne", "Normal", "5/12/18", "Delivered", 320, "Delivery", "Delivery", false, 365, "Teo Jun Jie");
+    Order o6 = new Order("O006", item_name_o6, quantity_o6, "Self Pick-Up", "Flexi", " ", "Pending", 0, "25/12/18", "11.00 am", true, 455, "Soh Shi Yee");
 
-    Customer c1 = new Customer("Tong Chun Ken","male","corp_cust","980102-24-6533","No. 123 Jalan awda","0123456789", "Active", 300.00, 500.00);
-    Customer c2 = new Customer("Soh Shi Yee","male","consumer","980102-24-6533","No. 123 Jalan awda","0123456789", "Active", 300.00, 500.00);
+    // public Product(String name, String desc, String category, int in_stock, int price, int dis_rate)
+    Product p1 = new Product("Rose", "A beautiful rose.", "fresh_flower", 40, 15, 0);
+    Product p2 = new Product("Lily", "A beautiful lily.", "fresh_flower", 35, 14, 0);
+    Product p3 = new Product("Chrysanthemum", "A beautiful chrysanthemum.", "fresh_flower", 45, 14, 0);
+    Product p4 = new Product("Rose bouquet", "A beautiful rose bouquet.", "bouquet", 18, 80, 20);
+    Product p5 = new Product("Lily bouquet", "A beautiful lily bouquet.", "bouquet", 13, 75, 20);
+    Product p6 = new Product("Chrysanthemum bouquet", "A beautiful chrysanthemum bouquet.", "bouquet", 10, 75, 0);
+    Product p7 = new Product("Teddy bear", "A cute teddy bear.", "accessory", 22, 30, 50);
+    Product p8 = new Product("Heart balloon", "A lovely heart balloon.", "accessory", 30, 20, 0);
     
-    Order o1 = new Order("O001", "Tong Chun Ken", "Lily", 3, "Express", "10/12/18", "Pending", 45.00, "10/12/18", "10.00 am", "100", "pending");
-    Order o2 = new Order("O002", "Tong Chun Ken", "Rose", 3, "Express", "11/12/18", "Pending", 25.00, "11/12/18", "10.00 am", "100", "pending");
-    Order o3 = new Order("O003", "Soh Shi Yee", "Lily", 1, "Normal", "13/12/18", "Pending", 15.00, "13/12/18", "10.00 am", "100", "pending");
+    //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice) 
+    Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear","Express",90);
+    Arrangement a2 = new Arrangement("A002","Elliptical flower","Small","Lily","Teddy bear","Normal",50);
+    Arrangement a3 = new Arrangement("A003","Vertical flower","Medium","Chrysanthemum","Heart balloon","Flexi",35);
     
+    public String cust_type = "";
+    
+    Queue<Customer> CustList = new Queue<>();
+    Queue<Order> OrderList = new Queue<>();
+    Queue<Product> ProductList = new Queue<>();
+    Queue<Arrangement> ArrangeList = new Queue<>();
+
     public static void main() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-PlaceHolder text1;
+    
+    PlaceHolder text1;
 
     public HomePage() {
+        
+        // Add Dummy Data
+        CustList.enqueue(c1);
+        CustList.enqueue(c2);
+        CustList.enqueue(c3);
+        CustList.enqueue(c4);
+        CustList.enqueue(c5);
+        CustList.enqueue(c6);
+        
+        OrderList.enqueue(o1);
+        OrderList.enqueue(o2);
+        OrderList.enqueue(o3);
+        OrderList.enqueue(o4);
+        OrderList.enqueue(o5);
+        OrderList.enqueue(o6);
+        
+        ProductList.enqueue(p1);
+        ProductList.enqueue(p2);
+        ProductList.enqueue(p3);
+        ProductList.enqueue(p4);
+        ProductList.enqueue(p5);
+        ProductList.enqueue(p6);
+        ProductList.enqueue(p7);
+        ProductList.enqueue(p8);
+        
+        ArrangeList.enqueue(a1);
+        ArrangeList.enqueue(a2);
+        ArrangeList.enqueue(a3);
+        
         initComponents();
         text1 = new PlaceHolder(jTextField1,"97xxxx-xx-xxxx");
     }

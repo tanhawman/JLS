@@ -1,30 +1,25 @@
 package jls;
 
-
-/**
- *
- * @author Sushi
- */
 public class Customer {
     private String name;
     private String gender;
     private String type;
     private String ic;
     private String address;
-    private String contract;
+    private String contact;
     private String status;
-    private double remaincredit;
-    private double credit_limit;
+    private int remaincredit;
+    private int credit_limit;
 
     public Customer() {
     }
-    public Customer(String name, String gender, String type, String ic, String address, String contract, String status, double remaincredit, double credit_limit) {
+    public Customer(String name, String gender, String type, String ic, String address, String contact, String status, int remaincredit, int credit_limit) {
         this.name = name;
         this.gender = gender;
         this.type = type;
         this.ic = ic;
         this.address = address;
-        this.contract = contract;
+        this.contact = contact;
         this.status = status;
         this.remaincredit = remaincredit;
         this.credit_limit = credit_limit;
@@ -51,18 +46,18 @@ public class Customer {
     }
 
     public void setContract(String contract) {
-        this.contract = contract;
+        this.contact = contract;
     }
 
     public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setRemaincredit(double remaincredit) {
+    public void setRemaincredit(int remaincredit) {
         this.remaincredit = remaincredit;
     }
 
-    public void setCredit_limit(double credit_limit) {
+    public void setCredit_limit(int credit_limit) {
         this.credit_limit = credit_limit;
     }
     
@@ -87,7 +82,7 @@ public class Customer {
     }
 
     public String getContract() {
-        return contract;
+        return contact;
     }
 
     public String getStatus() {
