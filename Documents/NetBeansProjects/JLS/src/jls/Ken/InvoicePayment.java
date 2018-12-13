@@ -1,16 +1,21 @@
 package jls.Ken;
 
+import ADT.LList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jls.Arrangement;
 import jls.Customer;
 import jls.Order;
+import jls.Product;
 
 public class InvoicePayment extends javax.swing.JFrame {
 
-    Order o1;
-    Order o2;
-    Order o3;
+    LList<Customer> CustList = new LList<>();
+    LList<Order> OrderList = new LList<>();
+    LList<Product> ProductList = new LList<>();
+    LList<Arrangement> ArrangeList = new LList<>();
+    
     Object[][] empty = {{"","",null}};
     Object[][] rowData_1;
     Object[] names = {"tong chun ken", "soh shi yee"};
@@ -22,7 +27,7 @@ public class InvoicePayment extends javax.swing.JFrame {
     JFrame frame = new JFrame("Input Dialog Example 3");
     String temp = "";
     double change = 0.00;
-
+    
     public InvoicePayment(Order o1, Order o2, Order o3) {
         this.o1 = o1;
         this.o2 = o2;
@@ -40,7 +45,26 @@ public class InvoicePayment extends javax.swing.JFrame {
         this.rowData_2 = rowData_2;
                     
         initComponents();
+    }
+
+    InvoicePayment(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
         
+        Object[][] empty = {{"","",null}};
+        
+        Object[][] rowData_1 = {{OrderList, o1.getPickupdate(), o1.getTotal_bill()},
+                    {o2.getOrderid(), o2.getPickupdate(), o2.getTotal_bill()}};
+        
+        this.rowData_1 = rowData_1;
+
+        Object[][] rowData_2 = {{o3.getOrderid(), o3.getPickupdate(), o3.getTotal_bill()}};
+        
+        this.rowData_2 = rowData_2;
+        
+         initComponents();
     }
 
     @SuppressWarnings("unchecked")

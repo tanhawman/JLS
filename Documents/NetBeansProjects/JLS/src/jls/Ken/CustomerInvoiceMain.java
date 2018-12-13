@@ -1,24 +1,28 @@
 package jls.Ken;
 
+import ADT.LList;
+import jls.Arrangement;
 import jls.Customer;
 import jls.HomePage;
 import jls.Order;
+import jls.Product;
 
 public class CustomerInvoiceMain extends javax.swing.JFrame {
-
-    Order o1;
-    Order o2;
-    Order o3;
-    Customer c1;
+    
+    LList<Customer> CustList = new LList<>();
+    LList<Order> OrderList = new LList<>();
+    LList<Product> ProductList = new LList<>();
+    LList<Arrangement> ArrangeList = new LList<>();
     
     public CustomerInvoiceMain() {
         
     }
 
-    public CustomerInvoiceMain(Order o1, Order o2, Order o3, HomePage aThis) {
-        this.o1 = o1;
-        this.o2 = o2;
-        this.o3 = o3;
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, HomePage aThis) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
         initComponents();
     }
 
@@ -142,7 +146,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
     private void InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoiceActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new InvoicePayment(o1,o2,o3).setVisible(true);
+        new InvoicePayment(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_InvoiceActionPerformed
 
     private void backMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuActionPerformed

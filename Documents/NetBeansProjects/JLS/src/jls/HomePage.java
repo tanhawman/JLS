@@ -1,6 +1,6 @@
 package jls;
 
-import ADT.Queue;
+import ADT.LList;
 import com.placeholder.PlaceHolder;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -65,10 +65,10 @@ public class HomePage extends javax.swing.JFrame {
     
     public String cust_type = "";
     
-    Queue<Customer> CustList = new Queue<>();
-    Queue<Order> OrderList = new Queue<>();
-    Queue<Product> ProductList = new Queue<>();
-    Queue<Arrangement> ArrangeList = new Queue<>();
+    LList<Customer> CustList = new LList<>();
+    LList<Order> OrderList = new LList<>();
+    LList<Product> ProductList = new LList<>();
+    LList<Arrangement> ArrangeList = new LList<>();
 
     public static void main() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -77,34 +77,33 @@ public class HomePage extends javax.swing.JFrame {
     PlaceHolder text1;
 
     public HomePage() {
-        
         // Add Dummy Data
-        CustList.enqueue(c1);
-        CustList.enqueue(c2);
-        CustList.enqueue(c3);
-        CustList.enqueue(c4);
-        CustList.enqueue(c5);
-        CustList.enqueue(c6);
+        CustList.add(c1);
+        CustList.add(c2);
+        CustList.add(c3);
+        CustList.add(c4);
+        CustList.add(c5);
+        CustList.add(c6);
         
-        OrderList.enqueue(o1);
-        OrderList.enqueue(o2);
-        OrderList.enqueue(o3);
-        OrderList.enqueue(o4);
-        OrderList.enqueue(o5);
-        OrderList.enqueue(o6);
+        OrderList.add(o1);
+        OrderList.add(o2);
+        OrderList.add(o3);
+        OrderList.add(o4);
+        OrderList.add(o5);
+        OrderList.add(o6);
         
-        ProductList.enqueue(p1);
-        ProductList.enqueue(p2);
-        ProductList.enqueue(p3);
-        ProductList.enqueue(p4);
-        ProductList.enqueue(p5);
-        ProductList.enqueue(p6);
-        ProductList.enqueue(p7);
-        ProductList.enqueue(p8);
+        ProductList.add(p1);
+        ProductList.add(p2);
+        ProductList.add(p3);
+        ProductList.add(p4);
+        ProductList.add(p5);
+        ProductList.add(p6);
+        ProductList.add(p7);
+        ProductList.add(p8);
         
-        ArrangeList.enqueue(a1);
-        ArrangeList.enqueue(a2);
-        ArrangeList.enqueue(a3);
+        ArrangeList.add(a1);
+        ArrangeList.add(a2);
+        ArrangeList.add(a3);
         
         initComponents();
         text1 = new PlaceHolder(jTextField1,"97xxxx-xx-xxxx");
@@ -315,7 +314,6 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
         jLayeredPane1.removeAll();
         jLayeredPane1.add(jPanel5);
         jLayeredPane1.repaint();
@@ -332,7 +330,7 @@ public class HomePage extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // KEN
         this.dispose();
-        new CustomerInvoiceMain(o1,o2,o3,this).setVisible(true);
+        new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
