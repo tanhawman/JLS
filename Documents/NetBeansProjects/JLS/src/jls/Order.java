@@ -1,3 +1,5 @@
+package jls;
+
 import java.util.Date;
 
 /**
@@ -7,19 +9,23 @@ import java.util.Date;
 public class Order {
     private String orderid;
     private String cust_name;
-    private String[] item_name;
-    private String[] quantity;
+    private String item_name;
+    private int quantity;
     private String priority;
-    private Date deliverydate;
+    private String deliverydate;
     private String deliverystatus;
     private Double total_bill;
-    private Date pickupdate;
+    private String pickupdate;
     private String time;
+    private String distance;
+    private String isPaid; 
+
+
     
     public Order() {
     }
 
-    public Order(String orderid, String cust_name, String[] item_name, String[] quantity, String priority, Date deliverydate, String deliverystatus, Double total_bill, Date pickupdate, String time) {
+    public Order(String orderid, String cust_name, String item_name, int quantity, String priority, String deliverydate, String deliverystatus, Double total_bill, String pickupdate, String time, String distance, String isPaid) {
         this.orderid = orderid;
         this.cust_name = cust_name;
         this.item_name = item_name;
@@ -30,6 +36,8 @@ public class Order {
         this.total_bill = total_bill;
         this.pickupdate = pickupdate;
         this.time = time;
+        this.distance = distance;
+        this.isPaid = isPaid;
     }
 
     public String getOrderid() {
@@ -40,11 +48,11 @@ public class Order {
         return cust_name;
     }
 
-    public String[] getItem_name() {
+    public String getItem_name() {
         return item_name;
     }
 
-    public String[] getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -52,7 +60,7 @@ public class Order {
         return priority;
     }
 
-    public Date getDeliverydate() {
+    public String getDeliverydate() {
         return deliverydate;
     }
 
@@ -64,14 +72,22 @@ public class Order {
         return total_bill;
     }
 
-    public Date getPickupdate() {
+    public String getPickupdate() {
         return pickupdate;
     }
 
     public String getTime() {
         return time;
     }
-
+    
+    public String getDistance() {
+        return distance;
+    }
+    
+    public String getIsPaid() {
+        return isPaid;
+    }
+        
     public void setOrderid(String orderid) {
         this.orderid = orderid;
     }
@@ -80,11 +96,11 @@ public class Order {
         this.cust_name = cust_name;
     }
 
-    public void setItem_name(String[] item_name) {
+    public void setItem_name(String item_name) {
         this.item_name = item_name;
     }
 
-    public void setQuantity(String[] quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -92,7 +108,7 @@ public class Order {
         this.priority = priority;
     }
 
-    public void setDeliverydate(Date deliverydate) {
+    public void setDeliverydate(String deliverydate) {
         this.deliverydate = deliverydate;
     }
 
@@ -104,7 +120,7 @@ public class Order {
         this.total_bill = total_bill;
     }
 
-    public void setPickupdate(Date pickupdate) {
+    public void setPickupdate(String pickupdate) {
         this.pickupdate = pickupdate;
     }
 
@@ -112,5 +128,11 @@ public class Order {
         this.time = time;
     }
     
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
     
+    public void setIsPaid(String isPaid) {
+        this.isPaid = isPaid;
+    }
 }

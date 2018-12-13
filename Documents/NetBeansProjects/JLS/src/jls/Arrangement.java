@@ -1,8 +1,5 @@
+package jls;
 
-/**
- *
- * @author Sushi
- */
 public class Arrangement {
     private String a_style;
     private String a_size;

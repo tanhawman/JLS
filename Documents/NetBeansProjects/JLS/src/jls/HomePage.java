@@ -14,6 +14,13 @@ import jls.Sushi.DeliveryRoute;
 
 public class HomePage extends javax.swing.JFrame {
 
+    Customer c1 = new Customer("Tong Chun Ken","male","corp_cust","980102-24-6533","No. 123 Jalan awda","0123456789", "Active", 300.00, 500.00);
+    Customer c2 = new Customer("Soh Shi Yee","male","consumer","980102-24-6533","No. 123 Jalan awda","0123456789", "Active", 300.00, 500.00);
+    
+    Order o1 = new Order("O001", "Tong Chun Ken", "Lily", 3, "Express", "10/12/18", "Pending", 45.00, "10/12/18", "10.00 am", "100", "pending");
+    Order o2 = new Order("O002", "Tong Chun Ken", "Rose", 3, "Express", "11/12/18", "Pending", 25.00, "11/12/18", "10.00 am", "100", "pending");
+    Order o3 = new Order("O003", "Soh Shi Yee", "Lily", 1, "Normal", "13/12/18", "Pending", 15.00, "13/12/18", "10.00 am", "100", "pending");
+    
     public static void main() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -244,8 +251,9 @@ PlaceHolder text1;
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // KEN
         this.dispose();
-        new CustomerInvoiceMain().setVisible(true);
+        new CustomerInvoiceMain(o1,o2,o3,this).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

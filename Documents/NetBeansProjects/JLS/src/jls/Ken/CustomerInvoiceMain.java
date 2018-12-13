@@ -1,10 +1,24 @@
 package jls.Ken;
 
+import jls.Customer;
 import jls.HomePage;
+import jls.Order;
 
 public class CustomerInvoiceMain extends javax.swing.JFrame {
 
+    Order o1;
+    Order o2;
+    Order o3;
+    Customer c1;
+    
     public CustomerInvoiceMain() {
+        
+    }
+
+    public CustomerInvoiceMain(Order o1, Order o2, Order o3, HomePage aThis) {
+        this.o1 = o1;
+        this.o2 = o2;
+        this.o3 = o3;
         initComponents();
     }
 
@@ -128,7 +142,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
     private void InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoiceActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new InvoicePayment().setVisible(true);
+        new InvoicePayment(o1,o2,o3).setVisible(true);
     }//GEN-LAST:event_InvoiceActionPerformed
 
     private void backMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuActionPerformed
