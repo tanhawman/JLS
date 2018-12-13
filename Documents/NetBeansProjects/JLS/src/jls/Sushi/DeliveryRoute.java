@@ -5,6 +5,7 @@
  */
 package jls.Sushi;
 
+import ADT.LList;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.DateFormat;
@@ -21,13 +22,14 @@ import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import jls.Order;
 
 /**
  *
  * @author Sushi
  */
 public class DeliveryRoute extends javax.swing.JFrame {
-
+    LList<Order> OrderList;
     /**
      * Creates new form DeliveryRoute
      */
@@ -35,9 +37,10 @@ public class DeliveryRoute extends javax.swing.JFrame {
     DeliveryList dl;
     AddNewTable ant;
 
-    public DeliveryRoute() {
+    public DeliveryRoute(LList<Order> OrderList) {
         initComponents();
-        dl = new DeliveryList();
+        this.OrderList = OrderList;
+        dl = new DeliveryList(OrderList);
         ant = new AddNewTable();
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
@@ -192,41 +195,7 @@ public class DeliveryRoute extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     *
-     * @param args
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryRoute.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryRoute.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryRoute.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryRoute.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DeliveryRoute().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel empty;

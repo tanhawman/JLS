@@ -12,16 +12,19 @@ import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import jls.Order;
+import ADT.LList;
 /**
  *
  * @author Sushi
  */
 public class DeliveryList extends javax.swing.JPanel {
-
+    LList<Order> OrderList;
     /**
      * Creates new form DeliveryList
      */
-    public DeliveryList() {
+    public DeliveryList(LList<Order> OrderList) {
+        this.OrderList = OrderList;
         initComponents();
         addRowToJTable();
         //jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -29,38 +32,28 @@ public class DeliveryList extends javax.swing.JPanel {
     public class Delivery{
         public String orderid;
         public String date;
-        public String distance;
+        public int distance;
         
-        public Delivery(String orderid, String date, String distance){
+        public Delivery(String orderid, String date, int distance){
             this.orderid=orderid;
             this.date = date;
             this.distance = distance;
         }
     }
-        public ArrayList ListOrder(){
-        ArrayList<Delivery> list = new ArrayList<Delivery>();
-        Delivery order1 = new Delivery("O001","21/12/18","100");
-        Delivery order2 = new Delivery("O002","18/12/18","200");
-        Delivery order3 = new Delivery("O003","18/12/18","300");
-        Delivery order4 = new Delivery("O004","18/12/18","400");
-        list.add(order1);
-        list.add(order2);
-        list.add(order3);
-        list.add(order4);
-        return list;
-    }
         
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    ArrayList<Delivery> item = ListOrder();
+    
     Object rowData[] = new Object[3];
         
-        for(int i=0; i<item.size(); i++){
-            rowData[0] = item.get(i).orderid;
-            rowData[1] = item.get(i).date;
-            rowData[2] = item.get(i).distance;
+        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
+            if(!OrderList.getEntry(i).getPickup_date().equals("Delivery")){
+            rowData[0] = OrderList.getEntry(i).getOrder_ID();
+            rowData[1] = OrderList.getEntry(i).getPickup_date();
+            rowData[2] = OrderList.getEntry(i).getDistance();
 
             model.addRow(rowData);
+            }
         }
     }
     
@@ -86,7 +79,7 @@ public class DeliveryList extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
