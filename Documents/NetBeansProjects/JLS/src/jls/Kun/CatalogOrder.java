@@ -5,10 +5,14 @@
  */
 package jls.Kun;
 
+import ADT.LList;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import jls.Customer;
 import jls.HomePage;
+import jls.Order;
+import jls.Product;
 
 /**
  *
@@ -16,53 +20,48 @@ import jls.HomePage;
  */
 public class CatalogOrder extends javax.swing.JFrame {
 
-
+    LList<Order> OrderList = new LList<>();
+    LList<Customer> CustList = new LList<>();
     /**
      * Creates new form CatalogOrder
      */
-    public CatalogOrder() {
+    
+    public CatalogOrder(LList<Order> OrderList) {
+
+        this.OrderList = OrderList;
+
         initComponents();
         addRowToJTable();
     }
+
+    
     
     public class Item{
         public int no;
         public String orderId;
         public String custName;
-        public String orderDate;
         public String orderStatus;
         
-        public Item(int no, String orderId, String custName, String orderDate, String orderStatus){
+        public Item(int no, String orderId, String custName, String orderStatus){
             this.no = no;
             this.orderId = orderId;
             this.custName = custName;
-            this.orderDate = orderDate;
             this.orderStatus = orderStatus;
         }
     }
     
-    public ArrayList ListItem(){
-        ArrayList<Item> list = new ArrayList<Item>();
-        
-        Item flower = new Item(1, "S001", "Ken", "11/12/2018", "Pending");
-        Item flower1 = new Item(2, "S002", "Jon", "15/12/2018", "Confirmed");
-        list.add(flower);
-        list.add(flower1);
-        return list;
-    }
-    
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    ArrayList<Item> item = ListItem();
-    Object rowData[] = new Object[5];
+    Object rowData[] = new Object[4];
+    int num = 1;
         
-        for(int i=0; i<item.size(); i++){
-            rowData[0] = item.get(i).no;
-            rowData[1] = item.get(i).orderId;
-            rowData[2] = item.get(i).custName;
-            rowData[3] = item.get(i).orderDate;
-            rowData[4] = item.get(i).orderStatus;
+        for(int i=1; i<OrderList.getNumberOfEntries(); i++){
+            rowData[0] = num;
+            rowData[1] = OrderList.getEntry(i).getOrder_ID();
+            rowData[2] = OrderList.getEntry(i).getCust_name();
+            rowData[3] = OrderList.getEntry(i).getStatus();
             model.addRow(rowData);
+            num++;
         }
     }
 
@@ -92,9 +91,17 @@ public class CatalogOrder extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No", "Order ID", "Customer Name", "Order Date", "Order Status"
+                "No", "Order ID", "Customer Name", "Order Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Generate Sales Order");
@@ -150,7 +157,7 @@ public class CatalogOrder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
         this.dispose();
-        new CatalogSalesOrder(this).setVisible(true);
+        new CatalogSalesOrder(OrderList, CustList,this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -158,40 +165,6 @@ public class CatalogOrder extends javax.swing.JFrame {
         new HomePage().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CatalogOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CatalogOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CatalogOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CatalogOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CatalogOrder().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

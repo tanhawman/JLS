@@ -5,8 +5,10 @@
  */
 package jls.Kun;
 
+import ADT.LList;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import jls.Product;
 
 /**
  *
@@ -14,10 +16,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Bouquet extends javax.swing.JPanel {
 
+    LList<Product> ProductList = new LList<>();
     /**
      * Creates new form Bouquet
      */
-    public Bouquet() {
+    public Bouquet(LList<Product> ProductList) {
+        this.ProductList = ProductList;
         initComponents();
         addRowToJTable();
         jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
@@ -39,27 +43,22 @@ public class Bouquet extends javax.swing.JPanel {
         }
     }
     
-    public ArrayList ListItem(){
-        ArrayList<Item> list = new ArrayList<Item>();
-        Item flower = new Item("Rose-B", false, 120, 0, 0);
-        Item flower1 = new Item("Lily-B", false, 130, 0, 0);
-        list.add(flower);
-        list.add(flower1);
-        return list;
-    }
-    
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    ArrayList<Item> item = ListItem();
     Object rowData[] = new Object[5];
+    boolean order = false;
+    int qty = 0;
+    int total = 0;
         
-        for(int i=0; i<item.size(); i++){
-            rowData[0] = item.get(i).item;
-            rowData[1] = item.get(i).order;
-            rowData[2] = item.get(i).price;
-            rowData[3] = item.get(i).quantity;
-            rowData[4] = item.get(i).total;
-            model.addRow(rowData);
+        for(int i=1; i<ProductList.getNumberOfEntries(); i++){
+            if(ProductList.getEntry(i).getCategory().equals("bouquet")){
+                rowData[0] = ProductList.getEntry(i).getName();
+                rowData[1] = order;
+                rowData[2] = ProductList.getEntry(i).getPrice();
+                rowData[3] = qty;
+                rowData[4] = total;
+                model.addRow(rowData);
+            }          
         }
     }
 

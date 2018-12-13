@@ -5,7 +5,10 @@
  */
 package jls.Kun;
 
+import ADT.LList;
 import javax.swing.table.DefaultTableModel;
+import jls.Customer;
+import jls.Order;
 
 /**
  *
@@ -14,27 +17,43 @@ import javax.swing.table.DefaultTableModel;
 public class CatalogSalesOrder extends javax.swing.JFrame {
 
     CatalogOrder p1;
+    LList<Customer> CustList = new LList<>();
+    LList<Order> OrderList = new LList<>();
 
     /**
      * Creates new form CatalogSalesOeder
      */
-    public CatalogSalesOrder(CatalogOrder order) {
+    public CatalogSalesOrder(LList<Order> OrderList, LList<Customer> CustList, CatalogOrder order) {
+        this.OrderList = OrderList;
+        this.CustList = CustList;
         initComponents();
-        p1 =  order;
-        updateDetails();
+        p1 =  order; 
+        showDetails();
        
     }
-    public void updateDetails(){
+    public void showDetails(){
         DefaultTableModel model  = (DefaultTableModel)p1.jTable1.getModel();
         int selectedRowIndex = p1.jTable1.getSelectedRow();
         
         jLabel10.setText(model.getValueAt(selectedRowIndex, 1).toString());
         jLabel11.setText(model.getValueAt(selectedRowIndex, 2).toString());
-        jLabel14.setText(model.getValueAt(selectedRowIndex, 4).toString());
-        
-        jLabel12.setText("0129856325");
-        jLabel13.setText("Self Pick-Up");
+        jLabel14.setText(model.getValueAt(selectedRowIndex, 3).toString());
+                        
+        for(int i=1; i<OrderList.getNumberOfEntries(); i++){
+            if(model.getValueAt(selectedRowIndex, 2).toString().equals(OrderList.getEntry(i).getCust_name())){
+                jLabel13.setText(OrderList.getEntry(i).getAddress());
+
+            }
             
+        }  
+                        
+        for(int i=1; i<CustList.getNumberOfEntries(); i++){
+            if(model.getValueAt(selectedRowIndex, 2).toString().equals(CustList.getEntry(i).getName())){
+                jLabel12.setText(CustList.getEntry(i).getContact());
+
+            }
+            
+        }  
     }
     
 
@@ -208,7 +227,7 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new CatalogOrder().setVisible(true);
+        new CatalogOrder(OrderList).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 //    /**

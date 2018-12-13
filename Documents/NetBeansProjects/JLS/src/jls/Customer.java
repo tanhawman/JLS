@@ -45,8 +45,8 @@ public class Customer {
         this.address = address;
     }
 
-    public void setContract(String contract) {
-        this.contact = contract;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void setStatus(String status) {
@@ -81,7 +81,7 @@ public class Customer {
         return address;
     }
 
-    public String getContract() {
+    public String getContact() {
         return contact;
     }
 

@@ -5,14 +5,16 @@
  */
 package jls.Kun;
 
+import ADT.LList;
 import javax.swing.table.DefaultTableModel;
+import jls.Product;
 
 /**
  *
  * @author Yee Kun
  */
 public class SalesOrder extends javax.swing.JFrame {
-
+    LList<Product> ProductList = new LList<>();
     ConfirmOrder p1;
     SelectItem SI;
 
@@ -22,7 +24,7 @@ public class SalesOrder extends javax.swing.JFrame {
     public SalesOrder(Fresh fresh, Bouquet bouquet, ConfirmOrder confirmorder) {
         initComponents();
         p1 = confirmorder;
-        SI = new SelectItem();
+        SI = new SelectItem(ProductList);
         updateDetails();
         addRowToJTable();
         

@@ -43,9 +43,9 @@ public class CatalogOrderTest {
      */
     @Test
     public void testAddRowToJTable() {
-        System.out.println("addRowToJTable");
-        CatalogOrder instance = new CatalogOrder();
-        instance.addRowToJTable();
+//        System.out.println("addRowToJTable");
+//        CatalogOrder instance = new CatalogOrder();
+//        instance.addRowToJTable();
         // TODO review the generated test code and remove the default call to fail.
     }
 
