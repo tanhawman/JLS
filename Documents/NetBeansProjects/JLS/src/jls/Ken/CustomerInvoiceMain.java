@@ -146,7 +146,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
     private void InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoiceActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new InvoicePayment(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
+        new GenInvoicePayment(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_InvoiceActionPerformed
 
     private void backMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuActionPerformed

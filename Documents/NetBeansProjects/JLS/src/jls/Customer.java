@@ -89,11 +89,11 @@ public class Customer {
         return status;
     }
 
-    public double getRemaincredit() {
+    public int getRemaincredit() {
         return remaincredit;
     }
 
-    public double getCredit_limit() {
+    public int getCredit_limit() {
         return credit_limit;
     }
     
