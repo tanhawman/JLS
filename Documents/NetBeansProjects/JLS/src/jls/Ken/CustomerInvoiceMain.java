@@ -9,16 +9,32 @@ import jls.Product;
 
 public class CustomerInvoiceMain extends javax.swing.JFrame {
     
-    LList<Customer> CustList = new LList<>();
-    LList<Order> OrderList = new LList<>();
-    LList<Product> ProductList = new LList<>();
-    LList<Arrangement> ArrangeList = new LList<>();
+    LList<Customer> CustList;
+    LList<Order> OrderList;
+    LList<Product> ProductList;
+    LList<Arrangement> ArrangeList;
     
     public CustomerInvoiceMain() {
         
     }
 
     public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, HomePage aThis) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
+        initComponents();
+    }
+    
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, GenInvoicePayment aThis) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
+        initComponents();
+    }
+    
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, RegisterForm aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
@@ -129,7 +145,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
     private void regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new RegisterForm().setVisible(true);
+        new RegisterForm(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_regActionPerformed
 
     private void chkLimitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLimitActionPerformed

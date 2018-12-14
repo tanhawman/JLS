@@ -12,9 +12,11 @@ import jls.Order;
 import jls.Product;
 
 public class GenInvoicePayment extends javax.swing.JFrame {
-
-    LList<Order> OrderList;
+    
     LList<Customer> CustList;
+    LList<Order> OrderList;
+    LList<Product> ProductList;
+    LList<Arrangement> ArrangeList;
     GridBagLayout layout = new GridBagLayout();
     InvPay ip ;
     String temp;
@@ -240,6 +242,8 @@ public class GenInvoicePayment extends javax.swing.JFrame {
     
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
