@@ -14,6 +14,7 @@ import jls.CusOrder.price1;
 import jls.Hawman.Menu;
 import jls.Ken.CustomerInvoiceMain;
 import jls.Kun.CatalogOrder;
+import jls.Kun.SalesOrder;
 import jls.Kun.SelectItem;
 import jls.Kun.SelectItem_CorCust;
 import jls.Sushi.DeliveryRoute;
@@ -126,6 +127,12 @@ public class HomePage extends javax.swing.JFrame {
     }
         public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, CustomerOrder aThis) {  
         this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
+        initComponents();
+    }
+        
+        public HomePage(LList<Order> OrderList,LList<Product> ProductList, SalesOrder aThis) {  
+        this.OrderList = OrderList;
         this.ProductList = ProductList;
         initComponents();
     }

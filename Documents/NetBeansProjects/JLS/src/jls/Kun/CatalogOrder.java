@@ -58,13 +58,16 @@ public class CatalogOrder extends javax.swing.JFrame {
     Object rowData[] = new Object[4];
     int num = 1;
         
-        for(int i=1; i<OrderList.getNumberOfEntries(); i++){
+        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
+            if(OrderList.getEntry(i).getStatus().equals("Pending") || OrderList.getEntry(i).getStatus().equals("Delivered")){
             rowData[0] = num;
             rowData[1] = OrderList.getEntry(i).getOrder_ID();
             rowData[2] = OrderList.getEntry(i).getCust_name();
             rowData[3] = OrderList.getEntry(i).getStatus();
             model.addRow(rowData);
             num++;
+            }
+            
         }
     }
 

@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import jls.Customer;
 import jls.HomePage;
 import jls.Order;
+import jls.Product;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
     HomePage homepage;
     LList<Customer> CustList;
     LList<Order> OrderList;
+    LList<Product> ProductList;
     SelectItem selectitem;
     SelectItem_CorCust selectItem_CorCust;
     SelfPickup p1;
@@ -185,7 +187,8 @@ public class ConfirmOrder extends javax.swing.JFrame {
             }
             else{
                 int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-                if (select == 0){
+                if (select == 0){                  
+                    this.dispose();
                     new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, homepage, selectItem_CorCust).setVisible(true);                             
                 }
             }
@@ -193,8 +196,8 @@ public class ConfirmOrder extends javax.swing.JFrame {
         else{
             int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
-                
-                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, homepage, selectItem_CorCust).setVisible(true);
+                this.dispose();
+                new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, homepage, selectItem_CorCust).setVisible(true);
             }
         }
         

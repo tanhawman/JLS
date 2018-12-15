@@ -357,6 +357,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
                 model.fireTableDataChanged();
+                this.dispose();
                 new ConfirmOrder(p1,p2, selectitem, CustList, OrderList, this, homepage).setVisible(true);                                   
             }
         }
