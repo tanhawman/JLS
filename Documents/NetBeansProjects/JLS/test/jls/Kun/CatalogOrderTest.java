@@ -56,7 +56,7 @@ public class CatalogOrderTest {
     public void testMain() {
         System.out.println("main");
         String[] args = null;
-        CatalogOrder.main(args);
+
         // TODO review the generated test code and remove the default call to fail.
 
     }

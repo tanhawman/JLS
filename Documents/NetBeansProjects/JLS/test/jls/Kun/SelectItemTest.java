@@ -40,7 +40,6 @@ public class SelectItemTest {
     public void testMain() {
         System.out.println("main");
         String[] args = null;
-        SelectItem.main(args);
     }
 
     private int Cal_subtotal(int price, int qty) {

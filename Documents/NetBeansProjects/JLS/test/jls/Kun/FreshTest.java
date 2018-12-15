@@ -5,7 +5,9 @@
  */
 package jls.Kun;
 
+import ADT.LList;
 import java.util.ArrayList;
+import jls.Product;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,9 +20,10 @@ import static org.junit.Assert.*;
  */
 
 public class FreshTest {
-    Fresh f = new Fresh();
+    LList<Product> ProductList = new LList<>();
+    Fresh f = new Fresh(ProductList);
     
-   ArrayList<Fresh.Item> itemList = new ArrayList<Fresh.Item>();
+    String item;
    
     public FreshTest() {
     }
@@ -36,7 +39,7 @@ public class FreshTest {
     @Before
     public void setUp() {
         
-       itemList= f.ListItem();
+       
     }
 
     /**
@@ -46,9 +49,12 @@ public class FreshTest {
     public void testListItem() {
         
         System.out.println("ListItem");
-        Fresh instance = new Fresh();
+        Fresh instance = new Fresh(ProductList);
+        for(int i=1; i<ProductList.getNumberOfEntries(); i++){
+            String item = ProductList.getEntry(i).getName();
+            assertEquals("Rose", item);
+        }
         
-        assertEquals("Rose", itemList.get(0).item);
         // TODO review the generated test code and remove the default call to fail.
       //  fail("The test case is a prototype.");
     }
@@ -59,7 +65,7 @@ public class FreshTest {
     @Test
     public void testAddRowToJTable() {
         System.out.println("addRowToJTable");
-        Fresh instance = new Fresh();
+        Fresh instance = new Fresh(ProductList);
         instance.addRowToJTable();
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
