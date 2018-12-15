@@ -334,12 +334,7 @@ public class RegisterForm extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, con_msg, "Confirmation", JOptionPane.INFORMATION_MESSAGE);
             
-            for(int i = 1;i<CustList.getNumberOfEntries(); i++){
-                System.out.println(CustList.getEntry(i).getName());
-            }
-            
-            this.dispose();
-            new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
+            System.out.print(CustList.getEntry(CustList.getNumberOfEntries()).getName());
         }else{
             JOptionPane.showMessageDialog(null, "Looks like you mis-entered some information.\nPlease revise your input." + val_msg, "Opss..", JOptionPane.INFORMATION_MESSAGE);
             val_msg = "";
@@ -355,7 +350,6 @@ public class RegisterForm extends javax.swing.JFrame {
     private String validation(LList<Customer> CustList){
         String error = "";
         int email_val = 0;
-        
         
         if( jTextField1.getText().isEmpty() || ic.getText().isEmpty() || jTextField5.getText().isEmpty() || jTextField2.getText().isEmpty())
             error += "\nAll field is required, please fill in all field.";
@@ -384,7 +378,7 @@ public class RegisterForm extends javax.swing.JFrame {
         
         if(jRadioButton4.isSelected()){
            try{
-               int isDigit = Integer.parseInt(creditLimit.getText());
+               Integer.parseInt(creditLimit.getText());
            }catch(NumberFormatException  e){
                error += "\nPlease enter amount of monthly credit limits. (e.g: 20)";
            }     

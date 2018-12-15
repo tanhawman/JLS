@@ -23,11 +23,11 @@ public class ManAccStat extends javax.swing.JFrame {
     
     public ManAccStat(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
         initComponents();
-        as = new AccStat(CustList, OrderList, ProductList, ArrangeList);
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
+        as = new AccStat(CustList, OrderList, ProductList, ArrangeList);
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;
@@ -131,8 +131,8 @@ public class ManAccStat extends javax.swing.JFrame {
 
     private void backMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuActionPerformed
         // TODO add your handling code here:
-        new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
         this.dispose();
+        new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_backMenuActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
@@ -148,8 +148,8 @@ public class ManAccStat extends javax.swing.JFrame {
             status.setCellEditor(new DefaultCellEditor(comboBox));
             
             int row = 0;
-            for(int i = 1; i < CustList.getNumberOfEntries(); i++ ){
-                if(as.Account.getValueAt(row, 0).equals(CustList.getEntry(i).getName())){
+            for(int i = 1; i < CustList.getNumberOfEntries()+1; i++ ){
+                if(as.Account.getValueAt(row, 0).toString().equals(CustList.getEntry(i).getName())){
                     CustList.getEntry(i).setStatus(as.Account.getValueAt(row, 3).toString());
                     row++;
                 }
@@ -161,9 +161,9 @@ public class ManAccStat extends javax.swing.JFrame {
         
             DefaultTableModel model = (DefaultTableModel) as.Account.getModel();
             
-                while (model.getRowCount() != 0) {
-                    model.removeRow(0);
-                }
+            while (model.getRowCount() != 0) {
+                model.removeRow(0);
+            }
     
             Object rowData[] = new Object[4];
             for(int i=1; i<=CustList.getNumberOfEntries(); i++){

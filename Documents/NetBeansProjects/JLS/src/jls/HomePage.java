@@ -120,20 +120,30 @@ public class HomePage extends javax.swing.JFrame {
         this.ProductList = ProductList;
         initComponents();
     }
-      public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, Priority_Table aThis) {  
-        this.ArrangeList = ArrangeList;
-        this.ProductList = ProductList;
-        initComponents();
-    }
-        public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, CustomerOrder aThis) {  
+      
+    public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, Priority_Table aThis) {  
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
         initComponents();
     }
         
-        public HomePage(LList<Order> OrderList,LList<Product> ProductList, SalesOrder aThis) {  
+    public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, CustomerOrder aThis) {  
+        this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
+        initComponents();
+    }
+        
+    public HomePage(LList<Order> OrderList,LList<Product> ProductList, SalesOrder aThis) {  
         this.OrderList = OrderList;
         this.ProductList = ProductList;
+        initComponents();
+    }
+        
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
+        this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
         initComponents();
     }
 

@@ -41,6 +41,10 @@ public class GenInvoicePayment extends javax.swing.JFrame {
         ip.setVisible(true);
     }
 
+    public GenInvoicePayment() {
+        initComponents();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -252,6 +256,8 @@ public class GenInvoicePayment extends javax.swing.JFrame {
         // TODO add your handling code here:
         err_msg.setVisible(false);
         total_bill = 0;
+        CustPay.setText("");
+        totalBill_txt.setText("");
         name_txt = name.getText().toLowerCase();
         
         DefaultTableModel model = (DefaultTableModel) ip.jTable1.getModel();
@@ -263,13 +269,13 @@ public class GenInvoicePayment extends javax.swing.JFrame {
             
             Object newData[] = new Object[3];
             for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-                if(!(OrderList.getEntry(i).isIsPaid()) && OrderList.getEntry(i).getCust_name().toLowerCase().equals(name_txt)){
-                newData[0] = OrderList.getEntry(i).getOrder_ID();
-                newData[1] = OrderList.getEntry(i).getDel_date();
-                newData[2] = OrderList.getEntry(i).getTotal_bill();
-                
-                total_bill += OrderList.getEntry(i).getTotal_bill();
-                model.addRow(newData);
+                if( !OrderList.getEntry(i).isIsPaid() && OrderList.getEntry(i).getCust_name().toLowerCase().equals(name_txt)){
+                    newData[0] = OrderList.getEntry(i).getOrder_ID();
+                    newData[1] = OrderList.getEntry(i).getDel_date();
+                    newData[2] = OrderList.getEntry(i).getTotal_bill();
+
+                    total_bill += OrderList.getEntry(i).getTotal_bill();
+                    model.addRow(newData);
                 }
             }
             
@@ -297,10 +303,12 @@ public class GenInvoicePayment extends javax.swing.JFrame {
                         break;
                     }
                 }
-                
-                for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-                    if(!(OrderList.getEntry(i).isIsPaid()) && OrderList.getEntry(i).getCust_name().toLowerCase().equals(name_txt)){
+            
+                int row = 0;
+                for(int i=1; i<=OrderList.getNumberOfEntries()+1; i++){
+                    if(OrderList.getEntry(i).getOrder_ID().equals(ip.jTable1.getValueAt(row, 0).toString())){
                         OrderList.getEntry(i).setIsPaid(true);
+                        row++;
                     }
                 }
             }
@@ -311,6 +319,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
     }//GEN-LAST:event_Cal_ChangeActionPerformed
 
     public int Cal_Change(int bill, int cust) {
+        total_bill = bill;
         if (cust < total_bill) {
             temp = "Please pay the staff with sufficient payment.";
         } else {

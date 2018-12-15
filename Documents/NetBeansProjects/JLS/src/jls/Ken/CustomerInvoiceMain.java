@@ -46,6 +46,14 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         initComponents();
     }
 
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CheckCreditLimit aThis) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
+        initComponents();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -154,7 +162,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
 
     private void chkLimitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLimitActionPerformed
         this.dispose();
-        new checkCreditLimit().setVisible(true);
+        new CheckCreditLimit(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_chkLimitActionPerformed
 
     private void accStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accStateActionPerformed
@@ -173,7 +181,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         // BACK TO MAIN MENU
         this.dispose();
-        new HomePage().setVisible(true);
+        new HomePage(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_backMenuActionPerformed
 //
 //    /**

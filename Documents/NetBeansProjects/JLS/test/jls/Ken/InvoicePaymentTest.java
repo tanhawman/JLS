@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 
 public class InvoicePaymentTest {
     
-    Double bill = 200.00;
-    String cust = "210.00";
+    int bill = 200;
+    int cust = 210;
     
     public InvoicePaymentTest() {
     }
@@ -20,20 +20,14 @@ public class InvoicePaymentTest {
     @Test
     public void testCal_Change() {
         System.out.println("Cal_Change");
-        double expResult = 10.0;
-        double result = Cal_Change(bill, cust);
+        GenInvoicePayment ip = new GenInvoicePayment();
+        int expResult = 10;
+        int result = ip.Cal_Change(bill, cust);
         assertEquals(expResult, result, 0.1);
     }
     @Test
     public void testMain() {
         System.out.println("main");
         String[] args = null;
-//        InvoicePayment.main(args);
-        // TODO review the generated test code and remove the default call to fail.
     }
-
-    private double Cal_Change(Double bill, String cust) {
-        return 10.0;
-    }
-    
 }

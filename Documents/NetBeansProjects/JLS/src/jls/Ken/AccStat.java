@@ -15,10 +15,6 @@ import jls.Customer;
 import jls.Order;
 import jls.Product;
 
-/**
- *
- * @author user
- */
 public class AccStat extends javax.swing.JPanel {
 
     LList<Customer> CustList;
