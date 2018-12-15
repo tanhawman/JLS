@@ -29,6 +29,8 @@ public class GenInvoicePayment extends javax.swing.JFrame {
         ip = new InvPay();
         this.CustList = CustList;
         this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;

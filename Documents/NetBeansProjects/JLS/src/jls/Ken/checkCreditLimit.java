@@ -175,7 +175,7 @@ public class checkCreditLimit extends javax.swing.JFrame {
     private void ModMenuActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // STORE / ADD / UPDATE DO WHATEVER YOU WANNA DO BEFORE GOING BACK.
         this.dispose();
-        new CustomerInvoiceMain().setVisible(true);
+//        new CustomerInvoiceMain().setVisible(true);
     }    
         
 
