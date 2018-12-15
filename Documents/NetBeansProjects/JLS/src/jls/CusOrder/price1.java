@@ -65,9 +65,7 @@ public class price1 extends javax.swing.JFrame {
 
         ArrangeList.add(newArr);
 
-//        for (int i = 1; i < ArrangeList.getNumberOfEntries(); i++) {
-//            System.out.println(ArrangeList.getEntry(i).getA_ID());
-//        }
+
 
     }
 public price1(){
