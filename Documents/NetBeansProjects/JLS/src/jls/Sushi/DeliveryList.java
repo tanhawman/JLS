@@ -36,9 +36,9 @@ public class DeliveryList extends javax.swing.JPanel {
     Object rowData[] = new Object[3];
         
         for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-            if(!OrderList.getEntry(i).getPickup_date().equals("Delivery")){
+            if(OrderList.getEntry(i).getDistance() !=0){
             rowData[0] = OrderList.getEntry(i).getOrder_ID();
-            rowData[1] = OrderList.getEntry(i).getPickup_date();
+            rowData[1] = OrderList.getEntry(i).getDel_date();
             rowData[2] = OrderList.getEntry(i).getDistance();
 
             model.addRow(rowData);

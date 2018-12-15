@@ -8,6 +8,12 @@ package jls.Sushi;
 import ADT.LList;
 import javax.swing.table.DefaultTableModel;
 import jls.Order;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -27,16 +33,16 @@ public class PickUp extends javax.swing.JPanel {
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
     
-    Object rowData[] = new Object[6];
+    Object rowData[] = new Object[5];
         
         for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
             if(!OrderList.getEntry(i).getPickup_date().equals("Delivery") && !OrderList.getEntry(i).getPickup_time().equals("Delivery")){
             rowData[0] = OrderList.getEntry(i).getOrder_ID();
             rowData[1] = OrderList.getEntry(i).getCust_name();
-            rowData[2] = OrderList.getEntry(i).getItem_name();
-            rowData[3] = OrderList.getEntry(i).getPickup_time();
-            rowData[4] = OrderList.getEntry(i).getPickup_date();
-            rowData[5] = OrderList.getEntry(i).getStatus();
+//            rowData[2] = OrderList.getEntry(i).getItem_name();
+            rowData[2] = OrderList.getEntry(i).getPickup_time();
+            rowData[3] = OrderList.getEntry(i).getPickup_date();
+            rowData[4] = OrderList.getEntry(i).getStatus();
 
             model.addRow(rowData);
             }
@@ -62,14 +68,14 @@ public class PickUp extends javax.swing.JPanel {
 
             },
             new String [] {
-                "OrderID", "CustName", "ItemName", "Time", "Date", "Status"
+                "OrderID", "CustName", "Time", "Date", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, true
+                false, false, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -80,6 +86,12 @@ public class PickUp extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable2.getModel());
+        jTable2.setRowSorter(sorter);
+
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+        sortKeys.add(new RowSorter.SortKey(4, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setText("Edit");

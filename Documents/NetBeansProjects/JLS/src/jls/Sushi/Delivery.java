@@ -9,6 +9,12 @@ package jls.Sushi;
 import ADT.LList;
 import javax.swing.table.DefaultTableModel;
 import jls.Order;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -26,15 +32,15 @@ public class Delivery extends javax.swing.JPanel {
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     
-    Object rowData[] = new Object[5];
+    Object rowData[] = new Object[4];
         
         for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
             if(OrderList.getEntry(i).getPickup_date().equals("Delivery") && OrderList.getEntry(i).getPickup_time().equals("Delivery")){
             rowData[0] = OrderList.getEntry(i).getOrder_ID();
             rowData[1] = OrderList.getEntry(i).getCust_name();
-            rowData[2] = OrderList.getEntry(i).getItem_name();
-            rowData[3] = OrderList.getEntry(i).getDel_date();
-            rowData[4] = OrderList.getEntry(i).getStatus();
+//            rowData[2] = OrderList.getEntry(i).getItem_name();
+            rowData[2] = OrderList.getEntry(i).getDel_date();
+            rowData[3] = OrderList.getEntry(i).getStatus();
 
             model.addRow(rowData);
             }
@@ -61,17 +67,30 @@ public class Delivery extends javax.swing.JPanel {
 
             },
             new String [] {
-                "OrderID", "CustName", "ItemName", "Date", "Status"
+                "OrderID", "CustName", "Date", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
+        jTable1.setRowSorter(sorter);
+
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+        sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Edit");

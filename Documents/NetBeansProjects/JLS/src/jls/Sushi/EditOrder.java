@@ -28,23 +28,23 @@ public class EditOrder extends javax.swing.JFrame {
     public EditOrder(TableModel dtm, int rownumber) {
         initComponents();
         
-        if(dtm.getColumnCount()== 5){
+        if(dtm.getColumnCount()== 4){
         jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
         jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
-        jLabel8.setText((String)dtm.getValueAt(rownumber, 2).toString());
-        jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
-        jLabel10.setText((String)dtm.getValueAt(rownumber, 4));
+//        jLabel8.setText((String)dtm.getValueAt(rownumber, 2).toString());
+        jLabel9.setText((String)dtm.getValueAt(rownumber, 2));
+        jLabel10.setText((String)dtm.getValueAt(rownumber, 3));
         jLabel11.setVisible(false);
         jLabel12.setVisible(false);
         this.tablemodel = dtm;
         this.rownumber =rownumber;
-        }else if (dtm.getColumnCount() == 6){
+        }else if (dtm.getColumnCount() == 5){
         jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
         jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
-        jLabel8.setText((String) dtm.getValueAt(rownumber, 2).toString());
-        jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
-        jLabel10.setText((String)dtm.getValueAt(rownumber, 4));
-        jLabel12.setText((String)dtm.getValueAt(rownumber, 5));
+//        jLabel8.setText((String) dtm.getValueAt(rownumber, 2).toString());
+        jLabel9.setText((String)dtm.getValueAt(rownumber, 2));
+        jLabel10.setText((String)dtm.getValueAt(rownumber, 3));
+        jLabel12.setText((String)dtm.getValueAt(rownumber, 4));
         this.tablemodel = dtm;
         this.rownumber =rownumber;
         }
@@ -219,17 +219,17 @@ public class EditOrder extends javax.swing.JFrame {
         Date date=cal.getTime();
         Date time = cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        DateFormat timeFormat = new SimpleDateFormat("HH:MM");
+        DateFormat timeFormat = new SimpleDateFormat("HH:MM am");
         String updatetime = timeFormat.format(time);
         String updatedate=dateFormat.format(date);
         String status = "Delivered";
-        if(tablemodel.getColumnCount() == 5){
+        if(tablemodel.getColumnCount() == 4){
+            tablemodel.setValueAt(updatedate, rownumber, 2);
+            tablemodel.setValueAt(status, rownumber, 3);
+        }else if (tablemodel.getColumnCount()==5){
+            tablemodel.setValueAt(updatetime, rownumber, 2);
             tablemodel.setValueAt(updatedate, rownumber, 3);
             tablemodel.setValueAt(status, rownumber, 4);
-        }else if (tablemodel.getColumnCount()==6){
-            tablemodel.setValueAt(updatetime, rownumber, 3);
-            tablemodel.setValueAt(updatedate, rownumber, 4);
-            tablemodel.setValueAt(status, rownumber, 5);
         }
         
         dispose();
