@@ -141,18 +141,14 @@ public class ManAccStat extends javax.swing.JFrame {
             
         if(confirm == JOptionPane.YES_OPTION){
             TableColumn status = as.Account.getColumnModel().getColumn(3);
-        
-            JComboBox comboBox = new JComboBox();
-            comboBox.addItem("Active");
-            comboBox.addItem("Freeze");
-            status.setCellEditor(new DefaultCellEditor(comboBox));
             
             int row = 0;
-            for(int i = 1; i < CustList.getNumberOfEntries(); i++ ){
-                if(as.Account.getValueAt(row, 0).toString().equals(CustList.getEntry(i).getName())){
-                    CustList.getEntry(i).setStatus(as.Account.getValueAt(row, 3).toString());
-                    row++;
-                }
+            for(int i = 1; i <=CustList.getNumberOfEntries(); i++ ){
+                    if(as.Account.getValueAt(row, 0).toString().equals(CustList.getEntry(i).getName())){
+                        CustList.getEntry(i).setStatus(as.Account.getValueAt(row, 3).toString());
+                        row++;
+                    }
+                
             }
 
             JOptionPane.showMessageDialog(null, "Update Completed.", "Confirm", JOptionPane.INFORMATION_MESSAGE);
@@ -176,12 +172,6 @@ public class ManAccStat extends javax.swing.JFrame {
                     model.addRow(rowData);
                 }
             }    
-            
-//            TableColumn status = as.Account.getColumnModel().getColumn(3);
-//            JComboBox comboBox = new JComboBox();
-//            comboBox.addItem("Active");
-//            comboBox.addItem("Freeze");
-//            status.setCellEditor(new DefaultCellEditor(comboBox));
         }
     }//GEN-LAST:event_updateActionPerformed
 

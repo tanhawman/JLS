@@ -294,7 +294,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
             if (cust_pay < total_bill ) {
                 JOptionPane.showMessageDialog(null, temp, "Payment", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, temp, "Payment", JOptionPane.INFORMATION_MESSAGE);
+                
                 for(int i= 1; i < CustList.getNumberOfEntries(); i++){
                     // set cust stat to Active, set Remaining credit limit to monthly limit, find by order id to update ispaid 
                     if(CustList.getEntry(i).getName().toLowerCase().equals(name_txt)){
@@ -305,12 +305,26 @@ public class GenInvoicePayment extends javax.swing.JFrame {
                 }
             
                 int row = 0;
-                for(int i=1; i < OrderList.getNumberOfEntries() ; i++){
-                    if(OrderList.getEntry(i).getOrder_ID().equals(ip.jTable1.getValueAt(row, 0).toString())){
-                        OrderList.getEntry(i).setIsPaid(true);
-                        row++;
+                int rowCount = ip.jTable1.getRowCount()+1;
+                for(int i=1; i <=OrderList.getNumberOfEntries()+1; i++){
+                    if(!(row == rowCount)){
+                        if(OrderList.getEntry(i).getOrder_ID().equals(ip.jTable1.getValueAt(row, 0).toString())){
+                            OrderList.getEntry(i).setIsPaid(true);
+                            row++;
+                        }
                     }
                 }
+                        
+                DefaultTableModel model = (DefaultTableModel) ip.jTable1.getModel();
+                for (int i = 0; i < ip.jTable1.getRowCount(); i++){ 
+                    model.removeRow(0);
+                }
+        
+                total_bill = 0;
+                CustPay.setText("");
+                totalBill_txt.setText("");
+        
+            JOptionPane.showMessageDialog(null, temp, "Payment", JOptionPane.INFORMATION_MESSAGE);
             }
         }catch(NumberFormatException ex){
             temp = "Enter Numbers only !";
