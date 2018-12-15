@@ -7,6 +7,9 @@ package jls.Kun;
 
 import ADT.LList;
 import javax.swing.table.DefaultTableModel;
+import jls.Customer;
+import jls.HomePage;
+import jls.Order;
 import jls.Product;
 
 /**
@@ -14,28 +17,64 @@ import jls.Product;
  * @author Yee Kun
  */
 public class SalesOrder extends javax.swing.JFrame {
-    LList<Product> ProductList = new LList<>();
+    LList<Product> ProductList;
+    LList<Customer> CustList;
+    LList<Order> OrderList;
+    SelectItem selectitem;
+    SelectItem_CorCust selectItem_CorCust;
+    HomePage homepage;
+    Fresh fresh;
+    Bouquet bouquet;
     ConfirmOrder p1;
-    SelectItem SI;
 
     /**
      * Creates new form SalesOrder
      */
-    public SalesOrder(Fresh fresh, Bouquet bouquet, ConfirmOrder confirmorder) {
-        initComponents();
+    public SalesOrder(Fresh fresh, Bouquet bouquet, ConfirmOrder confirmorder, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, HomePage homepage, SelectItem_CorCust selectItem_CorCust) {
+        this.homepage = homepage;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.selectitem = selectitem;
+        this.selectItem_CorCust = selectItem_CorCust;
         p1 = confirmorder;
-        SI = new SelectItem(ProductList);
+        initComponents();
+        
+
         updateDetails();
         addRowToJTable();
         
     }
-   
-    
-    
-    public void updateDetails(){    
-        jLabel10.setText("S001");
-        jLabel11.setText(SI.jLabel3.getText());
-        jLabel12.setText("0125151847");
+     
+    public void updateDetails(){
+        int orderid = 7;
+        jLabel10.setText("O00" + orderid);
+        orderid++;
+        
+        for(int i=1; i<CustList.getNumberOfEntries(); i++){
+            if(homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())){
+                if(CustList.getEntry(i).getType().equals("consumer")){
+                    jLabel11.setText(selectitem.jLabel3.getText());
+                }
+                else{
+                    jLabel11.setText(selectItem_CorCust.jComboBox1.getSelectedItem().toString());
+                }
+            }
+        }
+        
+            
+        for(int i=1; i<CustList.getNumberOfEntries(); i++){
+            if(homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())){
+                if(CustList.getEntry(i).getType().equals("consumer")){
+                    jLabel12.setText(CustList.getEntry(i).getContact());
+                }
+                else{
+                    jLabel12.setText(CustList.getEntry(i).getContact());
+                }
+            }
+        }
+        
+        
+        
         jLabel14.setText("Pending");
         
         if(p1.rdpickup.isSelected() == true){
@@ -270,41 +309,6 @@ public class SalesOrder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(SalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(SalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(SalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(SalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new SalesOrder().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

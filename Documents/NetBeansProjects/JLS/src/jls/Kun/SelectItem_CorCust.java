@@ -12,6 +12,9 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jdk.nashorn.internal.ir.BreakNode;
+import jls.Customer;
+import jls.HomePage;
+import jls.Order;
 import jls.Product;
 
 /**
@@ -20,6 +23,10 @@ import jls.Product;
  */
 public class SelectItem_CorCust extends javax.swing.JFrame {
     LList<Product> ProductList = new LList<>();
+    LList<Customer> CustList = new LList<>();
+    LList<Order> OrderList = new LList<>();
+    HomePage homepage;
+    SelectItem selectitem;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
     Bouquet p2;
@@ -27,7 +34,11 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     /**
      * Creates new form SelectItem_CorCust
      */
-    public SelectItem_CorCust(LList<Product> ProductList) {
+    public SelectItem_CorCust(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, HomePage homepage) {
+        this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.homepage = homepage;
         initComponents();
         rdFresh.setSelected(true);
         p1 = new Fresh(ProductList);
@@ -41,9 +52,15 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         c.gridy = 0;
         jPanel1.add(p2, c);
         p1.setVisible(true);
-        p2.setVisible(false);
-        if(jComboBox1.getSelectedIndex() == 0){
-            lblCreditLimit.setText("20");
+        p2.setVisible(false);      
+        addComboBoxdata();
+    }
+    
+    public void addComboBoxdata(){
+        for(int i=1; i<CustList.getNumberOfEntries(); i++){
+            if(CustList.getEntry(i).getType().equals("corp_cust")){
+                jComboBox1.addItem(CustList.getEntry(i).getName());
+            }
         }
     }
 
@@ -137,7 +154,6 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tong Chun Ken", "Tan Haw Man", "Soh Shi Yee", "Teo Jun Jie", "Tan Yee Kun", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -178,8 +194,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
@@ -342,7 +357,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
                 model.fireTableDataChanged();
-                new ConfirmOrder(p1,p2).setVisible(true);                                   
+                new ConfirmOrder(p1,p2, selectitem, CustList, OrderList, this, homepage).setVisible(true);                                   
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -358,20 +373,10 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     }//GEN-LAST:event_rdBouquetActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if(jComboBox1.getSelectedIndex() == 0){
-            lblCreditLimit.setText("20");
-        }
-        else if(jComboBox1.getSelectedIndex() == 1){
-            lblCreditLimit.setText("20");
-        }
-        else if(jComboBox1.getSelectedIndex() == 2){
-            lblCreditLimit.setText("15");
-        }
-        else if(jComboBox1.getSelectedIndex() == 3){
-            lblCreditLimit.setText("55");
-        }
-        else{
-            lblCreditLimit.setText("125");
+        for(int i=1; i<CustList.getNumberOfEntries(); i++){
+            if(jComboBox1.getSelectedItem().toString().equals(CustList.getEntry(i).getName())){
+                lblCreditLimit.setText(Integer.toString(CustList.getEntry(i).getCredit_limit()));
+            }
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -381,7 +386,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

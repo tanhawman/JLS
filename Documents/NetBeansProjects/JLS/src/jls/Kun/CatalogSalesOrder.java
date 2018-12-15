@@ -9,6 +9,7 @@ import ADT.LList;
 import javax.swing.table.DefaultTableModel;
 import jls.Customer;
 import jls.Order;
+import jls.Product;
 
 /**
  *
@@ -17,18 +18,21 @@ import jls.Order;
 public class CatalogSalesOrder extends javax.swing.JFrame {
 
     CatalogOrder p1;
-    LList<Customer> CustList = new LList<>();
-    LList<Order> OrderList = new LList<>();
+    LList<Customer> CustList;
+    LList<Product> ProductList;
+    LList<Order> OrderList;
 
     /**
      * Creates new form CatalogSalesOeder
      */
-    public CatalogSalesOrder(LList<Order> OrderList, LList<Customer> CustList, CatalogOrder order) {
+    public CatalogSalesOrder(LList<Order> OrderList, LList<Customer> CustList, LList<Product> ProductList, CatalogOrder order) {
         this.OrderList = OrderList;
         this.CustList = CustList;
+        this.ProductList = ProductList;
         initComponents();
         p1 =  order; 
         showDetails();
+        addRowToJTable();
        
     }
     public void showDetails(){
@@ -56,6 +60,31 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
         }  
     }
     
+    public void addRowToJTable(){
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    DefaultTableModel model1  = (DefaultTableModel)p1.jTable1.getModel();
+    int selectedRowIndex = p1.jTable1.getSelectedRow();
+    Object rowData[] = new Object[4];
+
+        
+        for(int i=1; i<OrderList.getNumberOfEntries(); i++){
+//            if(model1.getValueAt(selectedRowIndex, 1).toString().equals(OrderList.getEntry(i).getOrder_ID())){
+//                for(int j=0; j<OrderList.getEntry(i).getItem_name().length; i++){
+//                    rowData[0] = OrderList.getEntry(i).getItem_name();
+//                    rowData[1] = OrderList.getEntry(i).getItem_name();
+//                    rowData[2] = OrderList.getEntry(i).getQuantity();
+//                    rowData[3] = OrderList.getEntry(i).getItem_name();
+//                    model.addRow(rowData);
+//                }
+//                
+//            
+//                jLabel9.setText(Integer.toString(OrderList.getEntry(i).getTotal_bill()));
+//            }
+               
+            
+
+        }
+    }
 
 
     /**
@@ -112,8 +141,7 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Rose", "20", "2", "40"},
-                {"Rose-B", "120", "2", "240"}
+
             },
             new String [] {
                 "Item", "Price (RM)", "Quantity", "Total (RM)"
@@ -124,7 +152,7 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Total Price (RM): ");
 
-        jLabel9.setText("280");
+        jLabel9.setText("0");
 
         jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -227,44 +255,9 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new CatalogOrder(OrderList).setVisible(true);
+        new CatalogOrder(OrderList, CustList, ProductList).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(CatalogSalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(CatalogSalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(CatalogSalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(CatalogSalesOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new CatalogSalesOrder().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

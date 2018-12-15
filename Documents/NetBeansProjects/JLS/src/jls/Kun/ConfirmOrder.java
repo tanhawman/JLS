@@ -5,9 +5,13 @@
  */
 package jls.Kun;
 
+import ADT.LList;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JOptionPane;
+import jls.Customer;
+import jls.HomePage;
+import jls.Order;
 
 /**
  *
@@ -16,12 +20,22 @@ import javax.swing.JOptionPane;
 public class ConfirmOrder extends javax.swing.JFrame {
 
     GridBagLayout layout = new GridBagLayout();
+    HomePage homepage;
+    LList<Customer> CustList;
+    LList<Order> OrderList;
+    SelectItem selectitem;
+    SelectItem_CorCust selectItem_CorCust;
     SelfPickup p1;
     Delivery p2;
     /**
      * Creates new form ConfirmOrder
      */
-    public ConfirmOrder(Fresh fresh, Bouquet bouquet) {
+    public ConfirmOrder(Fresh fresh, Bouquet bouquet, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, SelectItem_CorCust selectItem_CorCust, HomePage homepage) {
+        this.selectitem = selectitem;
+        this.selectItem_CorCust = selectItem_CorCust;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.homepage = homepage;
         initComponents();
         rdpickup.setSelected(true);
         p1 = new SelfPickup(fresh, bouquet);
@@ -172,7 +186,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
             else{
                 int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if (select == 0){
-                    new SalesOrder(p1.p1, p2.p2, this).setVisible(true);                             
+                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, homepage, selectItem_CorCust).setVisible(true);                             
                 }
             }
         }
@@ -180,47 +194,13 @@ public class ConfirmOrder extends javax.swing.JFrame {
             int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
                 
-                    new SalesOrder(p1.p1, p2.p2, this).setVisible(true);
+                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, homepage, selectItem_CorCust).setVisible(true);
             }
         }
         
         
     }//GEN-LAST:event_btnConfirmActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(ConfirmOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(ConfirmOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(ConfirmOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ConfirmOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new ConfirmOrder().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

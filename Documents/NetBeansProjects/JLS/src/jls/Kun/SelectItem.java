@@ -13,6 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import jls.Customer;
+import jls.HomePage;
+import jls.Order;
 import jls.Product;
 
 /**
@@ -21,14 +24,21 @@ import jls.Product;
  */
 public class SelectItem extends javax.swing.JFrame {
     LList<Product> ProductList = new LList<>();
+    LList<Customer> CustList = new LList<>();
+    LList<Order> OrderList = new LList<>();
+    HomePage homepage;
+    SelectItem_CorCust selectItem_CorCust;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
     Bouquet p2;
     /**
      * Creates new form SelectItem
      */
-    public SelectItem(LList<Product> ProductList) {
+    public SelectItem(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, HomePage homepage) {
         this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.homepage = homepage;
         initComponents();
         rdFresh.setSelected(true);
         p1 = new Fresh(ProductList);
@@ -42,8 +52,16 @@ public class SelectItem extends javax.swing.JFrame {
         c.gridy = 0;
         jPanel.add(p2, c);
         p1.setVisible(true);
-        p2.setVisible(false);
-        
+        p2.setVisible(false);    
+        showName();
+    }
+    
+    public void showName(){
+        for(int i=1; i<CustList.getNumberOfEntries(); i++){
+            if(homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())){
+                jLabel3.setText(CustList.getEntry(i).getName());
+            }
+        }
     }
 
     /**
@@ -175,8 +193,6 @@ public class SelectItem extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Name: ");
-
-        jLabel3.setText("Ken");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -351,15 +367,9 @@ public class SelectItem extends javax.swing.JFrame {
             int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
                 model.fireTableDataChanged();
-                new ConfirmOrder(p1,p2).setVisible(true);                                   
+                new ConfirmOrder(p1,p2, this, CustList, OrderList, selectItem_CorCust, homepage).setVisible(true);                                   
             }
-        }
-        
-        
-        
-            
-        
-        
+        }     
         
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
