@@ -148,7 +148,7 @@ public class ManAccStat extends javax.swing.JFrame {
             status.setCellEditor(new DefaultCellEditor(comboBox));
             
             int row = 0;
-            for(int i = 1; i < CustList.getNumberOfEntries()+1; i++ ){
+            for(int i = 1; i < CustList.getNumberOfEntries(); i++ ){
                 if(as.Account.getValueAt(row, 0).toString().equals(CustList.getEntry(i).getName())){
                     CustList.getEntry(i).setStatus(as.Account.getValueAt(row, 3).toString());
                     row++;
