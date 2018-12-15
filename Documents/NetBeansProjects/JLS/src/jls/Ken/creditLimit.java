@@ -8,7 +8,7 @@ import jls.Customer;
 public class creditLimit extends javax.swing.JPanel {
 
     LList<Customer> CustList;
-        
+    
     public creditLimit(LList<Customer> CustList) {
         initComponents();
         this.CustList = CustList;
@@ -66,7 +66,7 @@ public class creditLimit extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable CLimit;
     private javax.swing.JScrollPane jScrollPane1;

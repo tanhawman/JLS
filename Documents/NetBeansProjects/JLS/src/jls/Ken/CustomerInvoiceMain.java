@@ -46,11 +46,8 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CheckCreditLimit aThis) {
+    public CustomerInvoiceMain(LList<Customer> CustList, CheckCreditLimit aThis) {
         this.CustList = CustList;
-        this.OrderList = OrderList;
-        this.ProductList = ProductList;
-        this.ArrangeList = ArrangeList;
         initComponents();
     }
 
@@ -162,7 +159,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
 
     private void chkLimitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLimitActionPerformed
         this.dispose();
-        new CheckCreditLimit(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
+        new CheckCreditLimit(CustList, this).setVisible(true);
     }//GEN-LAST:event_chkLimitActionPerformed
 
     private void accStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accStateActionPerformed
