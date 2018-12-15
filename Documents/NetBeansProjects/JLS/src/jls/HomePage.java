@@ -49,7 +49,7 @@ public class HomePage extends javax.swing.JFrame {
     // public Order(String order_ID, String[] item_name, int[] quantity, String address, String priority, String del_date, String status, int distance, String pickup_date, String pickup_time, boolean isPaid, int total_bill, String cust_name)
     Order o1 = new Order("O001", item_name_o1, quantity_o1, "Jalan Tak Ada, 53300 Kuala Lumpur", "Express", " ", "Pending", 250, "Delivery", "Delivery", true, 117, "Tan Yee Kun");
     Order o2 = new Order("O002", item_name_o2, quantity_o2, "No.123 Jalan awda", "Express", "01/12/18", "Delivered", 300, "Delivery", "Delivery", false, 150,"Tong Chun Ken");
-    Order o3 = new Order("O003", item_name_o3, quantity_o3, "Self Pick-Up", "Normal", "p", "Pending", 0, "20/12/18", "10.00 am", true, 225, "Teo Zhuo Yang");
+    Order o3 = new Order("O003", item_name_o3, quantity_o3, "Self Pick-Up", "Normal", " ", "Pending", 0, "20/12/18", "10.00 am", true, 225, "Teo Zhuo Yang");
     Order o4 = new Order("O004", item_name_o4, quantity_o4, "Self Pick-Up", "Flexi", "03/12/18", "Delivered", 0, "03/12/18", "12:00 pm", false, 290, "Tan Haw Man");
     Order o5 = new Order("O005", item_name_o5, quantity_o5, "No. 2 Monster Hunter World Iceborne", "Normal", "05/12/18", "Delivered", 320, "Delivery", "Delivery", false, 365, "Teo Jun Jie");
     Order o6 = new Order("O006", item_name_o6, quantity_o6, "Self Pick-Up", "Flexi", " ", "Pending", 0, "25/12/18", "11.00 am", true, 455, "Soh Shi Yee");
