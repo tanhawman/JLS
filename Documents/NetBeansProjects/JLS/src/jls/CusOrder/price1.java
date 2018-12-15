@@ -70,7 +70,9 @@ public class price1 extends javax.swing.JFrame {
         }
 
     }
-
+public price1(){
+    initComponents();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -364,7 +366,7 @@ public class price1 extends javax.swing.JFrame {
         }
     }
 
-    private String Cal_total(int p1, int p2, int p3, int p4, int p5) {
+    public String Cal_total(int p1, int p2, int p3, int p4, int p5) {
         int total = p1 + p2 + p3 + p4 + p5;
         return price = Integer.toString(total);
     }

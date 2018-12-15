@@ -30,18 +30,23 @@ public class CustomerOrder extends javax.swing.JFrame {
     LList<Arrangement> ArrangeList;
     private DefaultTableModel model;
 
+    public CustomerOrder() {
+        initComponents();
+    }
+
     public CustomerOrder(LList<Arrangement> ArrangeList, LList<Product> ProductList, HomePage aThis) {
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
         initComponents();
         addRowToJTable3();
         addRowToJTable4();
+        CheckData();
 
         for (int i = 1; i <= ArrangeList.getNumberOfEntries(); i++) {
             id = "A" + String.format("%03d", (i + 1));
         }
 
-        jLabel3.setText((id));
+//        jLabel3.setText((id));
 
     }
 
@@ -577,8 +582,10 @@ public class CustomerOrder extends javax.swing.JFrame {
                 rowData[1] = ProductList.getEntry(i).getPrice();
 
                 model.addRow(rowData);
+
             }
         }
+
     }
 
     private void addRowToJTable4() {
@@ -593,6 +600,16 @@ public class CustomerOrder extends javax.swing.JFrame {
 
                 model.addRow(rowData);
             }
+        }
+    }
+
+    public boolean CheckData() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        if (model.getRowCount() >= 0) {
+            return true;
+        }
+    else{
+            return false;
         }
     }
 
