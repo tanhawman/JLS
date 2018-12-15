@@ -44,6 +44,7 @@ public class Delivery extends javax.swing.JPanel {
 
             model.addRow(rowData);
             }
+            
         }
     }
     
@@ -85,12 +86,12 @@ public class Delivery extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
-        jTable1.setRowSorter(sorter);
-
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
-        sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
-        sorter.setSortKeys(sortKeys);
+        //TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
+        //            jTable1.setRowSorter(sorter);
+        //
+        //            List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+        //            sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));
+        //            sorter.setSortKeys(sortKeys);
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Edit");
@@ -126,9 +127,12 @@ public class Delivery extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         if(jTable1.getSelectedRow() != -1){
-            new EditOrder(jTable1.getModel(),jTable1.getSelectedRow()).setVisible(true);
+            new EditOrder(jTable1.getModel(),jTable1.getSelectedRow(), OrderList).setVisible(true);
         }
+            
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

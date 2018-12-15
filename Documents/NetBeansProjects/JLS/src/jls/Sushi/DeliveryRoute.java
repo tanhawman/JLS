@@ -199,17 +199,12 @@ public class DeliveryRoute extends javax.swing.JFrame {
         // TODO add your handling code here:
         ant.setVisible(false);
         dl.setVisible(true);
-        jXDatePicker1.setDate(null);
-        for (int i = 0; i < ant.jTable1.getModel().getRowCount(); i++) {
-            DefaultTableModel model = (DefaultTableModel) ant.jTable1.getModel();
-            model.removeRow(i);
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new HomePage().setVisible(true);
+        new HomePage(OrderList).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

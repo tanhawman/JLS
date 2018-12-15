@@ -94,7 +94,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;TableModel&gt;(jTable1.getModel());&#xa;            jTable1.setRowSorter(sorter);&#xa;&#xa;            List&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;&gt;(25);&#xa;            sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));&#xa;            sorter.setSortKeys(sortKeys);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;TableModel&gt;(jTable1.getModel());&#xa;//            jTable1.setRowSorter(sorter);&#xa;//&#xa;//            List&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;&gt;(25);&#xa;//            sortKeys.add(new RowSorter.SortKey(3, SortOrder.ASCENDING));&#xa;//            sorter.setSortKeys(sortKeys);"/>
           </AuxValues>
         </Component>
       </SubComponents>

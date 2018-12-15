@@ -137,6 +137,10 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
 
+        public HomePage(LList<Order> OrderList){
+        this.OrderList = OrderList;
+        initComponents();
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
