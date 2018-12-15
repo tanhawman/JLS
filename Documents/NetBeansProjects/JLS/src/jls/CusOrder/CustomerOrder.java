@@ -492,6 +492,7 @@ public class CustomerOrder extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
         new HomePage(ArrangeList, ProductList, this).setVisible(true);
     }
 
@@ -604,7 +605,7 @@ public class CustomerOrder extends javax.swing.JFrame {
     }
 
     public boolean CheckData() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
         if (model.getRowCount() >= 0) {
             return true;
         }
