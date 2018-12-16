@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jls.Kun;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Yee Kun
- */
 public class SelectItemTest {
     
     public SelectItemTest() {
@@ -30,7 +21,6 @@ public class SelectItemTest {
         int expResult = 220;
         int result = Cal_subtotal(price, qty);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
     
     /**
