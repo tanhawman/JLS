@@ -65,8 +65,6 @@ public class price1 extends javax.swing.JFrame {
 
         ArrangeList.add(newArr);
 
-
-
     }
 public price1(){
     initComponents();
