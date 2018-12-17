@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.aaa
+ * and open the template in the editor.
  */
 package jls.Sushi;
 
@@ -9,50 +9,47 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import jls.Order;
 import ADT.LList;
 import java.util.Random;
+import javax.swing.table.DefaultTableModel;
 import jls.Arrangement;
+
 /**
  *
  * @author Sushi
  */
-public class DeliveryList extends javax.swing.JPanel {
-    LList<Order> OrderList;
+public class ArrangementList extends javax.swing.JPanel {
+    LList<Arrangement> ArrangeList;
     /**
-     * Creates new form DeliveryList
+     * Creates new form ArrangementList
      */
-    public DeliveryList(LList<Order> OrderList) {
-        this.OrderList = OrderList;
+    public ArrangementList(LList<Arrangement> ArrangeList) {
         initComponents();
+        this.ArrangeList = ArrangeList;
         addRowToJTable();
-        //jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }
-        
+
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     Random random = new Random();
     int randnum = random.nextInt(900) + 100;
-    Object rowData[] = new Object[3];
+    Object rowData[] = new Object[4];
         
-        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-            if(OrderList.getEntry(i).getStatus().equals("Pending") && OrderList.getEntry(i).getPickup_date().equals("Delivery") &&OrderList.getEntry(i).getPickup_time().equals("Delivery")){
-                if(OrderList.getEntry(i).getDistance()==0){
-                    OrderList.getEntry(i).setDistance(randnum);
-                }
-            rowData[0] = OrderList.getEntry(i).getOrder_ID();
-            rowData[1] = OrderList.getEntry(i).getDel_date();
-            rowData[2] = OrderList.getEntry(i).getDistance();
-
-            model.addRow(rowData);
+        for(int i=1; i<=ArrangeList.getNumberOfEntries();i++){
+            if(ArrangeList.getEntry(i).getDistance() == 0){
+                ArrangeList.getEntry(i).setDistance(randnum);
             }
+            rowData[0] = ArrangeList.getEntry(i).getA_ID();
+            rowData[1] = ArrangeList.getEntry(i).getA_date();
+            rowData[2] = ArrangeList.getEntry(i).getA_priority();
+            rowData[3] = ArrangeList.getEntry(i).getDistance();
+            
+            model.addRow(rowData);
         }
     }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,19 +62,21 @@ public class DeliveryList extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(550, 177));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order Id", "Date", "Distance"
+                "Order Id", "Date", "Priority", "Distance"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -101,9 +100,9 @@ public class DeliveryList extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

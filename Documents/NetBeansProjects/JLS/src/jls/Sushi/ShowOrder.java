@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import jls.Arrangement;
 import jls.HomePage;
 import jls.Order;
 
@@ -25,23 +27,20 @@ import jls.Order;
  */
 public class ShowOrder extends javax.swing.JFrame { 
     LList<Order> OrderList;
+    LList<Arrangement> ArrangeList;
     GridBagLayout layout = new GridBagLayout();
     PickUp pu ;
     Delivery de;
-//    Arrangement ar;
 
-    public ShowOrder(LList<Order> OrderList) {
+    public ShowOrder(LList<Order> OrderList, LList<Arrangement> ArrangeList) {
         initComponents();
-        //user need to select the date 1st then only will disply the table
-        //jTable3.setVisible(false);
-       // jButton3.setVisible(false);
         this.OrderList = OrderList;
+        this.ArrangeList = ArrangeList;
+        addRowToJTable();
         jRadioButton1.setSelected(true);
         pu = new PickUp(OrderList);
         de = new Delivery(OrderList);
-//        ar = new Arrangement();
         empty.setLayout(layout);
-//        empty2.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;
         c.gridy = 0;
@@ -49,15 +48,21 @@ public class ShowOrder extends javax.swing.JFrame {
         c.gridx = 0;
         c.gridy = 0;
         empty.add(de, c);
-        c.gridx = 0;
-        c.gridy = 0;
-//        empty2.add(ar,c);
-//        ar.setVisible(false);
         pu.setVisible(true);
         de.setVisible(false);
     }
-
-
+    
+     public void addRowToJTable(){
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    Object rowData[] = new Object[3];
+        for(int i=1; i<=ArrangeList.getNumberOfEntries(); i++){
+            rowData[0] = ArrangeList.getEntry(i).getA_ID();
+            rowData[1] = ArrangeList.getEntry(i).getA_date();
+            rowData[2] = ArrangeList.getEntry(i).getA_priority();
+            model.addRow(rowData);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,6 +81,10 @@ public class ShowOrder extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         empty = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
@@ -119,7 +128,7 @@ public class ShowOrder extends javax.swing.JFrame {
         );
         emptyLayout.setVerticalGroup(
             emptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 223, Short.MAX_VALUE)
+            .addGap(0, 224, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -131,7 +140,7 @@ public class ShowOrder extends javax.swing.JFrame {
                 .addComponent(jRadioButton1)
                 .addGap(97, 97, 97)
                 .addComponent(jRadioButton2)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(empty, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,6 +159,64 @@ public class ShowOrder extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Order List", jPanel1);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ArrangementID", "Date", "Priority"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jButton2)))
+                .addContainerGap(64, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Arrangement", jPanel2);
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -180,9 +247,9 @@ public class ShowOrder extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -203,8 +270,13 @@ public class ShowOrder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new HomePage(OrderList).setVisible(true);
+        new HomePage(OrderList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new EditArrange(ArrangeList,jTable1.getModel(),jTable1.getSelectedRow()).setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
 
@@ -212,11 +284,15 @@ public class ShowOrder extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel empty;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

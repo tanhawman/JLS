@@ -61,9 +61,9 @@ public class price1 extends javax.swing.JFrame {
         String acce = (String) accessories.getValueAt(ass_price, 0);
         String pr = (String) priority.getValueAt(p_price, 0);
 
-        Arrangement newArr = new Arrangement(id, sty, sz, fw, acce, pr, Integer.valueOf(price));
+//        Arrangement newArr = new Arrangement(id, sty, sz, fw, acce, pr, Integer.valueOf(price));
 
-        ArrangeList.add(newArr);
+//        ArrangeList.add(newArr);
 
 
 

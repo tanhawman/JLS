@@ -80,10 +80,10 @@ public class HomePage extends javax.swing.JFrame {
     Order o5 = new Order("O005", oi_5, "No. 2 Monster Hunter World Iceborne", "Normal", "05/12/18", "Delivered", 320, "Delivery", "Delivery", false, 670, "Teo Jun Jie");
     Order o6 = new Order("O006", oi_6, "Self Pick-Up", "Flexi", " ", "Pending", 0, "25/12/18", "11.00 am", true, 910, "Soh Shi Yee");
     
-    //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice) 
-    Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear","Express",90);
-    Arrangement a2 = new Arrangement("A002","Elliptical flower","Small","Lily","Teddy bear","Normal",50);
-    Arrangement a3 = new Arrangement("A003","Vertical flower","Medium","Chrysanthemum","Heart balloon","Flexi",35);
+    //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice,string a_date) 
+    Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear","Express",90,"10/12/18",400);
+    Arrangement a2 = new Arrangement("A002","Elliptical flower","Small","Lily","Teddy bear","Normal",50,"",300);
+    Arrangement a3 = new Arrangement("A003","Vertical flower","Medium","Chrysanthemum","Heart balloon","Flexi",35,"",500);
     
     public String cust_type = "";
     
@@ -168,8 +168,9 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
 
-        public HomePage(LList<Order> OrderList){
+        public HomePage(LList<Order> OrderList, LList<Arrangement> ArrangeList){
         this.OrderList = OrderList;
+        this.ArrangeList = ArrangeList;
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -439,13 +440,13 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
          this.dispose();
-        new ShowOrder(OrderList).setVisible(true);
+        new ShowOrder(OrderList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new DeliveryRoute(OrderList).setVisible(true);
+        new DeliveryRoute(OrderList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

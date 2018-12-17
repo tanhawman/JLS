@@ -6,6 +6,7 @@
 package jls.Sushi;
 
 import ADT.LList;
+import jls.Arrangement;
 import jls.Order;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,8 +21,9 @@ import static org.junit.Assert.*;
  */
 public class DeliveryRouteTest {
     LList<Order> OrderList = new LList<>();
+    LList<Arrangement> ArrangeList = new LList<>();
     DeliveryList dl = new DeliveryList(OrderList);
-    DeliveryRoute dr = new DeliveryRoute(OrderList);
+    DeliveryRoute dr = new DeliveryRoute(OrderList,ArrangeList);
     
     @Before
     public void setUp() {
