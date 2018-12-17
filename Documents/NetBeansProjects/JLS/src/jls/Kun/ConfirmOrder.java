@@ -13,6 +13,7 @@ import jls.Customer;
 import jls.HomePage;
 import jls.Order;
 import jls.Product;
+import jls.Purchase;
 
 /**
  *
@@ -21,7 +22,7 @@ import jls.Product;
 public class ConfirmOrder extends javax.swing.JFrame {
 
     GridBagLayout layout = new GridBagLayout();
-    HomePage homepage;
+    Purchase homepage;
     LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
@@ -32,11 +33,12 @@ public class ConfirmOrder extends javax.swing.JFrame {
     /**
      * Creates new form ConfirmOrder
      */
-    public ConfirmOrder(Fresh fresh, Bouquet bouquet, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, SelectItem_CorCust selectItem_CorCust, HomePage homepage) {
+    public ConfirmOrder(Fresh fresh, Bouquet bouquet, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, SelectItem_CorCust selectItem_CorCust, Purchase homepage, LList<Product> ProductList) {
         this.selectitem = selectitem;
         this.selectItem_CorCust = selectItem_CorCust;
         this.CustList = CustList;
         this.OrderList = OrderList;
+        this.ProductList = ProductList;
         this.homepage = homepage;
         initComponents();
         rdpickup.setSelected(true);
@@ -189,7 +191,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
                 int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
                 if (select == 0){                  
                     this.dispose();
-                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, homepage, selectItem_CorCust).setVisible(true);                             
+                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust).setVisible(true);                             
                 }
             }
         }
@@ -197,7 +199,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
             int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
             if (select == 0){
                 this.dispose();
-                new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, homepage, selectItem_CorCust).setVisible(true);
+                new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust).setVisible(true);
             }
         }
         

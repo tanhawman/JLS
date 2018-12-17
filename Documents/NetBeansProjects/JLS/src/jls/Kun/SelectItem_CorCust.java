@@ -16,6 +16,7 @@ import jls.Customer;
 import jls.HomePage;
 import jls.Order;
 import jls.Product;
+import jls.Purchase;
 
 /**
  *
@@ -25,7 +26,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     LList<Product> ProductList = new LList<>();
     LList<Customer> CustList = new LList<>();
     LList<Order> OrderList = new LList<>();
-    HomePage homepage;
+    Purchase homepage;
     SelectItem selectitem;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
@@ -34,7 +35,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     /**
      * Creates new form SelectItem_CorCust
      */
-    public SelectItem_CorCust(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, HomePage homepage) {
+    public SelectItem_CorCust(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, Purchase homepage) {
         this.ProductList = ProductList;
         this.CustList = CustList;
         this.OrderList = OrderList;
@@ -358,7 +359,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             if (select == 0){
                 model.fireTableDataChanged();
                 this.dispose();
-                new ConfirmOrder(p1,p2, selectitem, CustList, OrderList, this, homepage).setVisible(true);                                   
+                new ConfirmOrder(p1,p2, selectitem, CustList, OrderList, this, homepage, ProductList).setVisible(true);                                   
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed

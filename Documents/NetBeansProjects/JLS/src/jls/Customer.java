@@ -13,6 +13,7 @@ public class Customer {
 
     public Customer() {
     }
+    
     public Customer(String name, String gender, String type, String ic, String address, String contact, String status, int remaincredit, int credit_limit) {
         this.name = name;
         this.gender = gender;

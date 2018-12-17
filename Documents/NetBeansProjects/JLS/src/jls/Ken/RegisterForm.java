@@ -39,12 +39,14 @@ public class RegisterForm extends javax.swing.JFrame {
     LList<Order> OrderList;
     LList<Product> ProductList;
     LList<Arrangement> ArrangeList;
+    CustomerInvoiceMain hehe;
     
     public RegisterForm(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
        this.CustList = CustList;
        this.OrderList = OrderList;
        this.ProductList = ProductList;
        this.ArrangeList = ArrangeList;
+       this.hehe = aThis;
        initComponents();
     }
 
@@ -343,8 +345,8 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
+        this.setVisible(false);
+        hehe.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
     private String validation(LList<Customer> CustList){

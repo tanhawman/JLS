@@ -5,8 +5,7 @@ import java.util.Date;
 
 public class Order {
     private String order_ID;
-    private String[] item_name;
-    private int[] quantity;
+    private OrderItem[] O_Item;
     private String address;
     private String priority;
     private String del_date;
@@ -18,10 +17,9 @@ public class Order {
     private int total_bill;
     private String cust_name;
     
-    public Order(String order_ID, String[] item_name, int[] quantity, String address, String priority, String del_date, String status, int distance, String pickup_date, String pickup_time, boolean isPaid, int total_bill, String cust_name) {
+    public Order(String order_ID, OrderItem[] O_Item, String address, String priority, String del_date, String status, int distance, String pickup_date, String pickup_time, boolean isPaid, int total_bill, String cust_name) {
         this.order_ID = order_ID;
-        this.item_name = item_name;
-        this.quantity = quantity;
+        this.O_Item = O_Item;
         this.address = address;
         this.priority = priority;
         this.del_date = del_date;
@@ -45,26 +43,18 @@ public class Order {
         this.order_ID = order_ID;
     }
 
-    public String[] getItem_name() {
-        return item_name;
-    }
-
-    public void setItem_name(String[] item_name) {
-        this.item_name = item_name;
-    }
-
-    public int[] getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int[] quantity) {
-        this.quantity = quantity;
-    }
-
     public String getAddress() {
         return address;
     }
 
+    public OrderItem[] getO_Item() {
+        return O_Item;
+    }
+
+    public void setO_Item(OrderItem[] O_Item) {
+        this.O_Item = O_Item;
+    }
+    
     public void setAddress(String address) {
         this.address = address;
     }

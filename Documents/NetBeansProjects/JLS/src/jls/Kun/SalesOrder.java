@@ -10,7 +10,9 @@ import javax.swing.table.DefaultTableModel;
 import jls.Customer;
 import jls.HomePage;
 import jls.Order;
+import jls.OrderItem;
 import jls.Product;
+import jls.Purchase;
 
 /**
  *
@@ -22,24 +24,25 @@ public class SalesOrder extends javax.swing.JFrame {
     LList<Order> OrderList;
     SelectItem selectitem;
     SelectItem_CorCust selectItem_CorCust;
-    HomePage homepage;
+    Purchase homepage;
     Fresh fresh;
     Bouquet bouquet;
     ConfirmOrder p1;
-
+    OrderItem[] oi = new OrderItem[99];
+    String order_id;
     /**
      * Creates new form SalesOrder
      */
-    public SalesOrder(Fresh fresh, Bouquet bouquet, ConfirmOrder confirmorder, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, HomePage homepage, SelectItem_CorCust selectItem_CorCust) {
+    public SalesOrder(Fresh fresh, Bouquet bouquet, ConfirmOrder confirmorder, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, Purchase homepage, SelectItem_CorCust selectItem_CorCust) {
         this.homepage = homepage;
         this.CustList = CustList;
         this.OrderList = OrderList;
+        this.ProductList = ProductList;
         this.selectitem = selectitem;
         this.selectItem_CorCust = selectItem_CorCust;
         p1 = confirmorder;
         initComponents();
         
-
         updateDetails();
         addRowToJTable();
         
@@ -48,15 +51,18 @@ public class SalesOrder extends javax.swing.JFrame {
         String total = jLabel9.getText();
         String name = jLabel11.getText();
 
-        Order newOrder = new Order(orderid, item, qty, address, " ", " ", "Pending", 0, "Delivery", "Delivery", true, Integer.valueOf(total), name);
+        Order newOrder = new Order(orderid, oi, address, " ", " ", "Pending", 0, "Delivery", "Delivery", true, Integer.valueOf(total), name);
         OrderList.add(newOrder);
         
     }
      
     public void updateDetails(){
-        int orderid = 7;
-        jLabel10.setText("O00" + orderid);
-        orderid++;
+        
+        for (int i = 1; i <= OrderList.getNumberOfEntries(); i++) {
+            order_id = "O" + String.format("%03d", (i + 1));
+        }
+                
+        jLabel10.setText(order_id);
         
         for(int i=1; i<CustList.getNumberOfEntries(); i++){
             if(homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())){
@@ -94,6 +100,7 @@ public class SalesOrder extends javax.swing.JFrame {
         
     }
     
+    
     String[] item = new String[20];
     int[] qty = new int[20];
     int num = 0;
@@ -115,9 +122,16 @@ public class SalesOrder extends javax.swing.JFrame {
                 row[1] = model1.getValueAt(i, 2);
                 row[2] = model1.getValueAt(i, 3);
                 row[3] = total;
-                model.addRow(row);    
-                item[num] = model2.getValueAt(i, 0).toString();
+                model.addRow(row);
+                item[num] = model1.getValueAt(i, 0).toString();
                 qty[num] = Integer.parseInt(model1.getValueAt(i, 3).toString());
+                Product pname = null;
+                for(int j = 1; j <= ProductList.getNumberOfEntries(); j++){
+                    if(item[num].equals(ProductList.getEntry(j).getName())){
+                        pname = ProductList.getEntry(j);
+                    }
+                }
+                oi[i] = new OrderItem(pname,qty[num]);
                 num++;
             }
                 totalPrice += total;
@@ -127,7 +141,7 @@ public class SalesOrder extends javax.swing.JFrame {
         
        
         
-        for (int i = 0; i < model2.getRowCount(); i++){           
+        for (int i = 0; i < model2.getRowCount(); i++){         
             boolean p2chkOrder = (boolean) p1.p1.p2.jTable1.getValueAt(i, 1);
             int p2chkPrice = Integer.parseInt(p1.p1.p2.jTable1.getValueAt(i, 2).toString());
             int p2chkQty = Integer.parseInt(p1.p1.p2.jTable1.getValueAt(i, 3).toString());
@@ -139,7 +153,16 @@ public class SalesOrder extends javax.swing.JFrame {
                 row[2] = model2.getValueAt(i, 3);
                 row[3] = total;
                 model.addRow(row);    
-                
+                item[num] = model2.getValueAt(i, 0).toString();
+                qty[num] = Integer.parseInt(model2.getValueAt(i, 3).toString());
+                Product pname = null;
+                for(int j = 1; j <= ProductList.getNumberOfEntries(); j++){
+                    if(item[num].equals(ProductList.getEntry(j).getName())){
+                        pname = ProductList.getEntry(j);
+                    }
+                }
+                oi[i] = new OrderItem(pname,qty[num]);
+                num++;
             }
                 totalPrice += total;
                 jLabel9.setText(Integer.toString(totalPrice));
@@ -320,8 +343,6 @@ public class SalesOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         
-        
         this.dispose();
         new HomePage(OrderList, ProductList, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

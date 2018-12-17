@@ -13,12 +13,16 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
     LList<Order> OrderList;
     LList<Product> ProductList;
     LList<Arrangement> ArrangeList;
+    HomePage hp;
+    GenInvoicePayment gip;
+    RegisterForm rf;
 
     public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, HomePage aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
+        this.hp = aThis; 
         initComponents();
     }
     
@@ -27,6 +31,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
+        this.gip = aThis;
         initComponents();
     }
     
@@ -35,6 +40,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
+        rf = aThis;
         initComponents();
     }
 
@@ -153,7 +159,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
 
     private void regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.setVisible(false);
         new RegisterForm(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_regActionPerformed
 
@@ -170,15 +176,17 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
 
     private void InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoiceActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new GenInvoicePayment(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
+        this.setVisible(false);
+        gip.setVisible(true);
+        // new GenInvoicePayment(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_InvoiceActionPerformed
 
     private void backMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuActionPerformed
         // TODO add your handling code here:
         // BACK TO MAIN MENU
-        this.dispose();
-        new HomePage(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
+        this.setVisible(false);
+        hp.setVisible(true);
+//        new haha(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_backMenuActionPerformed
 //
 //    /**

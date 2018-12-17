@@ -46,17 +46,13 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
         for(int i=1; i<OrderList.getNumberOfEntries(); i++){
             if(model.getValueAt(selectedRowIndex, 2).toString().equals(OrderList.getEntry(i).getCust_name())){
                 jLabel13.setText(OrderList.getEntry(i).getAddress());
-
             }
-            
         }  
                         
         for(int i=1; i<CustList.getNumberOfEntries(); i++){
             if(model.getValueAt(selectedRowIndex, 2).toString().equals(CustList.getEntry(i).getName())){
                 jLabel12.setText(CustList.getEntry(i).getContact());
-
             }
-            
         }  
     }
     
@@ -65,21 +61,29 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
     DefaultTableModel model1  = (DefaultTableModel)p1.jTable1.getModel();
     int selectedRowIndex = p1.jTable1.getSelectedRow();
     Object rowData[] = new Object[4];
+    
+        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
+            if(model1.getValueAt(selectedRowIndex, 1).toString().equals(OrderList.getEntry(i).getOrder_ID())){
+                for(int j=0; j<OrderList.getEntry(i).getO_Item().length; j++){
 
-        
-        for(int i=1; i<OrderList.getNumberOfEntries(); i++){
-//            if(model1.getValueAt(selectedRowIndex, 1).toString().equals(OrderList.getEntry(i).getOrder_ID())){
-//                for(int j=0; j<OrderList.getEntry(i).getItem_name().length; i++){
-//                    rowData[0] = OrderList.getEntry(i).getItem_name();
-//                    rowData[1] = OrderList.getEntry(i).getItem_name();
-//                    rowData[2] = OrderList.getEntry(i).getQuantity();
-//                    rowData[3] = OrderList.getEntry(i).getItem_name();
-//                    model.addRow(rowData);
-//                }
-//                
-//            
-//                jLabel9.setText(Integer.toString(OrderList.getEntry(i).getTotal_bill()));
-//            }
+                    rowData[0] = OrderList.getEntry(i).getO_Item()[j].getPname().getName();
+                    rowData[2] = OrderList.getEntry(i).getO_Item()[j].getQuantity();
+                    
+                    int qty = OrderList.getEntry(i).getO_Item()[j].getQuantity();
+                    int price = OrderList.getEntry(i).getO_Item()[j].getPname().getPrice();
+                    int total = qty * price;
+                        rowData[1] = price;
+                        rowData[3] = total;                    
+
+
+                    model.addRow(rowData);
+                    
+                    
+                }
+                
+            
+                jLabel9.setText(Integer.toString(OrderList.getEntry(i).getTotal_bill()));
+            }
                
             
 

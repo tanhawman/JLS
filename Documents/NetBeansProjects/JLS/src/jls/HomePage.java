@@ -29,32 +29,6 @@ public class HomePage extends javax.swing.JFrame {
     Customer c5 = new Customer("Teo Jun Jie","female","corp_cust","801212-10-2222","No. 2 Monster Hunter World Iceborne","0112312221", "Freeze", 0, 100);
     Customer c6 = new Customer("Teo Zhuo Yang","male","consumer","890813-16-5412","No.27 Mie Jin Long","0124312889", "Active", 0, 0);
     
-    String[] item_name_o1 = {"Lily", "Rose"};
-    int[] quantity_o1 ={3,5};
-    
-    String[] item_name_o2 = {"Chrysanthemum", "Rose bouquet"};
-    int[] quantity_o2 ={5,1};
-    
-    String[] item_name_o3 = {"Lily bouquet", "Chrysanthemum bouquet"};
-    int[] quantity_o3 ={1,2};
-    
-    String[] item_name_o4 = {"Rose", "Chrysanthemum"};
-    int[] quantity_o4 ={10,10};
-    
-    String[] item_name_o5 = {"Rose", "Lily", "Chrysanthemum", "Lily bouquet"};
-    int[] quantity_o5 ={5,5,5,2};
-    
-    String[] item_name_o6 = {"Rose bouquet", "Lily bouquet", "Chrysanthemum bouquet"};
-    int[] quantity_o6 ={1,2,3};
- 
-    // public Order(String order_ID, String[] item_name, int[] quantity, String address, String priority, String del_date, String status, int distance, String pickup_date, String pickup_time, boolean isPaid, int total_bill, String cust_name)
-    Order o1 = new Order("O001", item_name_o1, quantity_o1, "Jalan Tak Ada, 53300 Kuala Lumpur", "Express", " ", "Pending", 250, "Delivery", "Delivery", true, 117, "Tan Yee Kun");
-    Order o2 = new Order("O002", item_name_o2, quantity_o2, "No.123 Jalan awda", "Express", "01/12/18", "Delivered", 300, "Delivery", "Delivery", false, 150,"Tong Chun Ken");
-    Order o3 = new Order("O003", item_name_o3, quantity_o3, "Self Pick-Up", "Normal", " ", "Pending", 0, "20/12/18", "10.00 am", true, 225, "Teo Zhuo Yang");
-    Order o4 = new Order("O004", item_name_o4, quantity_o4, "Self Pick-Up", "Flexi", "03/12/18", "Delivered", 0, "03/12/18", "12:00 pm", false, 290, "Tan Haw Man");
-    Order o5 = new Order("O005", item_name_o5, quantity_o5, "No. 2 Monster Hunter World Iceborne", "Normal", "05/12/18", "Delivered", 320, "Delivery", "Delivery", false, 365, "Teo Jun Jie");
-    Order o6 = new Order("O006", item_name_o6, quantity_o6, "Self Pick-Up", "Flexi", " ", "Pending", 0, "25/12/18", "11.00 am", true, 455, "Soh Shi Yee");
-
     // public Product(String name, String desc, String category, int in_stock, int price, int dis_rate)
     Product p1 = new Product("Rose", "A beautiful rose.", "fresh_flower", 40, 15, 0);
     Product p2 = new Product("Lily", "A beautiful lily.", "fresh_flower", 35, 14, 0);
@@ -64,6 +38,47 @@ public class HomePage extends javax.swing.JFrame {
     Product p6 = new Product("Chrysanthemum bouquet", "A beautiful chrysanthemum bouquet.", "bouquet", 10, 75, 0);
     Product p7 = new Product("Teddy bear", "A cute teddy bear.", "accessory", 22, 30, 50);
     Product p8 = new Product("Heart balloon", "A lovely heart balloon.", "accessory", 30, 20, 0);
+    
+    OrderItem oi_1_1 = new OrderItem(p2, 3);
+    OrderItem oi_1_2 = new OrderItem(p1, 5);
+    
+    OrderItem[] oi_1 = {oi_1_1, oi_1_2};
+    
+    OrderItem oi_2_1 = new OrderItem(p6, 5);
+    OrderItem oi_2_2 = new OrderItem(p4, 1);
+    
+    OrderItem[] oi_2 = {oi_2_1, oi_2_2};
+    
+    OrderItem oi_3_1 = new OrderItem(p5, 1);
+    OrderItem oi_3_2 = new OrderItem(p6, 2);
+    
+    OrderItem[] oi_3 = {oi_3_1, oi_3_2};
+    
+    OrderItem oi_4_1 = new OrderItem(p1, 10);
+    OrderItem oi_4_2 = new OrderItem(p6, 10);
+    
+    OrderItem[] oi_4 = {oi_4_1, oi_4_2};
+    
+    OrderItem oi_5_1 = new OrderItem(p1, 5);
+    OrderItem oi_5_2 = new OrderItem(p2, 5);
+    OrderItem oi_5_3 = new OrderItem(p6, 5);
+    OrderItem oi_5_4 = new OrderItem(p5, 2);
+    
+    OrderItem[] oi_5 = {oi_5_1, oi_5_2, oi_5_3, oi_5_4};
+    
+    OrderItem oi_6_1 = new OrderItem(p4, 2);
+    OrderItem oi_6_2 = new OrderItem(p5, 5);
+    OrderItem oi_6_3 = new OrderItem(p6, 5);
+    
+    OrderItem[] oi_6 = {oi_6_1, oi_6_2, oi_6_3};
+
+    // public Order(String order_ID, String[] item_name, int[] quantity, String address, String priority, String del_date, String status, int distance, String pickup_date, String pickup_time, boolean isPaid, int total_bill, String cust_name)
+    Order o1 = new Order("O001", oi_1, "Jalan Tak Ada, 53300 Kuala Lumpur", "Express", " ", "Pending", 250, "Delivery", "Delivery", true, 117, "Tan Yee Kun");
+    Order o2 = new Order("O002", oi_2, "No.123 Jalan awda", "Express", "01/12/18", "Delivered", 300, "Delivery", "Delivery", false, 455,"Tong Chun Ken");
+    Order o3 = new Order("O003", oi_3, "Self Pick-Up", "Normal", " ", "Pending", 0, "20/12/18", "10.00 am", true, 225, "Teo Zhuo Yang");
+    Order o4 = new Order("O004", oi_4, "Self Pick-Up", "Flexi", "03/12/18", "Delivered", 0, "03/12/18", "12:00 pm", false, 900, "Tan Haw Man");
+    Order o5 = new Order("O005", oi_5, "No. 2 Monster Hunter World Iceborne", "Normal", "05/12/18", "Delivered", 320, "Delivery", "Delivery", false, 670, "Teo Jun Jie");
+    Order o6 = new Order("O006", oi_6, "Self Pick-Up", "Flexi", " ", "Pending", 0, "25/12/18", "11.00 am", true, 910, "Soh Shi Yee");
     
     //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice) 
     Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear","Express",90);
@@ -120,7 +135,7 @@ public class HomePage extends javax.swing.JFrame {
         this.ProductList = ProductList;
         initComponents();
     }
-      
+    
     public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, Priority_Table aThis) {  
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
@@ -134,6 +149,12 @@ public class HomePage extends javax.swing.JFrame {
     }
         
     public HomePage(LList<Order> OrderList,LList<Product> ProductList, SalesOrder aThis) {  
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        initComponents();
+    }
+    
+    public HomePage(LList<Order> OrderList,LList<Customer> CustList,LList<Product> ProductList, CatalogOrder aThis) {  
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         initComponents();
@@ -399,10 +420,8 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jLayeredPane1.removeAll();
-        jLayeredPane1.add(jPanel5);
-        jLayeredPane1.repaint();
-        jLayeredPane1.revalidate();
+         this.dispose();
+        new Purchase(CustList,  OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -414,7 +433,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // KEN
-        this.dispose();
+        this.setVisible(false);
         new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -447,18 +466,18 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        for(int i=1; i<CustList.getNumberOfEntries(); i++){
-            if(jTextField1.getText().toString().equals(CustList.getEntry(i).getIc())){
-                if(CustList.getEntry(i).getType().equals("consumer")){
-                    this.dispose();
-                    new SelectItem(ProductList, CustList, OrderList, this).setVisible(true);
-                }
-                else{
-                    this.dispose();
-                    new SelectItem_CorCust(ProductList, CustList, OrderList, this).setVisible(true);
-                }
-            }
-        }
+//        for(int i=1; i<CustList.getNumberOfEntries(); i++){
+//            if(jTextField1.getText().equals(CustList.getEntry(i).getIc())){
+//                if(CustList.getEntry(i).getType().equals("consumer")){
+//                    this.dispose();
+//                    new SelectItem(ProductList, CustList, OrderList, this).setVisible(true);
+//                }
+//                else{
+//                    this.dispose();
+//                    new SelectItem_CorCust(ProductList, CustList, OrderList, this).setVisible(true);
+//                }
+//            }
+//        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed

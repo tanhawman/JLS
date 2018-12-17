@@ -17,6 +17,7 @@ import jls.Customer;
 import jls.HomePage;
 import jls.Order;
 import jls.Product;
+import jls.Purchase;
 
 /**
  *
@@ -26,7 +27,7 @@ public class SelectItem extends javax.swing.JFrame {
     LList<Product> ProductList = new LList<>();
     LList<Customer> CustList = new LList<>();
     LList<Order> OrderList = new LList<>();
-    HomePage homepage;
+    Purchase homepage;
     SelectItem_CorCust selectItem_CorCust;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
@@ -34,7 +35,7 @@ public class SelectItem extends javax.swing.JFrame {
     /**
      * Creates new form SelectItem
      */
-    public SelectItem(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, HomePage homepage) {
+    public SelectItem(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, Purchase homepage) {
         this.ProductList = ProductList;
         this.CustList = CustList;
         this.OrderList = OrderList;
@@ -368,7 +369,7 @@ public class SelectItem extends javax.swing.JFrame {
             if (select == 0){
                 model.fireTableDataChanged();
                 this.dispose();
-                new ConfirmOrder(p1,p2, this, CustList, OrderList, selectItem_CorCust, homepage).setVisible(true);                                   
+                new ConfirmOrder(p1,p2, this, CustList, OrderList, selectItem_CorCust, homepage, ProductList).setVisible(true);                                   
             }
         }     
         

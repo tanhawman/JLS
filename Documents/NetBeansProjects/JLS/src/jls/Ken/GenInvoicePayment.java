@@ -23,6 +23,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
     int total_bill = 0;
     int change = 0;
     String name_txt;
+    CustomerInvoiceMain cim;
 
     public GenInvoicePayment(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
         initComponents();
@@ -31,6 +32,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
+        cim = aThis;
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;
@@ -248,7 +250,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
     
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.setVisible(false);
         new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_BackActionPerformed
 
