@@ -20,13 +20,14 @@ public class Purchase extends javax.swing.JFrame {
     LList<Order> OrderList;
     LList<Product> ProductList;
     LList<Arrangement> ArrangeList;
+    HomePage hp;
         PlaceHolder text1;
     public Purchase(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, HomePage aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
-       
+        this.hp = aThis;
         initComponents();
           text1 = new PlaceHolder(jTextField1,"97xxxx-xx-xxxx");
           
@@ -96,11 +97,11 @@ public class Purchase extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new HomePage().setVisible(true);
+        new HomePage(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-              for(int i=1; i<CustList.getNumberOfEntries(); i++){
+              for(int i=1; i<=CustList.getNumberOfEntries(); i++){
             if(jTextField1.getText().equals(CustList.getEntry(i).getIc())){
                 if(CustList.getEntry(i).getType().equals("consumer")){
                     this.dispose();

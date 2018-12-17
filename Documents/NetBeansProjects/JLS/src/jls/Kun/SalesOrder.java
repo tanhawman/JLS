@@ -27,8 +27,8 @@ public class SalesOrder extends javax.swing.JFrame {
     Purchase homepage;
     Fresh fresh;
     Bouquet bouquet;
-    ConfirmOrder p1;
-    OrderItem[] oi = new OrderItem[99];
+    ConfirmOrder confirmOrder;
+    OrderItem[] oi;
     String order_id;
     /**
      * Creates new form SalesOrder
@@ -40,7 +40,9 @@ public class SalesOrder extends javax.swing.JFrame {
         this.ProductList = ProductList;
         this.selectitem = selectitem;
         this.selectItem_CorCust = selectItem_CorCust;
-        p1 = confirmorder;
+        this.fresh = fresh;
+        this.bouquet = bouquet;
+        this.confirmOrder = confirmorder;
         initComponents();
         
         updateDetails();
@@ -91,11 +93,11 @@ public class SalesOrder extends javax.swing.JFrame {
         
         jLabel14.setText("Pending");
         
-        if(p1.rdpickup.isSelected() == true){
+        if(confirmOrder.rdpickup.isSelected() == true){
             jLabel13.setText("Self Pick-Up");
         }
         else{
-            jLabel13.setText(p1.p2.jLabel2.getText());
+            jLabel13.setText(confirmOrder.p2.jLabel2.getText());
         }
         
     }
@@ -106,15 +108,31 @@ public class SalesOrder extends javax.swing.JFrame {
     int num = 0;
     public void addRowToJTable(){
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        DefaultTableModel model1 = (DefaultTableModel)p1.p1.jTable1.getModel();
-        DefaultTableModel model2 = (DefaultTableModel)p1.p2.jTable1.getModel();
+        DefaultTableModel model1 = (DefaultTableModel)fresh.jTable1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel)bouquet.jTable1.getModel();
         Object[] row = new Object[4];
         int totalPrice = 0;
+        int itemNum = 0;
+        for (int i = 0; i < model1.getRowCount(); i++){
+            boolean p1chkOrder = (boolean) fresh.jTable1.getValueAt(i, 1);
+            int p1chkQty = Integer.parseInt(fresh.jTable1.getValueAt(i, 3).toString());
+            if(p1chkOrder == true && p1chkQty > 0){
+                itemNum++;
+            }
+        }         
+        for (int i = 0; i < model2.getRowCount(); i++){
+            boolean p2chkOrder = (boolean) bouquet.jTable1.getValueAt(i, 1);
+            int p2chkQty = Integer.parseInt(bouquet.jTable1.getValueAt(i, 3).toString());
+            if(p2chkOrder == true && p2chkQty > 0){
+                itemNum++;
+            }
+        } 
+        oi = new OrderItem[itemNum];
         
         for (int i = 0; i < model1.getRowCount(); i++){           
-            boolean p1chkOrder = (boolean) p1.p1.p1.jTable1.getValueAt(i, 1);
-            int p1chkPrice = Integer.parseInt(p1.p1.p1.jTable1.getValueAt(i, 2).toString());
-            int p1chkQty = Integer.parseInt(p1.p1.p1.jTable1.getValueAt(i, 3).toString());
+            boolean p1chkOrder = (boolean) fresh.jTable1.getValueAt(i, 1);
+            int p1chkPrice = Integer.parseInt(fresh.jTable1.getValueAt(i, 2).toString());
+            int p1chkQty = Integer.parseInt(fresh.jTable1.getValueAt(i, 3).toString());
             int total = p1chkPrice * p1chkQty;
 
             if(p1chkOrder == true && p1chkQty > 0){             
@@ -131,7 +149,7 @@ public class SalesOrder extends javax.swing.JFrame {
                         pname = ProductList.getEntry(j);
                     }
                 }
-                oi[i] = new OrderItem(pname,qty[num]);
+                oi[num] = new OrderItem(pname,qty[num]);
                 num++;
             }
                 totalPrice += total;
@@ -142,9 +160,9 @@ public class SalesOrder extends javax.swing.JFrame {
        
         
         for (int i = 0; i < model2.getRowCount(); i++){         
-            boolean p2chkOrder = (boolean) p1.p1.p2.jTable1.getValueAt(i, 1);
-            int p2chkPrice = Integer.parseInt(p1.p1.p2.jTable1.getValueAt(i, 2).toString());
-            int p2chkQty = Integer.parseInt(p1.p1.p2.jTable1.getValueAt(i, 3).toString());
+            boolean p2chkOrder = (boolean) bouquet.jTable1.getValueAt(i, 1);
+            int p2chkPrice = Integer.parseInt(bouquet.jTable1.getValueAt(i, 2).toString());
+            int p2chkQty = Integer.parseInt(bouquet.jTable1.getValueAt(i, 3).toString());
             int total = p2chkPrice * p2chkQty;
 
             if(p2chkOrder == true && p2chkQty > 0){             
@@ -161,7 +179,7 @@ public class SalesOrder extends javax.swing.JFrame {
                         pname = ProductList.getEntry(j);
                     }
                 }
-                oi[i] = new OrderItem(pname,qty[num]);
+                oi[num] = new OrderItem(pname,qty[num]);
                 num++;
             }
                 totalPrice += total;
@@ -185,8 +203,6 @@ public class SalesOrder extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -195,6 +211,8 @@ public class SalesOrder extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sales Order");
@@ -220,16 +238,6 @@ public class SalesOrder extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Order Details: ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Item", "Price (RM)", "Quantity", "Total (RM)"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Total Price (RM): ");
 
@@ -252,46 +260,28 @@ public class SalesOrder extends javax.swing.JFrame {
 
         jLabel14.setText("jLabel14");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item", "Price (RM)", "Quantity", "Total (RM)"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel13)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel2))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel11)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(290, 290, 290)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -300,6 +290,39 @@ public class SalesOrder extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jLabel9)
                 .addGap(111, 111, 111))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel13)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(290, 290, 290)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
