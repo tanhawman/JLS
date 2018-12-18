@@ -129,6 +129,7 @@ public class HomePage extends javax.swing.JFrame {
         
         initComponents();
         text1 = new PlaceHolder(jTextField1,"97xxxx-xx-xxxx");
+        
     }
     public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, price1 aThis) {  
         this();
@@ -337,7 +338,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -411,7 +412,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton5))
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(jPanel5, "card3");

@@ -60,8 +60,9 @@ public class price1 extends javax.swing.JFrame {
         String fw = (String) flower.getValueAt(f_price, 0);
         String acce = (String) accessories.getValueAt(ass_price, 0);
         String pr = (String) priority.getValueAt(p_price, 0);
-
-        Arrangement newArr = new Arrangement(id, sty, sz, fw, acce, pr, Integer.valueOf(price));
+        String a_date = null;
+        String a_state = "Pending";
+        Arrangement newArr = new Arrangement(id, sty, sz, fw, acce, pr, Integer.valueOf(price),a_date,a_state);
 
         ArrangeList.add(newArr);
 

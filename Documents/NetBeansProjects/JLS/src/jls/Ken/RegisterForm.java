@@ -80,7 +80,7 @@ public class RegisterForm extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         back = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Registration");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
