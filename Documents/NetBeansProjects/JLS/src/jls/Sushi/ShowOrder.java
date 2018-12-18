@@ -54,11 +54,12 @@ public class ShowOrder extends javax.swing.JFrame {
     
      public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    Object rowData[] = new Object[3];
+    Object rowData[] = new Object[4];
         for(int i=1; i<=ArrangeList.getNumberOfEntries(); i++){
             rowData[0] = ArrangeList.getEntry(i).getA_ID();
             rowData[1] = ArrangeList.getEntry(i).getA_date();
             rowData[2] = ArrangeList.getEntry(i).getA_priority();
+            rowData[3] = ArrangeList.getEntry(i).getA_status();
             model.addRow(rowData);
         }
     }
@@ -165,14 +166,14 @@ public class ShowOrder extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ArrangementID", "Date", "Priority"
+                "ArrangementID", "Date", "Priority", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {

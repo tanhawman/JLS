@@ -10,9 +10,9 @@ public class Arrangement {
     private int a_TotalPrice;
     private String aBil;
     private String a_date;
-    private int distance;
+    private String a_status;
 
-    public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice, String a_date, int distance) {
+    public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice, String a_date, String a_status) {
         this.a_ID = a_ID;
         this.a_style = a_style;
         this.a_size = a_size;
@@ -22,16 +22,18 @@ public class Arrangement {
         this.a_TotalPrice = a_TotalPrice;
         this.aBil = aBil;
         this.a_date = a_date;
-        this.distance = distance;
+        this.a_status=a_status;
     }
 
-    public void setDistance(int distance) {
-        this.distance = distance;
+    public String getA_status() {
+        return a_status;
     }
 
-    public int getDistance() {
-        return distance;
+    public void setA_status(String a_status) {
+        this.a_status = a_status;
     }
+
+    
 
     public void setaBil(String aBil) {
         this.aBil = aBil;
