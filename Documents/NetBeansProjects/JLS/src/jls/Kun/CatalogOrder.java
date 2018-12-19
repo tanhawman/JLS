@@ -23,10 +23,11 @@ public class CatalogOrder extends javax.swing.JFrame {
     LList<Order> OrderList;
     LList<Customer> CustList = new LList<>();
     LList<Product> ProductList = new LList<>();
+
     /**
      * Creates new form CatalogOrder
      */
-    
+
     public CatalogOrder(LList<Order> OrderList, LList<Customer> CustList, LList<Product> ProductList) {
 
         this.OrderList = OrderList;
@@ -37,37 +38,36 @@ public class CatalogOrder extends javax.swing.JFrame {
         addRowToJTable();
     }
 
-    
-    
-    public class Item{
+    public class Item {
+
         public int no;
         public String orderId;
         public String custName;
         public String orderStatus;
-        
-        public Item(int no, String orderId, String custName, String orderStatus){
+
+        public Item(int no, String orderId, String custName, String orderStatus) {
             this.no = no;
             this.orderId = orderId;
             this.custName = custName;
             this.orderStatus = orderStatus;
         }
     }
-    
-    public void addRowToJTable(){
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    Object rowData[] = new Object[4];
-    int num = 1;
-        
-        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-            if(OrderList.getEntry(i).getStatus().equals("Pending") || OrderList.getEntry(i).getStatus().equals("Delivered")){
-            rowData[0] = num;
-            rowData[1] = OrderList.getEntry(i).getOrder_ID();
-            rowData[2] = OrderList.getEntry(i).getCust_name();
-            rowData[3] = OrderList.getEntry(i).getStatus();
-            model.addRow(rowData);
-            num++;
+
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Object rowData[] = new Object[4];
+        int num = 1;
+
+        for (int i = 1; i <= OrderList.getNumberOfEntries(); i++) {
+            if (OrderList.getEntry(i).getStatus().equals("Pending") || OrderList.getEntry(i).getStatus().equals("Delivered")) {
+                rowData[0] = num;
+                rowData[1] = OrderList.getEntry(i).getOrder_ID();
+                rowData[2] = OrderList.getEntry(i).getCust_name();
+                rowData[3] = OrderList.getEntry(i).getStatus();
+                model.addRow(rowData);
+                num++;
             }
-            
+
         }
     }
 
@@ -161,9 +161,9 @@ public class CatalogOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+
         this.dispose();
-        new CatalogSalesOrder(OrderList, CustList, ProductList,this).setVisible(true);
+        new CatalogSalesOrder(OrderList, CustList, ProductList, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

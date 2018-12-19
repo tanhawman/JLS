@@ -17,6 +17,7 @@ import jls.Product;
 public class Bouquet extends javax.swing.JPanel {
 
     LList<Product> ProductList = new LList<>();
+
     /**
      * Creates new form Bouquet
      */
@@ -26,15 +27,16 @@ public class Bouquet extends javax.swing.JPanel {
         addRowToJTable();
         jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }
-    
-    public class Item{
-    public String item;
-    public boolean order;
-    public int price;
-    public int quantity;
-    public int total;
-        
-        public Item(String Item, boolean Order, int Price, int Quantity, int Total){
+
+    public class Item {
+
+        public String item;
+        public boolean order;
+        public int price;
+        public int quantity;
+        public int total;
+
+        public Item(String Item, boolean Order, int Price, int Quantity, int Total) {
             this.item = Item;
             this.order = Order;
             this.price = Price;
@@ -42,23 +44,23 @@ public class Bouquet extends javax.swing.JPanel {
             this.total = Total;
         }
     }
-    
-    public void addRowToJTable(){
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    Object rowData[] = new Object[5];
-    boolean order = false;
-    int qty = 0;
-    int total = 0;
-        
-        for(int i=1; i<ProductList.getNumberOfEntries(); i++){
-            if(ProductList.getEntry(i).getCategory().equals("bouquet")){
+
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Object rowData[] = new Object[5];
+        boolean order = false;
+        int qty = 0;
+        int total = 0;
+
+        for (int i = 1; i < ProductList.getNumberOfEntries(); i++) {
+            if (ProductList.getEntry(i).getCategory().equals("bouquet")) {
                 rowData[0] = ProductList.getEntry(i).getName();
                 rowData[1] = order;
                 rowData[2] = ProductList.getEntry(i).getPrice();
                 rowData[3] = qty;
                 rowData[4] = total;
                 model.addRow(rowData);
-            }          
+            }
         }
     }
 

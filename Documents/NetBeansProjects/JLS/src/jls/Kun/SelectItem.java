@@ -24,6 +24,7 @@ import jls.Purchase;
  * @author yeekun
  */
 public class SelectItem extends javax.swing.JFrame {
+
     LList<Product> ProductList = new LList<>();
     LList<Customer> CustList = new LList<>();
     LList<Order> OrderList = new LList<>();
@@ -32,6 +33,7 @@ public class SelectItem extends javax.swing.JFrame {
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
     Bouquet p2;
+
     /**
      * Creates new form SelectItem
      */
@@ -53,13 +55,13 @@ public class SelectItem extends javax.swing.JFrame {
         c.gridy = 0;
         jPanel.add(p2, c);
         p1.setVisible(true);
-        p2.setVisible(false);    
+        p2.setVisible(false);
         showName();
     }
-    
-    public void showName(){
-        for(int i=1; i<CustList.getNumberOfEntries(); i++){
-            if(homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())){
+
+    public void showName() {
+        for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
+            if (homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
                 jLabel3.setText(CustList.getEntry(i).getName());
             }
         }
@@ -270,109 +272,102 @@ public class SelectItem extends javax.swing.JFrame {
         boolean order = false;
         int qty = 0;
         int total = 0;
-        
+
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             p1.jTable1.setValueAt(order, i, 1);
             p1.jTable1.setValueAt(qty, i, 3);
             p1.jTable1.setValueAt(total, i, 4);
         }
-        
+
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             p2.jTable1.setValueAt(order, i, 1);
             p2.jTable1.setValueAt(qty, i, 3);
             p2.jTable1.setValueAt(total, i, 4);
         }
-        
+
         lblTotalPrice.setText("0");
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         int totalPrice = 0;
-        
+
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1qty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
             int p1price = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
-            
 
-            if(p1chkOrder == true && p1qty < 1){
+            if (p1chkOrder == true && p1qty < 1) {
                 JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 break;
-            }
-            else if(p1chkOrder == true && p1qty > 0){
+            } else if (p1chkOrder == true && p1qty > 0) {
                 int total = Cal_subtotal(p1price, p1qty);
                 p1.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
-            }
-            else if(p1chkOrder == false && p1qty > 0){
+            } else if (p1chkOrder == false && p1qty > 0) {
                 p1.jTable1.setValueAt(empty, i, 4);
             }
 
         }
-        
+
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(i, 1);
             int p2qty = Integer.parseInt(p2.jTable1.getValueAt(i, 3).toString());
             int p2price = Integer.parseInt(p2.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
-            
 
-            if(p2chkOrder == true && p2qty < 1){
+            if (p2chkOrder == true && p2qty < 1) {
                 JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 break;
-            }
-            else if(p2chkOrder == true && p2qty > 0){
+            } else if (p2chkOrder == true && p2qty > 0) {
                 int total = p2price * p2qty;
                 p2.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
-            }
-            else if(p2chkOrder == false && p2qty > 0){
+            } else if (p2chkOrder == false && p2qty > 0) {
                 p2.jTable1.setValueAt(empty, i, 4);
             }
 
         }
 
-       
+
     }//GEN-LAST:event_btnCalculateActionPerformed
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
         DefaultTableModel model = (DefaultTableModel) p1.jTable1.getModel();
-        boolean error = false; 
+        boolean error = false;
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
 
-            if(p1chkOrder == true && p1chkQty < 1){
-                error = true;     
+            if (p1chkOrder == true && p1chkQty < 1) {
+                error = true;
                 break;
-            }                                                            
+            }
         }
-        
+
         for (int k = 0; k < p2.jTable1.getRowCount(); k++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(k, 1);
             int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(k, 3).toString());
-            
-            if(p2chkOrder == true && p2chkQty < 1){
-                error = true;     
+
+            if (p2chkOrder == true && p2chkQty < 1) {
+                error = true;
                 break;
-            }  
-        }     
-        
-        if(error == true){
-            JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-        else{
-            int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-            if (select == 0){
+
+        if (error == true) {
+            JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (select == 0) {
                 model.fireTableDataChanged();
                 this.dispose();
-                new ConfirmOrder(p1,p2, this, CustList, OrderList, selectItem_CorCust, homepage, ProductList).setVisible(true);                                   
+                new ConfirmOrder(p1, p2, this, CustList, OrderList, selectItem_CorCust, homepage, ProductList).setVisible(true);
             }
-        }     
-        
+        }
+
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
     private void rdBouquetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBouquetActionPerformed
