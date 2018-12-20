@@ -24,9 +24,9 @@ import jls.Purchase;
  */
 public class SelectItem_CorCust extends javax.swing.JFrame {
 
-    LList<Product> ProductList = new LList<>();
-    LList<Customer> CustList = new LList<>();
-    LList<Order> OrderList = new LList<>();
+    LList<Product> ProductList;
+    LList<Customer> CustList;
+    LList<Order> OrderList;
     Purchase homepage;
     SelectItem selectitem;
     GridBagLayout layout = new GridBagLayout();
