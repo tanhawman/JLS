@@ -138,6 +138,8 @@ public class HomePage extends javax.swing.JFrame {
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
         initComponents();
     }
     
@@ -145,6 +147,8 @@ public class HomePage extends javax.swing.JFrame {
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
         initComponents();
     }
         
@@ -152,37 +156,44 @@ public class HomePage extends javax.swing.JFrame {
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
         initComponents();
     }
         
     public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, SalesOrder aThis) {  
         this();
+        this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
         this.CustList = CustList;
         this.OrderList = OrderList;
-        this.ProductList = ProductList;
         initComponents();
     }
     
     public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, SelectItem aThis) {  
         this();
+        this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
         this.CustList = CustList;
         this.OrderList = OrderList;
-        this.ProductList = ProductList;
         initComponents();
     }
     
     public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, SelectItem_CorCust aThis) {  
         this();
+        this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
         this.CustList = CustList;
         this.OrderList = OrderList;
-        this.ProductList = ProductList;
         initComponents();
     }
     
     public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CatalogOrder aThis) {  
         this();
-        this.OrderList = OrderList;
+        this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
         initComponents();
     }
         
@@ -206,8 +217,10 @@ public class HomePage extends javax.swing.JFrame {
 
     public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList){
         this();
-        this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
+        this.CustList = CustList;
+        this.OrderList = OrderList;
         initComponents();
     }
     @SuppressWarnings("unchecked")
