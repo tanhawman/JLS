@@ -143,14 +143,17 @@ public class ManAccStat extends javax.swing.JFrame {
         if(confirm == JOptionPane.YES_OPTION){
             TableColumn status = as.Account.getColumnModel().getColumn(3);
             
-            int row = 0;
-            for(int i = 1; i <=CustList.getNumberOfEntries(); i++ ){
-                    if(as.Account.getValueAt(row, 0).toString().equals(CustList.getEntry(i).getName())){
-                        CustList.getEntry(i).setStatus(as.Account.getValueAt(row, 3).toString());
-                        row++;
+
+                int row = 0;
+                for(int i = 1; i <= CustList.getNumberOfEntries(); i++ ){
+                    if(row < as.Account.getRowCount()){
+                        if(as.Account.getValueAt(row, 0).toString().equals(CustList.getEntry(i).getName())){
+                            CustList.getEntry(i).setStatus(as.Account.getValueAt(row, 3).toString());
+                            row++;
+                        }
                     }
-                
-            }
+                }
+
 
             JOptionPane.showMessageDialog(null, "Update Completed.", "Confirm", JOptionPane.INFORMATION_MESSAGE);
             

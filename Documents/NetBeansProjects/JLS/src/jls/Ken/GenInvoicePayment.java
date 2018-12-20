@@ -308,9 +308,8 @@ public class GenInvoicePayment extends javax.swing.JFrame {
                 }
             
                 int row = 0;
-                int rowCount = ip.jTable1.getRowCount()+1;
-                for(int i=1; i <=OrderList.getNumberOfEntries()+1; i++){
-                    if(!(row == rowCount)){
+                for(int i=1; i <=OrderList.getNumberOfEntries(); i++){
+                    if(row < ip.jTable1.getRowCount()){
                         if(OrderList.getEntry(i).getOrder_ID().equals(ip.jTable1.getValueAt(row, 0).toString())){
                             OrderList.getEntry(i).setIsPaid(true);
                             row++;
