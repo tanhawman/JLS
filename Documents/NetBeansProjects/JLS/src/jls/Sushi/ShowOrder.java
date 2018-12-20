@@ -6,6 +6,7 @@
 package jls.Sushi;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.DateFormat;
@@ -27,12 +28,12 @@ import jls.Order;
  */
 public class ShowOrder extends javax.swing.JFrame { 
     LList<Order> OrderList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     GridBagLayout layout = new GridBagLayout();
     PickUp pu ;
     Delivery de;
 
-    public ShowOrder(LList<Order> OrderList, LList<Arrangement> ArrangeList) {
+    public ShowOrder(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList) {
         initComponents();
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
@@ -55,7 +56,7 @@ public class ShowOrder extends javax.swing.JFrame {
      public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     Object rowData[] = new Object[4];
-        for(int i=1; i<=ArrangeList.getNumberOfEntries(); i++){
+        for(int i=1; i<=ArrangeList.getLength(); i++){
             rowData[0] = ArrangeList.getEntry(i).getA_ID();
             rowData[1] = ArrangeList.getEntry(i).getA_date();
             rowData[2] = ArrangeList.getEntry(i).getA_priority();

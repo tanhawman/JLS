@@ -6,6 +6,7 @@
 package jls.Ken;
 
 import ADT.LList;
+import ADT.SListInterface;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -20,13 +21,13 @@ public class AccStat extends javax.swing.JPanel {
     LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
 
     public AccStat() {
         initComponents();
     }
 
-    public AccStat(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList) {
+    public AccStat(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;

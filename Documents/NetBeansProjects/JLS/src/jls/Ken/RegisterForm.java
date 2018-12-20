@@ -2,6 +2,7 @@
 package jls.Ken;
 
 import ADT.LList;
+import ADT.SListInterface;
 import javax.swing.JOptionPane;
 import jls.Arrangement;
 import jls.Customer;
@@ -38,10 +39,10 @@ public class RegisterForm extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     CustomerInvoiceMain hehe;
     
-    public RegisterForm(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
+    public RegisterForm(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
        this.CustList = CustList;
        this.OrderList = OrderList;
        this.ProductList = ProductList;

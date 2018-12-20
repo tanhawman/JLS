@@ -6,6 +6,8 @@
 package jls.CusOrder;
 
 import ADT.LList;
+import ADT.SList;
+import ADT.SListInterface;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import jls.Arrangement;
@@ -26,10 +28,11 @@ public class price1 extends javax.swing.JFrame {
     int s5 = 0;
     String Priority;
     String id;
-    LList<Arrangement> ArrangeList = new LList<>();
+    int pr;
+    SListInterface<Arrangement> ArrangeList = new SList<>();
     LList<Product> ProductList = new LList<>();
 
-    public price1(String id, TableModel style, int s_price, TableModel size, int size_price, TableModel flower, int f_price, TableModel accessories, int ass_price, TableModel priority, int p_price, LList<Arrangement> ArrangeList, LList<Product> ProductList, CustomerOrder aThis) {
+    public price1(String id, TableModel style, int s_price, TableModel size, int size_price, TableModel flower, int f_price, TableModel accessories, int ass_price, TableModel priority, int p_price, SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, CustomerOrder aThis) {
         initComponents();
         this.id = id;
         this.ArrangeList = ArrangeList;
@@ -59,7 +62,16 @@ public class price1 extends javax.swing.JFrame {
         String sz = (String) size.getValueAt(size_price, 0);
         String fw = (String) flower.getValueAt(f_price, 0);
         String acce = (String) accessories.getValueAt(ass_price, 0);
-        String pr = (String) priority.getValueAt(p_price, 0);
+        String pr1 =(String)priority.getValueAt(p_price, 0);
+        if(pr1 .equals("Express")){
+            pr =1;
+        }
+        else if(pr1 .equals("Normal")){
+            pr =2;
+        }
+        else{
+            pr =3;
+        }
         String a_date = null;
         String a_state = "Pending";
         Arrangement newArr = new Arrangement(id, sty, sz, fw, acce, pr, Integer.valueOf(price),a_date,a_state);

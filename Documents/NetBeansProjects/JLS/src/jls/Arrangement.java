@@ -1,18 +1,20 @@
 package jls;
 
-public class Arrangement {
+
+
+public class Arrangement implements Comparable<Arrangement>{
     private String a_ID;
     private String a_style;
     private String a_size;
     private String a_flower;
     private String a_accessory;
-    private String a_priority;
+    private int a_priority;
     private int a_TotalPrice;
     private String aBil;
     private String a_date;
     private String a_status;
 
-    public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice, String a_date, String a_status) {
+    public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, int a_priority, int a_TotalPrice, String a_date, String a_status) {
         this.a_ID = a_ID;
         this.a_style = a_style;
         this.a_size = a_size;
@@ -94,11 +96,11 @@ public class Arrangement {
         this.a_accessory = a_accessory;
     }
 
-    public String getA_priority() {
+    public int getA_priority() {
         return a_priority;
     }
 
-    public void setA_priority(String a_priority) {
+    public void setA_priority(int a_priority) {
         this.a_priority = a_priority;
     }
 
@@ -110,5 +112,10 @@ public class Arrangement {
         this.a_TotalPrice = a_TotalPrice;
     }
 
+
+    @Override
+    public int compareTo(Arrangement o) {
+         return Integer.compare(this.getA_priority(),o.getA_priority());
+    }
   
 }

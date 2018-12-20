@@ -6,6 +6,7 @@
 package jls.CusOrder;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.FlowLayout;
 import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
@@ -27,14 +28,14 @@ public class CustomerOrder extends javax.swing.JFrame {
     String style_price;
     String id;
     LList<Product> ProductList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     private DefaultTableModel model;
 
     public CustomerOrder() {
         initComponents();
     }
 
-    public CustomerOrder(LList<Arrangement> ArrangeList, LList<Product> ProductList, HomePage aThis) {
+    public CustomerOrder(SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, HomePage aThis) {
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
         initComponents();
@@ -42,7 +43,7 @@ public class CustomerOrder extends javax.swing.JFrame {
         addRowToJTable4();
         CheckData();
 
-        for (int i = 1; i <= ArrangeList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= ArrangeList.getLength(); i++) {
             id = "A" + String.format("%03d", (i + 1));
         }
 

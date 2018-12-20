@@ -6,6 +6,7 @@
 package jls.Sushi;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,13 +20,13 @@ import jls.Order;
  * @author Sushi
  */
 public class EditArrange extends javax.swing.JFrame {
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     private TableModel tablemodel;
     private int rownumber;
     /**
      * Creates new form EditArrange
      */
-    public EditArrange(LList<Arrangement> ArrangeList,TableModel dtm, int rownumber) {
+    public EditArrange(SListInterface<Arrangement> ArrangeList,TableModel dtm, int rownumber) {
         initComponents();
         jLabel5.setText((String)dtm.getValueAt(rownumber, 0));
         jLabel6.setText((String)dtm.getValueAt(rownumber, 1));
@@ -183,7 +184,7 @@ public class EditArrange extends javax.swing.JFrame {
         Date date=cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         String updatedate =dateFormat.format(date);
-        for(int i=1; i<=ArrangeList.getNumberOfEntries(); i++){
+        for(int i=1; i<=ArrangeList.getLength(); i++){
                 if(tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())){
                     tablemodel.setValueAt(updatedate, rownumber, 2);
                     ArrangeList.getEntry(i).setA_ID(updatedate);
@@ -195,7 +196,7 @@ public class EditArrange extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String status = "Delivered";
-        for(int i=1; i<=ArrangeList.getNumberOfEntries(); i++){
+        for(int i=1; i<=ArrangeList.getLength(); i++){
                 if(tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())){
                     tablemodel.setValueAt(status, rownumber, 3);
                     ArrangeList.getEntry(i).setA_ID(status);

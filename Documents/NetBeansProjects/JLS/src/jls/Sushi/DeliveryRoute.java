@@ -6,6 +6,7 @@
 package jls.Sushi;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.DateFormat;
@@ -32,7 +33,7 @@ import jls.Order;
  */
 public class DeliveryRoute extends javax.swing.JFrame {
     LList<Order> OrderList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     /**
      * Creates new form DeliveryRoute
      */
@@ -40,7 +41,7 @@ public class DeliveryRoute extends javax.swing.JFrame {
     DeliveryList dl;
     AddNewTable ant;
 
-    public DeliveryRoute(LList<Order> OrderList, LList<Arrangement> ArrangeList) {
+    public DeliveryRoute(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList) {
         initComponents();
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;

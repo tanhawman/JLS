@@ -2,6 +2,7 @@
 package jls.Ken;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JOptionPane;
@@ -16,7 +17,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     GridBagLayout layout = new GridBagLayout();
     InvPay ip ;
     String temp;
@@ -25,7 +26,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
     String name_txt;
     CustomerInvoiceMain cim;
 
-    public GenInvoicePayment(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
+    public GenInvoicePayment(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
         initComponents();
         ip = new InvPay();
         this.CustList = CustList;

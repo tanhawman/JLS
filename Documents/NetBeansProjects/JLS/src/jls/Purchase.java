@@ -6,6 +6,8 @@
 package jls;
 
 import ADT.LList;
+import ADT.SList;
+import ADT.SListInterface;
 import com.placeholder.PlaceHolder;
 import javax.swing.JOptionPane;
 import jls.Kun.SelectItem;
@@ -20,10 +22,10 @@ public class Purchase extends javax.swing.JFrame {
  LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     HomePage hp;
     PlaceHolder text1;
-    public Purchase(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, HomePage aThis) {
+    public Purchase(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, HomePage aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;

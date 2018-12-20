@@ -1,6 +1,7 @@
 package jls.Ken;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.DefaultCellEditor;
@@ -17,11 +18,11 @@ public class ManAccStat extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     GridBagLayout layout = new GridBagLayout();
     AccStat as;
     
-    public ManAccStat(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
+    public ManAccStat(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
         initComponents();
         this.CustList = CustList;
         this.OrderList = OrderList;

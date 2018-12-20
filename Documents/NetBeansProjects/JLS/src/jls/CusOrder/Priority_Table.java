@@ -6,6 +6,8 @@
 package jls.CusOrder;
 
 import ADT.LList;
+import ADT.SList;
+import ADT.SListInterface;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -21,13 +23,14 @@ public class Priority_Table extends javax.swing.JFrame {
 
     private DefaultTableModel model;
 
-    LList<Arrangement> ArrangeList = new LList<>();
+    SListInterface<Arrangement> ArrangeList = new SList<>();
     LList<Product> ProductList = new LList<>();
 
-    public Priority_Table(LList<Arrangement> ArrangeList, LList<Product> ProductList, HomePage aThis) {
+    public Priority_Table(SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, HomePage aThis) {
         initComponents();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
+        
         addRowToJTable();
 
     }
@@ -132,32 +135,44 @@ public class Priority_Table extends javax.swing.JFrame {
 
         Object rowData[] = new Object[2];
 
-        for (int i = 1; i <= ArrangeList.getNumberOfEntries(); i++) {
-            if (ArrangeList.getEntry(i).getA_priority().equals("Express")) {
+        for (int i = 1; i <= ArrangeList.getLength(); i++) {     
+        if (ArrangeList.getEntry(i).getA_priority()== 1) {
                 rowData[0] = ArrangeList.getEntry(i).getA_ID();
-                rowData[1] = ArrangeList.getEntry(i).getA_priority();
+                rowData[1] = "Express";
                 model.addRow(rowData);
             }
+        else if (ArrangeList.getEntry(i).getA_priority() == 2){
+                rowData[0] = ArrangeList.getEntry(i).getA_ID();
+                rowData[1] = "Normal";
+                model.addRow(rowData);
         }
-        Object rowData1[] = new Object[2];
-
-        for (int o = 1; o <= ArrangeList.getNumberOfEntries(); o++) {
-            if (ArrangeList.getEntry(o).getA_priority().equals("Normal")) {
-                rowData1[0] = ArrangeList.getEntry(o).getA_ID();
-                rowData1[1] = ArrangeList.getEntry(o).getA_priority();
-                model.addRow(rowData1);
-            }
+        else{
+                rowData[0] = ArrangeList.getEntry(i).getA_ID();
+                rowData[1] = "Flexi";
+                model.addRow(rowData);
         }
-
-        Object rowData2[] = new Object[2];
-
-        for (int p = 1; p <= ArrangeList.getNumberOfEntries(); p++) {
-            if (ArrangeList.getEntry(p).getA_priority().equals("Flexi")) {
-                rowData2[0] = ArrangeList.getEntry(p).getA_ID();
-                rowData2[1] = ArrangeList.getEntry(p).getA_priority();
-                model.addRow(rowData2);
-            }
-        }
-
+  }
+     
+//        Object rowData1[] = new Object[2];
+//
+//        for (int o = 1; o <= ArrangeList.getNumberOfEntries(); o++) {
+//            if (ArrangeList.getEntry(o).getA_priority().equals("Normal")) {
+//                rowData1[0] = ArrangeList.getEntry(o).getA_ID();
+//                rowData1[1] = ArrangeList.getEntry(o).getA_priority();
+//                model.addRow(rowData1);
+//            }
+//        }
+//
+//        Object rowData2[] = new Object[2];
+//
+//        for (int p = 1; p <= ArrangeList.getNumberOfEntries(); p++) {
+//            if (ArrangeList.getEntry(p).getA_priority().equals("Flexi")) {
+//                rowData2[0] = ArrangeList.getEntry(p).getA_ID();
+//                rowData2[1] = ArrangeList.getEntry(p).getA_priority();
+//                model.addRow(rowData2);
+//            }
+//        }
+    
     }
+
 }

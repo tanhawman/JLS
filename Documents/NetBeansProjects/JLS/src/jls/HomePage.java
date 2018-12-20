@@ -1,6 +1,8 @@
 package jls;
 
 import ADT.LList;
+import ADT.SList;
+import ADT.SListInterface;
 import com.placeholder.PlaceHolder;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -80,17 +82,18 @@ public class HomePage extends javax.swing.JFrame {
     Order o5 = new Order("O005", oi_5, "No. 2 Monster Hunter World Iceborne", "Normal", "05/12/18", "Delivered", 320, "Delivery", "Delivery", false, 670, "Teo Jun Jie");
     Order o6 = new Order("O006", oi_6, "Self Pick-Up", "Flexi", " ", "Pending", 0, "25/12/18", "11.00 am", true, 910, "Soh Shi Yee");
     
-    //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, String a_priority, int a_TotalPrice,string a_date, string a_status) 
-    Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear","Express",90,"10/12/18","Delivered");
-    Arrangement a2 = new Arrangement("A002","Elliptical flower","Small","Lily","Teddy bear","Normal",50,"","Pending");
-    Arrangement a3 = new Arrangement("A003","Vertical flower","Medium","Chrysanthemum","Heart balloon","Flexi",35,"","Pending");
-    
+    //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, int a_priority, int a_TotalPrice,string a_date, string a_status) 
+    Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear",1,90,"10/12/18","Delivered");
+    Arrangement a2 = new Arrangement("A002","Elliptical flower","Small","Lily","Teddy bear",2,50,"","Pending");
+    Arrangement a3 = new Arrangement("A003","Vertical flower","Medium","Chrysanthemum","Heart balloon",3,35,"","Pending");
+    Arrangement a4 = new Arrangement("A004","Vertical flower","Medium","Chrysanthemum","Heart balloon",2,35,"","Pending");
+        
     public String cust_type = "";
     
     LList<Customer> CustList = new LList<>();
     LList<Order> OrderList = new LList<>();
     LList<Product> ProductList = new LList<>();
-    LList<Arrangement> ArrangeList = new LList<>();
+    SListInterface<Arrangement> ArrangeList = new SList<>();
 
     public static void main() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -126,26 +129,26 @@ public class HomePage extends javax.swing.JFrame {
         ArrangeList.add(a1);
         ArrangeList.add(a2);
         ArrangeList.add(a3);
-        
+        ArrangeList.add(a4);
         initComponents();
         text1 = new PlaceHolder(jTextField1,"97xxxx-xx-xxxx");
         
     }
-    public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, price1 aThis) {  
+    public HomePage(SListInterface<Arrangement> ArrangeList,LList<Product> ProductList, price1 aThis) {  
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
         initComponents();
     }
     
-    public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, Priority_Table aThis) {  
+    public HomePage(SListInterface<Arrangement> ArrangeList,LList<Product> ProductList, Priority_Table aThis) {  
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
         initComponents();
     }
         
-    public HomePage(LList<Arrangement> ArrangeList,LList<Product> ProductList, CustomerOrder aThis) {  
+    public HomePage(SListInterface<Arrangement> ArrangeList,LList<Product> ProductList, CustomerOrder aThis) {  
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
@@ -166,7 +169,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
         
-    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
@@ -175,7 +178,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
     
-    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, Purchase aThis) {
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, Purchase aThis) {
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
@@ -184,7 +187,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
 
-    public HomePage(LList<Order> OrderList, LList<Arrangement> ArrangeList){
+    public HomePage(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList){
         this();
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;

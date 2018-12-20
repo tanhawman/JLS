@@ -1,6 +1,7 @@
 package jls.Ken;
 
 import ADT.LList;
+import ADT.SListInterface;
 import jls.Arrangement;
 import jls.Customer;
 import jls.HomePage;
@@ -12,12 +13,12 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
-    LList<Arrangement> ArrangeList;
+    SListInterface<Arrangement> ArrangeList;
     HomePage hp;
     GenInvoicePayment gip;
     RegisterForm rf;
 
-    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, HomePage aThis) {
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, HomePage aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
@@ -26,7 +27,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         initComponents();
     }
     
-    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, GenInvoicePayment aThis) {
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, GenInvoicePayment aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
@@ -35,7 +36,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         initComponents();
     }
     
-    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, RegisterForm aThis) {
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, RegisterForm aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
@@ -44,7 +45,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, LList<Arrangement> ArrangeList, ManAccStat aThis) {
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, ManAccStat aThis) {
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
