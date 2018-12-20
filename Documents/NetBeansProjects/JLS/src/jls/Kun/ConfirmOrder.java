@@ -6,9 +6,11 @@
 package jls.Kun;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JOptionPane;
+import jls.Arrangement;
 import jls.Customer;
 import jls.HomePage;
 import jls.Order;
@@ -26,6 +28,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Order> OrderList;
     LList<Product> ProductList;
+    SListInterface<Arrangement> ArrangeList;
     SelectItem selectitem;
     SelectItem_CorCust selectItem_CorCust;
     SelfPickup p1;
@@ -34,12 +37,13 @@ public class ConfirmOrder extends javax.swing.JFrame {
     /**
      * Creates new form ConfirmOrder
      */
-    public ConfirmOrder(Fresh fresh, Bouquet bouquet, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, SelectItem_CorCust selectItem_CorCust, Purchase homepage, LList<Product> ProductList) {
+    public ConfirmOrder(Fresh fresh, Bouquet bouquet, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, SelectItem_CorCust selectItem_CorCust, Purchase homepage, LList<Product> ProductList, SListInterface<Arrangement> ArrangeListt) {
         this.selectitem = selectitem;
         this.selectItem_CorCust = selectItem_CorCust;
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
+        this.ArrangeList = ArrangeListt;
         this.homepage = homepage;
         initComponents();
         rdpickup.setSelected(true);
@@ -190,14 +194,14 @@ public class ConfirmOrder extends javax.swing.JFrame {
                 int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (select == 0) {
                     this.dispose();
-                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust).setVisible(true);
+                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust, ArrangeList).setVisible(true);
                 }
             }
         } else {
             int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (select == 0) {
                 this.dispose();
-                new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust).setVisible(true);
+                new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust, ArrangeList).setVisible(true);
             }
         }
 

@@ -6,11 +6,13 @@
 package jls.Kun;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFormattedTextField;
 import javax.swing.table.DefaultTableModel;
+import jls.Arrangement;
 import jls.Customer;
 import jls.HomePage;
 import jls.Order;
@@ -29,6 +31,7 @@ public class SalesOrder extends javax.swing.JFrame {
     LList<Order> OrderList;
     SelectItem selectitem;
     SelectItem_CorCust selectItem_CorCust;
+    SListInterface<Arrangement> ArrangeList;
     Purchase homepage;
     Fresh fresh;
     Bouquet bouquet;
@@ -39,12 +42,13 @@ public class SalesOrder extends javax.swing.JFrame {
     /**
      * Creates new form SalesOrder
      */
-    public SalesOrder(Fresh fresh, Bouquet bouquet, ConfirmOrder confirmorder, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, Purchase homepage, SelectItem_CorCust selectItem_CorCust) {
+    public SalesOrder(Fresh fresh, Bouquet bouquet, ConfirmOrder confirmorder, SelectItem selectitem, LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, Purchase homepage, SelectItem_CorCust selectItem_CorCust, SListInterface<Arrangement> ArrangeListt) {
         this.homepage = homepage;
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.selectitem = selectitem;
+        this.ArrangeList = ArrangeListt;
         this.selectItem_CorCust = selectItem_CorCust;
         this.fresh = fresh;
         this.bouquet = bouquet;
@@ -416,7 +420,7 @@ public class SalesOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new HomePage(CustList, OrderList, ProductList, this).setVisible(true);
+        new HomePage(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

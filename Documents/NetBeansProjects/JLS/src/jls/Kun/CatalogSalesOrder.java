@@ -6,7 +6,9 @@
 package jls.Kun;
 
 import ADT.LList;
+import ADT.SListInterface;
 import javax.swing.table.DefaultTableModel;
+import jls.Arrangement;
 import jls.Customer;
 import jls.Order;
 import jls.Product;
@@ -21,14 +23,16 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Product> ProductList;
     LList<Order> OrderList;
+    SListInterface<Arrangement> ArrangeList;
 
     /**
      * Creates new form CatalogSalesOeder
      */
-    public CatalogSalesOrder(LList<Order> OrderList, LList<Customer> CustList, LList<Product> ProductList, CatalogOrder order) {
+    public CatalogSalesOrder(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CatalogOrder order) {
         this.OrderList = OrderList;
         this.CustList = CustList;
         this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
         initComponents();
         p1 =  order; 
         showDetails();
@@ -298,7 +302,7 @@ public class CatalogSalesOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new CatalogOrder(OrderList, CustList, ProductList).setVisible(true);
+        new CatalogOrder(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

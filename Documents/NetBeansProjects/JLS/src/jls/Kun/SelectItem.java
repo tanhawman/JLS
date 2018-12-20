@@ -6,6 +6,7 @@
 package jls.Kun;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import jls.Arrangement;
 import jls.Customer;
 import jls.HomePage;
 import jls.Order;
@@ -28,7 +30,8 @@ public class SelectItem extends javax.swing.JFrame {
     LList<Product> ProductList;
     LList<Customer> CustList;
     LList<Order> OrderList;
-    Purchase homepage;
+    SListInterface<Arrangement> ArrangeList;
+    Purchase purchase;
     SelectItem_CorCust selectItem_CorCust;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
@@ -37,11 +40,12 @@ public class SelectItem extends javax.swing.JFrame {
     /**
      * Creates new form SelectItem
      */
-    public SelectItem(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, Purchase homepage) {
+    public SelectItem(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeListt, Purchase purchase) {
         this.ProductList = ProductList;
         this.CustList = CustList;
         this.OrderList = OrderList;
-        this.homepage = homepage;
+        this.ArrangeList = ArrangeListt;
+        this.purchase = purchase;
         initComponents();
         rdFresh.setSelected(true);
         p1 = new Fresh(ProductList);
@@ -61,7 +65,7 @@ public class SelectItem extends javax.swing.JFrame {
 
     public void showName() {
         for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
-            if (homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
+            if (purchase.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
                 jLabel3.setText(CustList.getEntry(i).getName());
             }
         }
@@ -378,7 +382,7 @@ public class SelectItem extends javax.swing.JFrame {
             if (select == 0) {
                 model.fireTableDataChanged();
                 this.dispose();
-                new ConfirmOrder(p1, p2, this, CustList, OrderList, selectItem_CorCust, homepage, ProductList).setVisible(true);
+                new ConfirmOrder(p1, p2, this, CustList, OrderList, selectItem_CorCust, purchase, ProductList, ArrangeList).setVisible(true);
             }
         }
 

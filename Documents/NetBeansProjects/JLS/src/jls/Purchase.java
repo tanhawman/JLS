@@ -140,11 +140,11 @@ public class Purchase extends javax.swing.JFrame {
                 found = 1;
                 if(CustList.getEntry(i).getType().equals("consumer")){
                     this.dispose();
-                    new SelectItem(ProductList, CustList, OrderList, this).setVisible(true);
+                    new SelectItem(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
                 }
                 else if(CustList.getEntry(i).getType().equals("corp_cust") && CustList.getEntry(i).getStatus().equals("Active")){
                     this.dispose();
-                    new SelectItem_CorCust(ProductList, CustList, OrderList, this).setVisible(true);
+                    new SelectItem_CorCust(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
                 }
                 else{
                     found = 0;

@@ -6,12 +6,14 @@
 package jls.Kun;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jdk.nashorn.internal.ir.BreakNode;
+import jls.Arrangement;
 import jls.Customer;
 import jls.HomePage;
 import jls.Order;
@@ -28,6 +30,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Order> OrderList;
     Purchase homepage;
+    SListInterface<Arrangement> ArrangeList;
     SelectItem selectitem;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
@@ -36,11 +39,12 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     /**
      * Creates new form SelectItem_CorCust
      */
-    public SelectItem_CorCust(LList<Product> ProductList, LList<Customer> CustList, LList<Order> OrderList, Purchase homepage) {
+    public SelectItem_CorCust(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeListt, Purchase homepage) {
         this.ProductList = ProductList;
         this.CustList = CustList;
         this.OrderList = OrderList;
         this.homepage = homepage;
+        this.ArrangeList = ArrangeListt;
         initComponents();
         rdFresh.setSelected(true);
         p1 = new Fresh(ProductList);
@@ -368,7 +372,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                 }
                 model.fireTableDataChanged();
                 this.dispose();
-                new ConfirmOrder(p1, p2, selectitem, CustList, OrderList, this, homepage, ProductList).setVisible(true);
+                new ConfirmOrder(p1, p2, selectitem, CustList, OrderList, this, homepage, ProductList, ArrangeList).setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
