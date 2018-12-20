@@ -6,6 +6,7 @@
 package jls.Sushi;
 
 import ADT.LList;
+import ADT.SListInterface;
 import javax.swing.table.DefaultTableModel;
 import jls.Order;
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import jls.Arrangement;
+import jls.Customer;
+import jls.Product;
 
 /**
  *
@@ -21,12 +25,18 @@ import javax.swing.table.TableRowSorter;
  */
 public class PickUp extends javax.swing.JPanel {
     LList<Order> OrderList;
+    SListInterface<Arrangement> ArrangeList;
+    LList<Customer> CustList ;
+    LList<Product> ProductList;
     /**
      * Creates new form PickUp
      */
-    public PickUp(LList<Order> OrderList) {
+    public PickUp(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList,LList<Customer> CustList ,LList<Product> ProductList) {
         initComponents();
         this.OrderList = OrderList;
+        this.ArrangeList = ArrangeList;
+        this.CustList = CustList;
+        this.ProductList = ProductList;
         addRowToJTable();
     }
 

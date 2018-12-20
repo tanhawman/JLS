@@ -1,14 +1,21 @@
 package jls.Ken;
 
 import ADT.LList;
+import ADT.SListInterface;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.table.DefaultTableModel;
+import jls.Arrangement;
 import jls.Customer;
+import jls.Order;
+import jls.Product;
 
 public class CheckCreditLimit extends javax.swing.JFrame {
 
     LList<Customer> CustList;
+    LList<Order> OrderList;
+    LList<Product> ProductList;
+    SListInterface<Arrangement> ArrangeList;
     GridBagLayout layout = new GridBagLayout();
     creditLimit cl ;
     String search_txt;
@@ -17,9 +24,12 @@ public class CheckCreditLimit extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CheckCreditLimit(LList<Customer> CustList, CustomerInvoiceMain aThis) {
+    CheckCreditLimit(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CustomerInvoiceMain aThis) {
         initComponents();
         this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
         cl = new creditLimit(CustList);
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
@@ -130,7 +140,7 @@ public class CheckCreditLimit extends javax.swing.JFrame {
     private void backMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new CustomerInvoiceMain(CustList, this).setVisible(true);
+        new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_backMenuActionPerformed
 
     private void search_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_btnActionPerformed

@@ -36,11 +36,11 @@ public class price1 extends javax.swing.JFrame {
     LList<Customer> CustList;
     LList<Order> OrderList;
 
-    public price1(String id, TableModel style, int s_price, TableModel size, int size_price, TableModel flower, int f_price, TableModel accessories, int ass_price, TableModel priority, int p_price, SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, CustomerOrder aThis,LList<Customer> CustList, LList<Order> OrderList) {
+    public price1(String id, TableModel style, int s_price, TableModel size, int size_price, TableModel flower, int f_price, TableModel accessories, int ass_price, TableModel priority, int p_price,LList<Customer> CustList, LList<Order> OrderList,LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CustomerOrder aThis) {
         initComponents();
         this.id = id;
-          this. CustList =  CustList;
-            this.OrderList = OrderList;
+        this. CustList =  CustList;
+        this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
         s1 = Integer.parseInt((String) style.getValueAt(s_price, 1));

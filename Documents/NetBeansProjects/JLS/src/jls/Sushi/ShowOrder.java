@@ -19,8 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import jls.Arrangement;
+import jls.Customer;
 import jls.HomePage;
 import jls.Order;
+import jls.Product;
 
 /**
  *
@@ -29,18 +31,22 @@ import jls.Order;
 public class ShowOrder extends javax.swing.JFrame { 
     LList<Order> OrderList;
     SListInterface<Arrangement> ArrangeList;
+    LList<Customer> CustList ;
+    LList<Product> ProductList ;
     GridBagLayout layout = new GridBagLayout();
     PickUp pu ;
     Delivery de;
 
-    public ShowOrder(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList) {
+    public ShowOrder(LList<Customer> CustList ,LList<Order> OrderList,LList<Product> ProductList, SListInterface<Arrangement> ArrangeList) {
         initComponents();
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
+        this.CustList = CustList;
+        this.ProductList = ProductList;
         addRowToJTable();
         jRadioButton1.setSelected(true);
-        pu = new PickUp(OrderList);
-        de = new Delivery(OrderList);
+        pu = new PickUp(OrderList,ArrangeList, CustList,ProductList);
+        de = new Delivery(OrderList,ArrangeList, CustList,ProductList);
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;
@@ -272,7 +278,7 @@ public class ShowOrder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new HomePage(OrderList, ArrangeList).setVisible(true);
+        new HomePage( CustList,OrderList,ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

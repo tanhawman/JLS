@@ -14,19 +14,28 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import jls.Order;
 import ADT.LList;
+import ADT.SListInterface;
 import java.util.Random;
 import jls.Arrangement;
+import jls.Customer;
+import jls.Product;
 /**
  *
  * @author Sushi
  */
 public class DeliveryList extends javax.swing.JPanel {
     LList<Order> OrderList;
+    SListInterface<Arrangement> ArrangeList;
+    LList<Customer> CustList ;
+    LList<Product> ProductList;
     /**
      * Creates new form DeliveryList
      */
-    public DeliveryList(LList<Order> OrderList) {
+    public DeliveryList(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList,LList<Customer> CustList ,LList<Product> ProductList) {
         this.OrderList = OrderList;
+        this.ArrangeList = ArrangeList;
+        this.CustList = CustList;
+        this.ProductList = ProductList;
         initComponents();
         addRowToJTable();
         //jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);

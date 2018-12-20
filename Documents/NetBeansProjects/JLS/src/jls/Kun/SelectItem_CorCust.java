@@ -389,7 +389,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
-        new HomePage(ProductList, CustList, OrderList, this).setVisible(true);
+        new HomePage(CustList,OrderList, ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
 

@@ -400,7 +400,7 @@ public class SelectItem extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new HomePage(ProductList, CustList, OrderList, this).setVisible(true);
+        new HomePage(CustList,OrderList, ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -41,6 +41,16 @@ public class CatalogOrder extends javax.swing.JFrame {
         initComponents();
         addRowToJTable();
     }
+    public CatalogOrder(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CatalogSalesOrder aThis) {
+
+        this.OrderList = OrderList;
+        this.CustList = CustList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
+
+        initComponents();
+        addRowToJTable();
+    }
 
     public class Item {
 
@@ -167,7 +177,7 @@ public class CatalogOrder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         this.dispose();
-        new CatalogSalesOrder(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
+        new CatalogSalesOrder(CustList,OrderList, ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

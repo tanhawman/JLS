@@ -134,28 +134,28 @@ public class HomePage extends javax.swing.JFrame {
         text1 = new PlaceHolder(jTextField1,"97xxxx-xx-xxxx");
         
     }
-    public HomePage(SListInterface<Arrangement> ArrangeList,LList<Product> ProductList, price1 aThis) {  
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, price1 aThis) {  
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
         initComponents();
     }
     
-    public HomePage(SListInterface<Arrangement> ArrangeList,LList<Product> ProductList, Priority_Table aThis) {  
-        this();
-        this.ArrangeList = ArrangeList;
-        this.ProductList = ProductList;
-        initComponents();
-    }
-        
-    public HomePage(SListInterface<Arrangement> ArrangeList,LList<Product> ProductList, CustomerOrder aThis) {  
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, Priority_Table aThis) {  
         this();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
         initComponents();
     }
         
-    public HomePage(LList<Customer> CustList,LList<Order> OrderList,LList<Product> ProductList, SalesOrder aThis) {  
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CustomerOrder aThis) {  
+        this();
+        this.ArrangeList = ArrangeList;
+        this.ProductList = ProductList;
+        initComponents();
+    }
+        
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, SalesOrder aThis) {  
         this();
         this.CustList = CustList;
         this.OrderList = OrderList;
@@ -163,7 +163,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
     
-    public HomePage(LList<Product> ProductList,LList<Customer> CustList,LList<Order> OrderList, SelectItem aThis) {  
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, SelectItem aThis) {  
         this();
         this.CustList = CustList;
         this.OrderList = OrderList;
@@ -171,7 +171,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
     
-    public HomePage(LList<Product> ProductList,LList<Customer> CustList,LList<Order> OrderList, SelectItem_CorCust aThis) {  
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, SelectItem_CorCust aThis) {  
         this();
         this.CustList = CustList;
         this.OrderList = OrderList;
@@ -179,7 +179,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
     
-    public HomePage(LList<Order> OrderList,LList<Customer> CustList,LList<Product> ProductList, CatalogOrder aThis) {  
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CatalogOrder aThis) {  
         this();
         this.OrderList = OrderList;
         this.ProductList = ProductList;
@@ -204,7 +204,7 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
     }
 
-    public HomePage(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList){
+    public HomePage(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList){
         this();
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
@@ -471,19 +471,19 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // KEN
-        this.setVisible(false);
+        this.dispose();
         new CustomerInvoiceMain(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         this.dispose();
-        new ShowOrder(OrderList, ArrangeList).setVisible(true);
+        this.dispose();
+        new ShowOrder(CustList, OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new DeliveryRoute(OrderList, ArrangeList).setVisible(true);
+        new DeliveryRoute(CustList, OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -494,12 +494,12 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         this.dispose();
-        new CustomerOrder(ArrangeList,ProductList, this).setVisible(true);
+        new CustomerOrder(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         this.dispose();
-        new Priority_Table(ArrangeList,ProductList, this).setVisible(true);
+        new Priority_Table(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -521,7 +521,7 @@ public class HomePage extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new CatalogOrder(OrderList, CustList, ProductList).setVisible(true);
+        new CatalogOrder(CustList, OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     /**

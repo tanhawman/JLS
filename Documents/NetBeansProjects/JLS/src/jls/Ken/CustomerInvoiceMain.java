@@ -53,8 +53,11 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CustomerInvoiceMain(LList<Customer> CustList, CheckCreditLimit aThis) {
+    public CustomerInvoiceMain(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, CheckCreditLimit aThis) {
         this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
         initComponents();
     }
 
@@ -166,7 +169,7 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
 
     private void chkLimitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLimitActionPerformed
         this.dispose();
-        new CheckCreditLimit(CustList, this).setVisible(true);
+        new CheckCreditLimit(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_chkLimitActionPerformed
 
     private void accStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accStateActionPerformed
@@ -178,16 +181,14 @@ public class CustomerInvoiceMain extends javax.swing.JFrame {
     private void InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoiceActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        gip.setVisible(true);
-        // new GenInvoicePayment(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
+        new GenInvoicePayment(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_InvoiceActionPerformed
 
     private void backMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuActionPerformed
         // TODO add your handling code here:
         // BACK TO MAIN MENU
         this.setVisible(false);
-        hp.setVisible(true);
-//        new haha(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
+        new HomePage(CustList,OrderList,ProductList,ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_backMenuActionPerformed
 //
 //    /**

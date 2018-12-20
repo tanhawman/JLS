@@ -24,8 +24,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import jls.Arrangement;
+import jls.Customer;
 import jls.HomePage;
 import jls.Order;
+import jls.Product;
 
 /**
  *
@@ -34,6 +36,8 @@ import jls.Order;
 public class DeliveryRoute extends javax.swing.JFrame {
     LList<Order> OrderList;
     SListInterface<Arrangement> ArrangeList;
+    LList<Customer> CustList ;
+    LList<Product> ProductList;
     /**
      * Creates new form DeliveryRoute
      */
@@ -41,11 +45,13 @@ public class DeliveryRoute extends javax.swing.JFrame {
     DeliveryList dl;
     AddNewTable ant;
 
-    public DeliveryRoute(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList) {
+    public DeliveryRoute(LList<Customer> CustList ,LList<Order> OrderList,LList<Product> ProductList, SListInterface<Arrangement> ArrangeList) {
         initComponents();
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
-        dl = new DeliveryList(OrderList);
+        this.CustList = CustList;
+        this.ProductList = ProductList;
+        dl = new DeliveryList(OrderList,ArrangeList, CustList,ProductList);
         ant = new AddNewTable();
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
@@ -208,7 +214,7 @@ public class DeliveryRoute extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
-        new HomePage(OrderList, ArrangeList).setVisible(true);
+        new HomePage(CustList,OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

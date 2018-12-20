@@ -492,7 +492,7 @@ public class CustomerOrder extends javax.swing.JFrame {
        
         if (jTable1.getSelectedRow() != -1 && jTable2.getSelectedRow() != -1 && jTable3.getSelectedRow() != -1 && jTable4.getSelectedRow() != -1 && jTable5.getSelectedRow() != -1) {
             this.dispose();
-            new price1(id, jTable1.getModel(), jTable1.getSelectedRow(), jTable2.getModel(), jTable2.getSelectedRow(), jTable3.getModel(), jTable3.getSelectedRow(), jTable4.getModel(), jTable4.getSelectedRow(), jTable5.getModel(), jTable5.getSelectedRow(), ArrangeList, ProductList, this).setVisible(true);
+            new price1(id, jTable1.getModel(), jTable1.getSelectedRow(), jTable2.getModel(), jTable2.getSelectedRow(), jTable3.getModel(), jTable3.getSelectedRow(), jTable4.getModel(), jTable4.getSelectedRow(), jTable5.getModel(), jTable5.getSelectedRow(), CustList,OrderList, ProductList,ArrangeList,this).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(new JFrame(), "You Missing Select Some Step, Please Check It!!!", "Warning", JOptionPane.ERROR_MESSAGE);
         }
