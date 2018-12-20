@@ -23,15 +23,16 @@ import jls.Purchase;
  * @author Yee Kun
  */
 public class SelectItem_CorCust extends javax.swing.JFrame {
-    LList<Product> ProductList = new LList<>();
-    LList<Customer> CustList = new LList<>();
-    LList<Order> OrderList = new LList<>();
+
+    LList<Product> ProductList;
+    LList<Customer> CustList;
+    LList<Order> OrderList;
     Purchase homepage;
     SelectItem selectitem;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
     Bouquet p2;
-    
+
     /**
      * Creates new form SelectItem_CorCust
      */
@@ -53,14 +54,15 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         c.gridy = 0;
         jPanel1.add(p2, c);
         p1.setVisible(true);
-        p2.setVisible(false);      
-        addComboBoxdata();
+        p2.setVisible(false);
+        showName();
     }
-    
-    public void addComboBoxdata(){
-        for(int i=1; i<CustList.getNumberOfEntries(); i++){
-            if(CustList.getEntry(i).getType().equals("corp_cust")){
-                jComboBox1.addItem(CustList.getEntry(i).getName());
+
+    public void showName() {
+        for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
+            if (homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
+                jLabel3.setText(CustList.getEntry(i).getName());
+                lblCreditLimit.setText(Integer.toString(CustList.getEntry(i).getRemaincredit()));
             }
         }
     }
@@ -87,7 +89,8 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Corporate Customer Select Item and Quantity");
@@ -134,6 +137,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         lblTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTotalPrice.setText("0");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Reset");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +145,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Calculate Price");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +153,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("Place Order");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,9 +161,11 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setText("Back To Main Menu");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -165,12 +173,6 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(93, 93, 93)
-                .addComponent(lblTotalPrice)
-                .addGap(82, 82, 82))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -178,47 +180,56 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(129, 129, 129)
-                .addComponent(jButton2)
-                .addGap(139, 139, 139)
-                .addComponent(jButton3)
-                .addGap(91, 91, 91))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rdFresh)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(144, 144, 144)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addGap(87, 87, 87))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(rdFresh)
+                                .addGap(20, 20, 20)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCreditLimit))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(rdBouquet)))))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(45, 45, 45)
+                .addComponent(jButton1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(rdBouquet)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel6)
+                        .addGap(93, 93, 93)
+                        .addComponent(lblTotalPrice))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCreditLimit)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(50, 50, 50)
+                        .addComponent(jButton2)
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton3)))
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(lblCreditLimit)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdBouquet)
@@ -230,12 +241,12 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblTotalPrice))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton3)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,66 +256,60 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         boolean order = false;
         int qty = 0;
         int total = 0;
-        
+
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             p1.jTable1.setValueAt(order, i, 1);
             p1.jTable1.setValueAt(qty, i, 3);
             p1.jTable1.setValueAt(total, i, 4);
         }
-        
+
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             p2.jTable1.setValueAt(order, i, 1);
             p2.jTable1.setValueAt(qty, i, 3);
             p2.jTable1.setValueAt(total, i, 4);
         }
-        
+
         lblTotalPrice.setText("0");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int totalPrice = 0;
-        
+
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1qty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
             int p1price = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
-            
 
-            if(p1chkOrder == true && p1qty < 1){
+            if (p1chkOrder == true && p1qty < 1) {
                 JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 break;
-            }
-            else if(p1chkOrder == true && p1qty > 0){
+            } else if (p1chkOrder == true && p1qty > 0) {
                 int total = p1price * p1qty;
                 p1.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
-            }
-            else if(p1chkOrder == false && p1qty > 0){
+            } else if (p1chkOrder == false && p1qty > 0) {
                 p1.jTable1.setValueAt(empty, i, 4);
             }
 
         }
-        
+
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(i, 1);
             int p2qty = Integer.parseInt(p2.jTable1.getValueAt(i, 3).toString());
             int p2price = Integer.parseInt(p2.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
-            
 
-            if(p2chkOrder == true && p2qty < 1){
+            if (p2chkOrder == true && p2qty < 1) {
                 JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 break;
-            }
-            else if(p2chkOrder == true && p2qty > 0){
+            } else if (p2chkOrder == true && p2qty > 0) {
                 int total = p2price * p2qty;
                 p2.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
-            }
-            else if(p2chkOrder == false && p2qty > 0){
+            } else if (p2chkOrder == false && p2qty > 0) {
                 p2.jTable1.setValueAt(empty, i, 4);
             }
 
@@ -316,50 +321,54 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         boolean error = false;
         int totalPrice = 0;
         int CreditLimit = Integer.parseInt(lblCreditLimit.getText().toString());
-                     
+
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
             int p1price = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
 
-            if(p1chkOrder == true && p1chkQty < 1){
-                error = true;     
+            if (p1chkOrder == true && p1chkQty < 1) {
+                error = true;
                 break;
-            }
-            else if(p1chkOrder == true && p1chkQty > 0)
-            {
+            } else if (p1chkOrder == true && p1chkQty > 0) {
                 int total = p1price * p1chkQty;
                 totalPrice += total;
-            }                                                            
+
+            }
         }
-        
+
         for (int k = 0; k < p2.jTable1.getRowCount(); k++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(k, 1);
             int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(k, 3).toString());
             int p2price = Integer.parseInt(p2.jTable1.getValueAt(k, 2).toString());
-            
-            if(p2chkOrder == true && p2chkQty < 1){
-                error = true;     
+
+            if (p2chkOrder == true && p2chkQty < 1) {
+                error = true;
                 break;
-            }  
-            else if(p2chkOrder == true && p2chkQty > 0){
+            } else if (p2chkOrder == true && p2chkQty > 0) {
                 int total = p2price * p2chkQty;
                 totalPrice += total;
-            } 
-        }     
-        
-        if(error == true){
+            }
+        }
+
+        if (error == true) {
             JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(totalPrice > CreditLimit){
+        } else if (totalPrice > CreditLimit) {
             JOptionPane.showMessageDialog(rootPane, "The Monthly Credit Limit no enough.", "Warning", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-            int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-            if (select == 0){
+        } else {
+            int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (select == 0) {
+                
+                int remainingcreditlimit = CreditLimit - totalPrice;
+
+                for (int j = 1; j < CustList.getNumberOfEntries(); j++) {
+                    if (CustList.getEntry(j).getName().equals(jLabel3.getText())) {
+                        CustList.getEntry(j).setRemaincredit(remainingcreditlimit);
+                    }
+                }
                 model.fireTableDataChanged();
                 this.dispose();
-                new ConfirmOrder(p1,p2, selectitem, CustList, OrderList, this, homepage, ProductList).setVisible(true);                                   
+                new ConfirmOrder(p1, p2, selectitem, CustList, OrderList, this, homepage, ProductList).setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -374,13 +383,10 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
         p1.setVisible(false);
     }//GEN-LAST:event_rdBouquetActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        for(int i=1; i<CustList.getNumberOfEntries(); i++){
-            if(jComboBox1.getSelectedItem().toString().equals(CustList.getEntry(i).getName())){
-                lblCreditLimit.setText(Integer.toString(CustList.getEntry(i).getCredit_limit()));
-            }
-        }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+        new HomePage(ProductList, CustList, OrderList, this).setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -388,9 +394,10 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    public javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

@@ -24,14 +24,16 @@ import jls.Purchase;
  * @author yeekun
  */
 public class SelectItem extends javax.swing.JFrame {
-    LList<Product> ProductList = new LList<>();
-    LList<Customer> CustList = new LList<>();
-    LList<Order> OrderList = new LList<>();
+
+    LList<Product> ProductList;
+    LList<Customer> CustList;
+    LList<Order> OrderList;
     Purchase homepage;
     SelectItem_CorCust selectItem_CorCust;
     GridBagLayout layout = new GridBagLayout();
     Fresh p1;
     Bouquet p2;
+
     /**
      * Creates new form SelectItem
      */
@@ -53,13 +55,13 @@ public class SelectItem extends javax.swing.JFrame {
         c.gridy = 0;
         jPanel.add(p2, c);
         p1.setVisible(true);
-        p2.setVisible(false);    
+        p2.setVisible(false);
         showName();
     }
-    
-    public void showName(){
-        for(int i=1; i<CustList.getNumberOfEntries(); i++){
-            if(homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())){
+
+    public void showName() {
+        for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
+            if (homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
                 jLabel3.setText(CustList.getEntry(i).getName());
             }
         }
@@ -91,6 +93,7 @@ public class SelectItem extends javax.swing.JFrame {
         rdBouquet = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -195,24 +198,19 @@ public class SelectItem extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Name: ");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("Back To Main Menu");
+        jButton1.setPreferredSize(new java.awt.Dimension(123, 25));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(93, 93, 93)
-                .addComponent(lblTotalPrice)
-                .addGap(83, 83, 83))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(btnReset)
-                .addGap(129, 129, 129)
-                .addComponent(btnCalculate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                .addComponent(btnPlaceOrder)
-                .addGap(91, 91, 91))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -231,7 +229,24 @@ public class SelectItem extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnReset)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnCalculate)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnPlaceOrder))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(93, 93, 93)
+                        .addComponent(lblTotalPrice)))
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,12 +270,13 @@ public class SelectItem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblTotalPrice))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPlaceOrder)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCalculate)
-                    .addComponent(btnReset))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(btnPlaceOrder))
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -270,109 +286,102 @@ public class SelectItem extends javax.swing.JFrame {
         boolean order = false;
         int qty = 0;
         int total = 0;
-        
+
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             p1.jTable1.setValueAt(order, i, 1);
             p1.jTable1.setValueAt(qty, i, 3);
             p1.jTable1.setValueAt(total, i, 4);
         }
-        
+
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             p2.jTable1.setValueAt(order, i, 1);
             p2.jTable1.setValueAt(qty, i, 3);
             p2.jTable1.setValueAt(total, i, 4);
         }
-        
+
         lblTotalPrice.setText("0");
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         int totalPrice = 0;
-        
+
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1qty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
             int p1price = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
-            
 
-            if(p1chkOrder == true && p1qty < 1){
+            if (p1chkOrder == true && p1qty < 1) {
                 JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 break;
-            }
-            else if(p1chkOrder == true && p1qty > 0){
+            } else if (p1chkOrder == true && p1qty > 0) {
                 int total = Cal_subtotal(p1price, p1qty);
                 p1.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
-            }
-            else if(p1chkOrder == false && p1qty > 0){
+            } else if (p1chkOrder == false && p1qty > 0) {
                 p1.jTable1.setValueAt(empty, i, 4);
             }
 
         }
-        
+
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(i, 1);
             int p2qty = Integer.parseInt(p2.jTable1.getValueAt(i, 3).toString());
             int p2price = Integer.parseInt(p2.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
-            
 
-            if(p2chkOrder == true && p2qty < 1){
+            if (p2chkOrder == true && p2qty < 1) {
                 JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 break;
-            }
-            else if(p2chkOrder == true && p2qty > 0){
+            } else if (p2chkOrder == true && p2qty > 0) {
                 int total = p2price * p2qty;
                 p2.jTable1.setValueAt(total, i, 4);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
-            }
-            else if(p2chkOrder == false && p2qty > 0){
+            } else if (p2chkOrder == false && p2qty > 0) {
                 p2.jTable1.setValueAt(empty, i, 4);
             }
 
         }
 
-       
+
     }//GEN-LAST:event_btnCalculateActionPerformed
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
         DefaultTableModel model = (DefaultTableModel) p1.jTable1.getModel();
-        boolean error = false; 
+        boolean error = false;
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
 
-            if(p1chkOrder == true && p1chkQty < 1){
-                error = true;     
+            if (p1chkOrder == true && p1chkQty < 1) {
+                error = true;
                 break;
-            }                                                            
+            }
         }
-        
+
         for (int k = 0; k < p2.jTable1.getRowCount(); k++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(k, 1);
             int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(k, 3).toString());
-            
-            if(p2chkOrder == true && p2chkQty < 1){
-                error = true;     
+
+            if (p2chkOrder == true && p2chkQty < 1) {
+                error = true;
                 break;
-            }  
-        }     
-        
-        if(error == true){
-            JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-        else{
-            int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-            if (select == 0){
+
+        if (error == true) {
+            JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (select == 0) {
                 model.fireTableDataChanged();
                 this.dispose();
-                new ConfirmOrder(p1,p2, this, CustList, OrderList, selectItem_CorCust, homepage, ProductList).setVisible(true);                                   
+                new ConfirmOrder(p1, p2, this, CustList, OrderList, selectItem_CorCust, homepage, ProductList).setVisible(true);
             }
-        }     
-        
+        }
+
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
     private void rdBouquetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdBouquetActionPerformed
@@ -385,12 +394,18 @@ public class SelectItem extends javax.swing.JFrame {
         p2.setVisible(false);
     }//GEN-LAST:event_rdFreshActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new HomePage(ProductList, CustList, OrderList, this).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculate;
     private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JButton btnReset;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;

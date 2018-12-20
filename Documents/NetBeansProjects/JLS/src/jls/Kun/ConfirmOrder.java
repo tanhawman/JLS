@@ -30,6 +30,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
     SelectItem_CorCust selectItem_CorCust;
     SelfPickup p1;
     Delivery p2;
+
     /**
      * Creates new form ConfirmOrder
      */
@@ -54,9 +55,8 @@ public class ConfirmOrder extends javax.swing.JFrame {
         jPanel.add(p2, c);
         p1.setVisible(true);
         p2.setVisible(false);
-        
-    }
 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -183,27 +183,25 @@ public class ConfirmOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_rdDeliveryActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        if(rdpickup.isSelected() == true){
-            if(p1.jXDatePicker1.getDate() == null){
+        if (rdpickup.isSelected() == true) {
+            if (p1.jXDatePicker1.getDate() == null) {
                 JOptionPane.showMessageDialog(rootPane, "Please choose a Pick-Up Date.", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-            else{
-                int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-                if (select == 0){                  
+            } else {
+                int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (select == 0) {
                     this.dispose();
-                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust).setVisible(true);                             
+                    new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust).setVisible(true);
                 }
             }
-        }
-        else{
-            int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-            if (select == 0){
+        } else {
+            int select = JOptionPane.showConfirmDialog(rootPane, "Are you confirm?", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (select == 0) {
                 this.dispose();
                 new SalesOrder(p1.p1, p2.p2, this, selectitem, CustList, OrderList, ProductList, homepage, selectItem_CorCust).setVisible(true);
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_btnConfirmActionPerformed
 
 

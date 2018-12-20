@@ -12,9 +12,10 @@ import javax.swing.table.DefaultTableModel;
  * @author Yee Kun
  */
 public class Delivery extends javax.swing.JPanel {
+
     Fresh p1;
     Bouquet p2;
-    
+
     /**
      * Creates new form Delivery
      */
@@ -28,54 +29,53 @@ public class Delivery extends javax.swing.JPanel {
         jButton2.setVisible(false);
     }
 
-    public void addRowToJTable(){
-        DefaultTableModel model1 = (DefaultTableModel)p1.jTable1.getModel();
-        DefaultTableModel model2 = (DefaultTableModel)p2.jTable1.getModel();
+    public void addRowToJTable() {
+        DefaultTableModel model1 = (DefaultTableModel) p1.jTable1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) p2.jTable1.getModel();
         Object[] row = new Object[4];
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int totalPrice = 0;
-        
-        
-        for (int i = 0; i < model1.getRowCount(); i++){           
+
+        for (int i = 0; i < model1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1chkPrice = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
             int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
             int total = p1chkPrice * p1chkQty;
 
-            if(p1chkOrder == true && p1chkQty > 0){             
+            if (p1chkOrder == true && p1chkQty > 0) {
                 row[0] = model1.getValueAt(i, 0);
                 row[1] = model1.getValueAt(i, 2);
                 row[2] = model1.getValueAt(i, 3);
                 row[3] = total;
-                model.addRow(row);    
-                
+                model.addRow(row);
+
             }
-                totalPrice += total;
-                lblTotalPrice.setText(Integer.toString(totalPrice));
-            
+            totalPrice += total;
+            lblTotalPrice.setText(Integer.toString(totalPrice));
+
         }
-        
-        for (int i = 0; i < model2.getRowCount(); i++){           
+
+        for (int i = 0; i < model2.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(i, 1);
             int p2chkPrice = Integer.parseInt(p2.jTable1.getValueAt(i, 2).toString());
             int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(i, 3).toString());
             int total = p2chkPrice * p2chkQty;
 
-            if(p2chkOrder == true && p2chkQty > 0){             
+            if (p2chkOrder == true && p2chkQty > 0) {
                 row[0] = model2.getValueAt(i, 0);
                 row[1] = model2.getValueAt(i, 2);
                 row[2] = model2.getValueAt(i, 3);
                 row[3] = total;
-                model.addRow(row);    
-                
+                model.addRow(row);
+
             }
-                totalPrice += total;
-                lblTotalPrice.setText(Integer.toString(totalPrice));
-            
+            totalPrice += total;
+            lblTotalPrice.setText(Integer.toString(totalPrice));
+
         }
 
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
