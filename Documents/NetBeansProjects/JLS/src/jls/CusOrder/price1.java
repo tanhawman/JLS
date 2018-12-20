@@ -11,7 +11,9 @@ import ADT.SListInterface;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import jls.Arrangement;
+import jls.Customer;
 import jls.HomePage;
+import jls.Order;
 import jls.Product;
 
 /**
@@ -31,10 +33,14 @@ public class price1 extends javax.swing.JFrame {
     int pr;
     SListInterface<Arrangement> ArrangeList = new SList<>();
     LList<Product> ProductList = new LList<>();
+    LList<Customer> CustList;
+    LList<Order> OrderList;
 
-    public price1(String id, TableModel style, int s_price, TableModel size, int size_price, TableModel flower, int f_price, TableModel accessories, int ass_price, TableModel priority, int p_price, SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, CustomerOrder aThis) {
+    public price1(String id, TableModel style, int s_price, TableModel size, int size_price, TableModel flower, int f_price, TableModel accessories, int ass_price, TableModel priority, int p_price, SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, CustomerOrder aThis,LList<Customer> CustList, LList<Order> OrderList) {
         initComponents();
         this.id = id;
+          this. CustList =  CustList;
+            this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
         s1 = Integer.parseInt((String) style.getValueAt(s_price, 1));
@@ -370,7 +376,7 @@ public price1(){
         this.dispose();
         int confirm = JOptionPane.showConfirmDialog(null, "Do you sure want to add this record?", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
         if (confirm == 0) {
-            new HomePage(ArrangeList, ProductList, this).setVisible(true);
+           new HomePage(CustList,OrderList, ProductList,ArrangeList,this).setVisible(true);
         } else {
         }
     }

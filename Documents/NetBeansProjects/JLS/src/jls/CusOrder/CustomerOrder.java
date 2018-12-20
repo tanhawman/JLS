@@ -15,7 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import jls.Arrangement;
+import jls.Customer;
 import jls.HomePage;
+import jls.Order;
 import jls.Product;
 
 /**
@@ -28,6 +30,8 @@ public class CustomerOrder extends javax.swing.JFrame {
     String style_price;
     String id;
     LList<Product> ProductList;
+    LList<Customer> CustList;
+    LList<Order> OrderList;
     SListInterface<Arrangement> ArrangeList;
     private DefaultTableModel model;
 
@@ -35,7 +39,9 @@ public class CustomerOrder extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CustomerOrder(SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, HomePage aThis) {
+    public CustomerOrder(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList,SListInterface<Arrangement> ArrangeList, HomePage aThis) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
         this.ProductList = ProductList;
         this.ArrangeList = ArrangeList;
         initComponents();
@@ -483,8 +489,9 @@ public class CustomerOrder extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        this.dispose();
+       
         if (jTable1.getSelectedRow() != -1 && jTable2.getSelectedRow() != -1 && jTable3.getSelectedRow() != -1 && jTable4.getSelectedRow() != -1 && jTable5.getSelectedRow() != -1) {
+            this.dispose();
             new price1(id, jTable1.getModel(), jTable1.getSelectedRow(), jTable2.getModel(), jTable2.getSelectedRow(), jTable3.getModel(), jTable3.getSelectedRow(), jTable4.getModel(), jTable4.getSelectedRow(), jTable5.getModel(), jTable5.getSelectedRow(), ArrangeList, ProductList, this).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(new JFrame(), "You Missing Select Some Step, Please Check It!!!", "Warning", JOptionPane.ERROR_MESSAGE);
@@ -494,7 +501,7 @@ public class CustomerOrder extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
-        new HomePage(ArrangeList, ProductList, this).setVisible(true);
+        new HomePage(CustList,OrderList, ProductList,ArrangeList,this).setVisible(true);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {

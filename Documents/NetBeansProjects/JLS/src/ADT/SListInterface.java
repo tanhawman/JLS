@@ -12,10 +12,6 @@ package ADT;
 public interface SListInterface <T extends Comparable<? super T>> {
     public boolean add(T newEntry);
 
-  public boolean remove(T anEntry);
-
-  public int getPosition(T anEntry);
-
   public T getEntry(int givenPosition);
 
   public boolean contains(T anEntry);

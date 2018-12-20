@@ -12,7 +12,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import jls.Arrangement;
+import jls.Customer;
 import jls.HomePage;
+import jls.Order;
 import jls.Product;
 
 /**
@@ -22,11 +24,12 @@ import jls.Product;
 public class Priority_Table extends javax.swing.JFrame {
 
     private DefaultTableModel model;
-
+    LList<Customer> CustList;
+    LList<Order> OrderList;
     SListInterface<Arrangement> ArrangeList = new SList<>();
     LList<Product> ProductList = new LList<>();
 
-    public Priority_Table(SListInterface<Arrangement> ArrangeList, LList<Product> ProductList, HomePage aThis) {
+    public Priority_Table(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList,SListInterface<Arrangement> ArrangeList, HomePage aThis) {
         initComponents();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
@@ -55,7 +58,7 @@ public class Priority_Table extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Priority Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel1.setText("Delivery Priority ");
+        jLabel1.setText("Pick-Up Priority ");
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +118,7 @@ public class Priority_Table extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new HomePage(ArrangeList, ProductList, this).setVisible(true);
+        new HomePage(CustList,OrderList, ProductList,ArrangeList,this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -153,25 +156,7 @@ public class Priority_Table extends javax.swing.JFrame {
         }
   }
      
-//        Object rowData1[] = new Object[2];
-//
-//        for (int o = 1; o <= ArrangeList.getNumberOfEntries(); o++) {
-//            if (ArrangeList.getEntry(o).getA_priority().equals("Normal")) {
-//                rowData1[0] = ArrangeList.getEntry(o).getA_ID();
-//                rowData1[1] = ArrangeList.getEntry(o).getA_priority();
-//                model.addRow(rowData1);
-//            }
-//        }
-//
-//        Object rowData2[] = new Object[2];
-//
-//        for (int p = 1; p <= ArrangeList.getNumberOfEntries(); p++) {
-//            if (ArrangeList.getEntry(p).getA_priority().equals("Flexi")) {
-//                rowData2[0] = ArrangeList.getEntry(p).getA_ID();
-//                rowData2[1] = ArrangeList.getEntry(p).getA_priority();
-//                model.addRow(rowData2);
-//            }
-//        }
+
     
     }
 

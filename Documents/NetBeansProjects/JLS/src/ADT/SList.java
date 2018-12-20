@@ -35,13 +35,7 @@ public class SList<T extends Comparable<? super T>> implements SListInterface<T>
     return true;
   }
 
-  public boolean remove(T anEntry) {
-    throw new UnsupportedOperationException();
-  }
 
-  public int getPosition(T anEntry) {
-    throw new UnsupportedOperationException();
-  }
 
   public T remove(int givenPosition) {
     T result = null;
