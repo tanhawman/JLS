@@ -5,8 +5,14 @@
  */
 package jls.Hawman;
 
+import ADT.LList;
+import ADT.SListInterface;
 import javax.swing.JOptionPane;
+import jls.Arrangement;
+import jls.Customer;
 import jls.HomePage;
+import jls.Order;
+import jls.Product;
 
 /**
  *
@@ -14,10 +20,17 @@ import jls.HomePage;
  */
 public class AddNewProduct extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddNewProduct
-     */
-    public AddNewProduct() {
+    LList<Customer> CustList;
+    LList<Order> OrderList;
+    LList<Product> ProductList;
+    SListInterface<Arrangement> ArrangeList;
+    Product p = new Product();
+    
+    public AddNewProduct(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
         initComponents();
     }
 
@@ -169,23 +182,55 @@ public class AddNewProduct extends javax.swing.JFrame {
         String desc = txtDesc.getText();
         String price = txtPrice.getText();
         String qty = txtQty.getText();
+        int type = comboType.getSelectedIndex();
+        String typeString;
+        String errorMsg = "";
+        int valid = 1;
 
+        if (type == 0) {
+            typeString = "fresh_flower";
+        }
+        else if (type == 1) {
+            typeString = "bouquet";
+        }
+        else {
+            typeString = "accessory";
+        }
+        
         if(txtName.getText().isEmpty() || txtDesc.getText().isEmpty() || txtPrice.getText().isEmpty() || txtQty.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "All fields are required.");
+            valid = 0;
         }
         else{
             int countQty = Integer.parseInt(qty);
-            //double countPrice = Double.parseDouble(qty);
-            if(countQty < 0){
-                JOptionPane.showMessageDialog(rootPane, "Initial quantity should not be lower than 0.");
+            int countPrice = Integer.parseInt(price);
+            
+            for (int i = 1; i <=ProductList.getNumberOfEntries(); i++){
+                if (ProductList.getEntry(i).getName().equals(name)) {
+                    errorMsg = errorMsg + "Product name already exists.\n";
+                    valid = 0;
+                }
             }
-            //else if (countPrice < 0){
-            //    JOptionPane.showMessageDialog(rootPane, "Price should not be lower than 0.");
-            //}
-            else {
-                JOptionPane.showMessageDialog(rootPane, "New product successfully added!");
+            
+            if (countQty < 0){
+                errorMsg = errorMsg + "Initial quantity should not be lower than 0.\n";
+                valid = 0;
             }
+            
+            if (countPrice < 0){
+                errorMsg = errorMsg + "Price should not be lower than 0.\n";
+                valid = 0;
+            }
+            
+            if (valid == 1) {
+                errorMsg = errorMsg + "New product successfully added!\n";
+                Product p = new Product(name, desc, typeString, Integer.parseInt(qty), Integer.parseInt(price), 0);
+                ProductList.add(p);
+            }
+            JOptionPane.showMessageDialog(rootPane, errorMsg);
         }
+        
+        
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -199,46 +244,10 @@ public class AddNewProduct extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new Menu().setVisible(true);
+        new Menu(CustList, OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddNewProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddNewProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddNewProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddNewProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddNewProduct().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnReset;

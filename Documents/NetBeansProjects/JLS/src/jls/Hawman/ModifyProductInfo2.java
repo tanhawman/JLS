@@ -5,21 +5,44 @@
  */
 package jls.Hawman;
 
+import ADT.LList;
+import ADT.SListInterface;
 import javax.swing.JOptionPane;
+import jls.Arrangement;
+import jls.Customer;
 import jls.HomePage;
+import jls.Order;
+import jls.Product;
 
 /**
  *
  * @author hawma
  */
 public class ModifyProductInfo2 extends javax.swing.JFrame {
-    ModifyProductInfo p2;
+    LList<Customer> CustList;
+    LList<Order> OrderList;
+    LList<Product> ProductList;
+    SListInterface<Arrangement> ArrangeList;
+    String selectedName;
     /**
      * Creates new form ModifyProductInfo2
      */
-    public ModifyProductInfo2(ModifyProductInfo a) {
-        initComponents();    
-        p2 = a;
+    public ModifyProductInfo2(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList, String selectedName) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
+        this.selectedName = selectedName;
+        initComponents();
+        
+        for(int i = 1; i <= ProductList.getNumberOfEntries(); i++){
+            if(ProductList.getEntry(i).getName().equals(this.selectedName)){
+                txtDesc.setText(ProductList.getEntry(i).getDesc());
+                txtName.setText(ProductList.getEntry(i).getName());
+                txtPrice.setText(String.valueOf(ProductList.getEntry(i).getPrice()));
+                txtQty.setText(String.valueOf(ProductList.getEntry(i).getIn_stock()));
+            }
+        }
     }
 
     /**
@@ -33,15 +56,14 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDesc = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtPrice = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtQty = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -55,22 +77,14 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
 
         jLabel3.setText("Description: ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtDesc.setColumns(20);
+        txtDesc.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtDesc.setRows(5);
+        jScrollPane1.setViewportView(txtDesc);
 
         jLabel4.setText("Price (RM): ");
 
         jLabel5.setText("Quantity: ");
-
-        jButton1.setText("Reset");
-        jButton1.setActionCommand("btnReset");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Confirm");
         jButton2.setActionCommand("btnConfirm");
@@ -100,24 +114,20 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jButton3)))
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtName)
+                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jButton1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addGap(9, 9, 9)))))
+                                .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jButton3)
+                        .addGap(99, 99, 99)
+                        .addComponent(jButton2)))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,22 +138,21 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addContainerGap(157, Short.MAX_VALUE))
@@ -152,125 +161,63 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if (p2.jRadioButton1.isSelected() == true) {
-            jTextField1.setText("Rose");
-            jTextArea1.setText("Beautiful rose.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-        else if (p2.jRadioButton2.isSelected() == true) {
-            jTextField1.setText("Lily");
-            jTextArea1.setText("Beautiful lily.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-        else if (p2.jRadioButton3.isSelected() == true) {
-            jTextField1.setText("Chrysanthemum");
-            jTextArea1.setText("Beautiful chrysanthemum.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-        else if (p2.jRadioButton4.isSelected() == true) {
-            jTextField1.setText("Rose bouquet");
-            jTextArea1.setText("Beautiful rose bouquet.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-        else if (p2.jRadioButton5.isSelected() == true) {
-            jTextField1.setText("Lily bouquet");
-            jTextArea1.setText("Beautiful lily bouquet.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-        else if (p2.jRadioButton6.isSelected() == true) {
-            jTextField1.setText("Chrysanthemum bouquet");
-            jTextArea1.setText("Beautiful chrysanthemum bouquet.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-        else if (p2.jRadioButton7.isSelected() == true) {
-            jTextField1.setText("Teddy bear");
-            jTextArea1.setText("Nice cute teddy bear.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-        else if (p2.jRadioButton8.isSelected() == true) {
-            jTextField1.setText("Heart balloon");
-            jTextArea1.setText("Lovely balloon.");
-            jTextField2.setText("6.20");
-            jTextField3.setText("17");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String name = jTextField1.getText();
-        String desc = jTextArea1.getText();
-        String price = jTextField2.getText();
-        String qty = jTextField3.getText();
+        String name = txtName.getText();
+        String desc = txtDesc.getText();
+        String price = txtPrice.getText();
+        String qty = txtQty.getText();
+        String errorMsg = "";
+        int valid = 1;
 
-        if(jTextField1.getText().isEmpty() || jTextArea1.getText().isEmpty() || jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty()){
+        if(txtName.getText().isEmpty() || txtDesc.getText().isEmpty() || txtPrice.getText().isEmpty() || txtQty.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "All fields are required.");
+            valid = 0;
         }
         else{
             int countQty = Integer.parseInt(qty);
-            //double countPrice = Double.parseDouble(qty);
+            int countPrice = Integer.parseInt(price);
+            
+            for (int i = 1; i <=ProductList.getNumberOfEntries(); i++){
+                if (ProductList.getEntry(i).getName().equals(name) && !name.equals(selectedName)) {
+                    errorMsg = errorMsg + "Product name already exists.\n";
+                    valid = 0;
+                }
+            }
+            
             if(countQty < 0){
-                JOptionPane.showMessageDialog(rootPane, "Quantity should not be lower than 0.");
+                errorMsg = errorMsg + "Initial quantity should not be lower than 0.\n";
+                valid = 0;
             }
-            //else if (countPrice < 0){
-            //    JOptionPane.showMessageDialog(rootPane, "Price should not be lower than 0.");
-            //}
-            else {
-                JOptionPane.showMessageDialog(rootPane, "Product successfully modified!");
+            
+            if (countPrice < 0){
+                errorMsg = errorMsg + "Price should not be lower than 0.\n";
+                valid = 0;
             }
+            
+            if (valid == 1) {
+                errorMsg = errorMsg + "Product successfully modified!\n";
+                for(int i = 1; i <= ProductList.getNumberOfEntries(); i++){
+                    if(ProductList.getEntry(i).getName().equals(selectedName)){
+                        ProductList.getEntry(i).setName(txtName.getText());
+                        ProductList.getEntry(i).setDesc(txtDesc.getText());
+                        ProductList.getEntry(i).setIn_stock(Integer.parseInt(txtQty.getText()));
+                        ProductList.getEntry(i).setPrice(Integer.parseInt(txtPrice.getText()));
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(rootPane, errorMsg);
+            
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new ModifyProductInfo(CustList, OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModifyProductInfo2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModifyProductInfo2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModifyProductInfo2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModifyProductInfo2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModifyProductInfo2(new ModifyProductInfo()).setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -279,9 +226,9 @@ public class ModifyProductInfo2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextArea jTextArea1;
-    public javax.swing.JTextField jTextField1;
-    public javax.swing.JTextField jTextField2;
-    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextArea txtDesc;
+    public javax.swing.JTextField txtName;
+    public javax.swing.JTextField txtPrice;
+    public javax.swing.JTextField txtQty;
     // End of variables declaration//GEN-END:variables
 }
