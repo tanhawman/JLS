@@ -10,6 +10,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import jls.Order;
 
@@ -18,45 +20,41 @@ import jls.Order;
  * @author Sushiiiiiiiiiiiiiiiiiiiiiiiii
  */
 public class EditOrder extends javax.swing.JFrame {
-        LList<Order> OrderList;
-        private TableModel tablemodel;
-        private int rownumber;
+
+    LList<Order> OrderList;
+    private TableModel tablemodel;
+    private int rownumber;
+
     /**
      * Creates new form EditOrder
      */
-
     public EditOrder(TableModel dtm, int rownumber, LList<Order> OrderList) {
         initComponents();
-        if(dtm.getColumnCount()== 4){
-        jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
-        jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
+        if (dtm.getColumnCount() == 4) {
+            jLabel6.setText((String) dtm.getValueAt(rownumber, 0));
+            jLabel7.setText((String) dtm.getValueAt(rownumber, 1));
 //        jLabel8.setText((String)dtm.getValueAt(rownumber, 2).toString());
-        jLabel9.setText((String)dtm.getValueAt(rownumber, 2));
-        jLabel10.setText((String)dtm.getValueAt(rownumber, 3));
-        jLabel11.setVisible(false);
-        jLabel12.setVisible(false);
-        this.tablemodel = dtm;
-        this.rownumber =rownumber;
-        }
-        else if (dtm.getColumnCount() == 5){
-        jLabel6.setText((String)dtm.getValueAt(rownumber, 0));
-        jLabel7.setText((String)dtm.getValueAt(rownumber, 1));
+            jLabel9.setText((String) dtm.getValueAt(rownumber, 2));
+            jLabel10.setText((String) dtm.getValueAt(rownumber, 3));
+            jLabel11.setVisible(false);
+            jLabel12.setVisible(false);
+            this.tablemodel = dtm;
+            this.rownumber = rownumber;
+        } else if (dtm.getColumnCount() == 5) {
+            jLabel6.setText((String) dtm.getValueAt(rownumber, 0));
+            jLabel7.setText((String) dtm.getValueAt(rownumber, 1));
 //        jLabel8.setText((String) dtm.getValueAt(rownumber, 2).toString());
-        jLabel9.setText((String)dtm.getValueAt(rownumber, 2));
-        jLabel10.setText((String)dtm.getValueAt(rownumber, 3));
-        jLabel12.setText((String)dtm.getValueAt(rownumber, 4));
-        this.tablemodel = dtm;
-        this.rownumber =rownumber;
+            jLabel9.setText((String) dtm.getValueAt(rownumber, 2));
+            jLabel10.setText((String) dtm.getValueAt(rownumber, 3));
+            jLabel12.setText((String) dtm.getValueAt(rownumber, 4));
+            this.tablemodel = dtm;
+            this.rownumber = rownumber;
         }
         this.OrderList = OrderList;
     }
 
 //        this.tablemodel = dtm;
 //        this.rownumber=rownumber;
-    
-
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -80,8 +78,9 @@ public class EditOrder extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel8 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,7 +95,7 @@ public class EditOrder extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Order ID         :");
@@ -144,51 +143,60 @@ public class EditOrder extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("jLabel12");
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton3.setText("Add Delivery Date");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
+        jLabel3.setText("Edit Order");
+
+        jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jXDatePicker1ActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
-        jLabel3.setText("Edit Order");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("Add Delivery Date");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel11))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5))
+                                    .addComponent(jLabel11))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(51, 51, 51)))
                         .addComponent(jButton2)))
-                .addGap(61, 61, 61))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,11 +224,13 @@ public class EditOrder extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(jButton2))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -229,22 +239,29 @@ public class EditOrder extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String status = "Delivered";
-        
-//        Object rowData[] = new Object[4];
-        
-        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-            if(tablemodel.getColumnCount() == 4){
-                if(tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())){
-                    tablemodel.setValueAt(status, rownumber, 3);
-                    OrderList.getEntry(i).setStatus(status);
+
+        for (int i = 1; i <= OrderList.getNumberOfEntries(); i++) {
+            if (tablemodel.getColumnCount() == 4) {
+                if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
+                    if (tablemodel.getValueAt(rownumber, 2).equals("")) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Date is not selected", "Warning", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        tablemodel.setValueAt(status, rownumber, 3);
+                        OrderList.getEntry(i).setStatus(status);
+                    }
                 }
-            }else if (tablemodel.getColumnCount()==5){
-                if(tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())){
-                    tablemodel.setValueAt(status, rownumber, 4);
-                    OrderList.getEntry(i).setStatus(status);
+            } else if (tablemodel.getColumnCount() == 5) {
+                if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
+                    if (tablemodel.getValueAt(rownumber, 3).equals("")) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Date is not selected", "Warning", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        tablemodel.setValueAt(status, rownumber, 4);
+                        OrderList.getEntry(i).setStatus(status);
+                    }
                 }
             }
         }
+
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -252,25 +269,26 @@ public class EditOrder extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
         // TODO add your handling code here:
-        Calendar cal = Calendar. getInstance();
-        Date date=cal.getTime();
+        Calendar cal = Calendar.getInstance();
+//        Date date = cal.getTime();
         Date time = cal.getTime();
+        Date datepick = jXDatePicker1.getDate();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         DateFormat timeFormat = new SimpleDateFormat("HH:MM a");
         String updatetime = timeFormat.format(time);
-        String updatedate =dateFormat.format(date);
-        
-        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-        if(tablemodel.getColumnCount() == 4){
-            if(tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())){
+//        String updatedate =dateFormat.format(date);
+        String updatedate = dateFormat.format(datepick);
+
+        for (int i = 1; i <= OrderList.getNumberOfEntries(); i++) {
+            if (tablemodel.getColumnCount() == 4) {
+                if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
                     tablemodel.setValueAt(updatedate, rownumber, 2);
                     OrderList.getEntry(i).setDel_date(updatedate);
                 }
-        }
-        else if (tablemodel.getColumnCount()==5){
-            if(tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())){
+            } else if (tablemodel.getColumnCount() == 5) {
+                if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
                     tablemodel.setValueAt(updatedate, rownumber, 2);
                     tablemodel.setValueAt(updatedate, rownumber, 3);
                     OrderList.getEntry(i).setPickup_date(updatedate);
@@ -279,7 +297,7 @@ public class EditOrder extends javax.swing.JFrame {
             }
         }
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jXDatePicker1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,7 +306,6 @@ public class EditOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -299,8 +316,10 @@ public class EditOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }

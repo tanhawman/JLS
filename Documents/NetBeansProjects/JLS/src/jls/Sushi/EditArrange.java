@@ -11,6 +11,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import jls.Arrangement;
 import jls.Order;
@@ -25,14 +27,30 @@ public class EditArrange extends javax.swing.JFrame {
     private int rownumber;
     /**
      * Creates new form EditArrange
+     * @param ArrangeList
      */
     public EditArrange(SListInterface<Arrangement> ArrangeList,TableModel dtm, int rownumber) {
         initComponents();
+        this.ArrangeList = ArrangeList;
         jLabel5.setText((String)dtm.getValueAt(rownumber, 0));
         jLabel6.setText((String)dtm.getValueAt(rownumber, 1));
-        jLabel7.setText((String)dtm.getValueAt(rownumber, 2));
+        for(int i=1; i<=ArrangeList.getLength(); i++){
+            switch (ArrangeList.getEntry(i).getA_priority()) {
+                case 1:
+                    jLabel7.setText("Express");
+                    break;
+                case 2:
+                    jLabel7.setText("Normal");
+                    break;
+                default:
+                    jLabel7.setText("Flexi");
+                    break;
+            }
+        }
+//        jLabel7.setText((String) dtm.getValueAt(rownumber, 2));
         jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
-        this.ArrangeList = ArrangeList;
+        this.tablemodel = dtm;
+        this.rownumber=rownumber;
     }
 
     /**
@@ -51,13 +69,14 @@ public class EditArrange extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel10 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
         jLabel3.setText("Edit Arrangement");
@@ -80,13 +99,6 @@ public class EditArrange extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("jLabel7");
 
-        jButton1.setText("Update Delivery Date");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +119,15 @@ public class EditArrange extends javax.swing.JFrame {
             }
         });
 
+        jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXDatePicker1ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Add Delivery Date");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,29 +139,34 @@ public class EditArrange extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3))))
+                                .addGap(96, 96, 96)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(jButton3))
+                                    .addComponent(jLabel10)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel8))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel4))))
+                                    .addComponent(jLabel4)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(jLabel8))))
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
                             .addComponent(jLabel9))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,12 +189,14 @@ public class EditArrange extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addContainerGap(69, Short.MAX_VALUE))
+                    .addComponent(jButton3)
+                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -179,37 +207,41 @@ public class EditArrange extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Calendar cal = Calendar. getInstance();
-        Date date=cal.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-        String updatedate =dateFormat.format(date);
-        for(int i=1; i<=ArrangeList.getLength(); i++){
-                if(tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())){
-                    tablemodel.setValueAt(updatedate, rownumber, 2);
-                    ArrangeList.getEntry(i).setA_ID(updatedate);
-                }
-        }
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String status = "Delivered";
+        if(tablemodel.getValueAt(rownumber, 1).equals("")){
+            JOptionPane.showMessageDialog(new JFrame(), "Date is not selected", "Warning", JOptionPane.ERROR_MESSAGE);
+        }else {
         for(int i=1; i<=ArrangeList.getLength(); i++){
                 if(tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())){
                     tablemodel.setValueAt(status, rownumber, 3);
-                    ArrangeList.getEntry(i).setA_ID(status);
+                    ArrangeList.getEntry(i).setA_status(status);
                 }
+        }
         }
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
+//        Calendar cal = Calendar. getInstance();
+        Date datepick = jXDatePicker1.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+        String updatedate =dateFormat.format(datepick);
+        for(int i=1; i<=ArrangeList.getLength(); i++){
+            if(tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())){
+                tablemodel.setValueAt(updatedate, rownumber, 1);
+                ArrangeList.getEntry(i).setA_date(updatedate);
+            }
+        }
+        dispose();
+    }//GEN-LAST:event_jXDatePicker1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -218,5 +250,6 @@ public class EditArrange extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }

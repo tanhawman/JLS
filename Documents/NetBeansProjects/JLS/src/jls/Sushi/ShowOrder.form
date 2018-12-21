@@ -251,6 +251,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());&#xa;        jTable1.setAutoCreateRowSorter(true);&#xa;        // DefaultRowSorter has the sort() method&#xa;        DefaultRowSorter sorter = ((DefaultRowSorter)jTable1.getRowSorter()); &#xa;        ArrayList list = new ArrayList();&#xa;        list.add( new RowSorter.SortKey(2, SortOrder.ASCENDING) );&#xa;        sorter.setSortKeys(list);&#xa;        sorter.sort();"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

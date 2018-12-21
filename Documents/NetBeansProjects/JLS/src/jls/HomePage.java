@@ -73,14 +73,28 @@ public class HomePage extends javax.swing.JFrame {
     OrderItem oi_6_3 = new OrderItem(p6, 5);
     
     OrderItem[] oi_6 = {oi_6_1, oi_6_2, oi_6_3};
+    
+    OrderItem oi_7_1 = new OrderItem(p2, 3);
+    OrderItem oi_7_2 = new OrderItem(p1, 5);
+    
+    OrderItem[] oi_7 = {oi_7_1, oi_7_2};
+    
+    OrderItem oi_8_1 = new OrderItem(p2, 3);
+    OrderItem oi_8_2 = new OrderItem(p1, 5);
+    
+    OrderItem[] oi_8 = {oi_8_1, oi_8_2};
 
     // public Order(String order_ID, String[] item_name, int[] quantity, String address, String priority, String del_date, String status, int distance, String pickup_date, String pickup_time, boolean isPaid, int total_bill, String cust_name)
-    Order o1 = new Order("O001", oi_1, "Jalan Tak Ada, 53300 Kuala Lumpur", "Express", " ", "Pending", 250, "Delivery", "Delivery", true, 117, "Tan Yee Kun");
+    Order o1 = new Order("O001", oi_1, "Jalan Tak Ada, 53300 Kuala Lumpur", "Express", "", "Pending", 250, "Delivery", "Delivery", true, 117, "Tan Yee Kun");
     Order o2 = new Order("O002", oi_2, "No.123 Jalan awda", "Express", "01/12/18", "Delivered", 300, "Delivery", "Delivery", false, 455,"Tong Chun Ken");
-    Order o3 = new Order("O003", oi_3, "Self Pick-Up", "Normal", " ", "Pending", 0, "20/12/18", "10.00 am", true, 225, "Teo Zhuo Yang");
+    Order o3 = new Order("O003", oi_3, "Self Pick-Up", "Normal", "", "Pending", 0, "20/12/18", "10.00 am", true, 225, "Teo Zhuo Yang");
     Order o4 = new Order("O004", oi_4, "Self Pick-Up", "Flexi", "03/12/18", "Delivered", 0, "03/12/18", "12:00 pm", false, 900, "Tan Haw Man");
     Order o5 = new Order("O005", oi_5, "No. 2 Monster Hunter World Iceborne", "Normal", "05/12/18", "Delivered", 320, "Delivery", "Delivery", false, 670, "Teo Jun Jie");
-    Order o6 = new Order("O006", oi_6, "Self Pick-Up", "Flexi", " ", "Pending", 0, "25/12/18", "11.00 am", true, 910, "Soh Shi Yee");
+    Order o6 = new Order("O006", oi_6, "Self Pick-Up", "Flexi", "", "Pending", 0, "25/12/18", "11.00 am", true, 910, "Soh Shi Yee");
+    Order o7 = new Order("O007", oi_7, "Jalan small di Kuala Lumpur", "Flexi", "", "Pending", 255, "Delivery", "Delivery", true, 117, "James Bro");
+    Order o8 = new Order("O008", oi_8, "Jalan Besar Kuala Lumpur", "Express", "", "Pending", 300, "Delivery", "Delivery", true, 117, "Nergi Gante");
+
+
     
     //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, int a_priority, int a_TotalPrice,string a_date, string a_status) 
     Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear",1,90,"10/12/18","Delivered");
@@ -116,6 +130,8 @@ public class HomePage extends javax.swing.JFrame {
         OrderList.add(o4);
         OrderList.add(o5);
         OrderList.add(o6);
+        OrderList.add(o7);
+        OrderList.add(o8);
         
         ProductList.add(p1);
         ProductList.add(p2);

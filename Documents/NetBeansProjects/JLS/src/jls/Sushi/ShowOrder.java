@@ -11,12 +11,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.DefaultRowSorter;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import jls.Arrangement;
 import jls.Customer;
@@ -66,7 +70,13 @@ public class ShowOrder extends javax.swing.JFrame {
         for (int i = 1; i <= ArrangeList.getLength(); i++) {
             rowData[0] = ArrangeList.getEntry(i).getA_ID();
             rowData[1] = ArrangeList.getEntry(i).getA_date();
-            rowData[2] = ArrangeList.getEntry(i).getA_priority();
+            if(ArrangeList.getEntry(i).getA_priority() == 1){
+                rowData[2] = "Express";
+            }else if(ArrangeList.getEntry(i).getA_priority() == 2){
+                rowData[2] = "Normal";
+            }else{
+                rowData[3] = "Flexi";
+            }
             rowData[3] = ArrangeList.getEntry(i).getA_status();
             model.addRow(rowData);
         }
@@ -191,6 +201,14 @@ public class ShowOrder extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());
+        jTable1.setAutoCreateRowSorter(true);
+        // DefaultRowSorter has the sort() method
+        DefaultRowSorter sorter = ((DefaultRowSorter)jTable1.getRowSorter());
+        ArrayList list = new ArrayList();
+        list.add( new RowSorter.SortKey(2, SortOrder.ASCENDING) );
+        sorter.setSortKeys(list);
+        sorter.sort();
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Edit");
