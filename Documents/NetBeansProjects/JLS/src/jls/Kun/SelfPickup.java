@@ -62,13 +62,13 @@ public class SelfPickup extends javax.swing.JPanel {
         for (int i = 0; i < model1.getRowCount(); i++){           
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
             int p1chkPrice = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
-            int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
+            int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 4).toString());
             int total = p1chkPrice * p1chkQty;
 
             if(p1chkOrder == true && p1chkQty > 0){             
                 row[0] = model1.getValueAt(i, 0);
                 row[1] = model1.getValueAt(i, 2);
-                row[2] = model1.getValueAt(i, 3);
+                row[2] = model1.getValueAt(i, 4);
                 row[3] = total;
                 model.addRow(row);    
                 
@@ -81,13 +81,13 @@ public class SelfPickup extends javax.swing.JPanel {
         for (int i = 0; i < model2.getRowCount(); i++){           
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(i, 1);
             int p2chkPrice = Integer.parseInt(p2.jTable1.getValueAt(i, 2).toString());
-            int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(i, 3).toString());
+            int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(i, 4).toString());
             int total = p2chkPrice * p2chkQty;
 
             if(p2chkOrder == true && p2chkQty > 0){             
                 row[0] = model2.getValueAt(i, 0);
                 row[1] = model2.getValueAt(i, 2);
-                row[2] = model2.getValueAt(i, 3);
+                row[2] = model2.getValueAt(i, 4);
                 row[3] = total;
                 model.addRow(row);    
                 

@@ -129,14 +129,14 @@ public class SalesOrder extends javax.swing.JFrame {
         int itemNum = 0;
         for (int i = 0; i < model1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) fresh.jTable1.getValueAt(i, 1);
-            int p1chkQty = Integer.parseInt(fresh.jTable1.getValueAt(i, 3).toString());
+            int p1chkQty = Integer.parseInt(fresh.jTable1.getValueAt(i, 4).toString());
             if (p1chkOrder == true && p1chkQty > 0) {
                 itemNum++;
             }
         }
         for (int i = 0; i < model2.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) bouquet.jTable1.getValueAt(i, 1);
-            int p2chkQty = Integer.parseInt(bouquet.jTable1.getValueAt(i, 3).toString());
+            int p2chkQty = Integer.parseInt(bouquet.jTable1.getValueAt(i, 4).toString());
             if (p2chkOrder == true && p2chkQty > 0) {
                 itemNum++;
             }
@@ -146,17 +146,17 @@ public class SalesOrder extends javax.swing.JFrame {
         for (int i = 0; i < model1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) fresh.jTable1.getValueAt(i, 1);
             int p1chkPrice = Integer.parseInt(fresh.jTable1.getValueAt(i, 2).toString());
-            int p1chkQty = Integer.parseInt(fresh.jTable1.getValueAt(i, 3).toString());
+            int p1chkQty = Integer.parseInt(fresh.jTable1.getValueAt(i, 4).toString());
             int total = p1chkPrice * p1chkQty;
 
             if (p1chkOrder == true && p1chkQty > 0) {
                 row[0] = model1.getValueAt(i, 0);
                 row[1] = model1.getValueAt(i, 2);
-                row[2] = model1.getValueAt(i, 3);
+                row[2] = model1.getValueAt(i, 4);
                 row[3] = total;
                 model.addRow(row);
                 item[num] = model1.getValueAt(i, 0).toString();
-                qty[num] = Integer.parseInt(model1.getValueAt(i, 3).toString());
+                qty[num] = Integer.parseInt(model1.getValueAt(i, 4).toString());
                 Product pname = null;
                 for (int j = 1; j <= ProductList.getNumberOfEntries(); j++) {
                     if (item[num].equals(ProductList.getEntry(j).getName())) {
@@ -174,17 +174,17 @@ public class SalesOrder extends javax.swing.JFrame {
         for (int i = 0; i < model2.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) bouquet.jTable1.getValueAt(i, 1);
             int p2chkPrice = Integer.parseInt(bouquet.jTable1.getValueAt(i, 2).toString());
-            int p2chkQty = Integer.parseInt(bouquet.jTable1.getValueAt(i, 3).toString());
+            int p2chkQty = Integer.parseInt(bouquet.jTable1.getValueAt(i, 4).toString());
             int total = p2chkPrice * p2chkQty;
 
             if (p2chkOrder == true && p2chkQty > 0) {
                 row[0] = model2.getValueAt(i, 0);
                 row[1] = model2.getValueAt(i, 2);
-                row[2] = model2.getValueAt(i, 3);
+                row[2] = model2.getValueAt(i, 4);
                 row[3] = total;
                 model.addRow(row);
                 item[num] = model2.getValueAt(i, 0).toString();
-                qty[num] = Integer.parseInt(model2.getValueAt(i, 3).toString());
+                qty[num] = Integer.parseInt(model2.getValueAt(i, 4).toString());
                 Product pname = null;
                 for (int j = 1; j <= ProductList.getNumberOfEntries(); j++) {
                     if (item[num].equals(ProductList.getEntry(j).getName())) {
@@ -210,10 +210,10 @@ public class SalesOrder extends javax.swing.JFrame {
         String pickuptime = jLabel16.getText();
 
         if (confirmOrder.rdpickup.isSelected() == true) {
-            Order newOrder = new Order(orderid, oi, address, " ", " ", "Pending", 0, pickupdate, pickuptime, true, Integer.valueOf(total), name);
+            Order newOrder = new Order(orderid, oi, address, " ", "", "Pending", 0, pickupdate, pickuptime, true, Integer.valueOf(total), name);
             OrderList.add(newOrder);
         } else {
-            Order newOrder = new Order(orderid, oi, address, " ", " ", "Pending", 0, "Delivery", "Delivery", true, Integer.valueOf(total), name);
+            Order newOrder = new Order(orderid, oi, address, " ", "", "Pending", 0, "Delivery", "Delivery", true, Integer.valueOf(total), name);
             OrderList.add(newOrder);
         }
 
