@@ -93,9 +93,10 @@ public class HomePage extends javax.swing.JFrame {
     Order o6 = new Order("O006", oi_6, "Self Pick-Up", "Flexi", "", "Pending", 0, "25/12/18", "11.00 am", true, 910, "Soh Shi Yee");
     Order o7 = new Order("O007", oi_7, "Jalan small di Kuala Lumpur", "Flexi", "", "Pending", 255, "Delivery", "Delivery", true, 117, "James Bro");
     Order o8 = new Order("O008", oi_8, "Jalan Besar Kuala Lumpur", "Express", "", "Pending", 300, "Delivery", "Delivery", true, 117, "Nergi Gante");
+    Order o9 = new Order("O009", oi_2, "No.123 Jalan awda", "Express", "11/12/18", "Delivered", 300, "Delivery", "Delivery", false, 455,"Tong Chun Ken");
+    Order o10 = new Order("O010", oi_6, "No.123 Jalan awda", "Express", "12/12/18", "Delivered", 300, "Delivery", "Delivery", false, 910,"Tong Chun Ken");
+    Order o11 = new Order("O011", oi_7, "No.123 Jalan awda", "Express", "12/12/18", "Delivered", 300, "Delivery", "Delivery", false, 117,"Tong Chun Ken");
 
-
-    
     //public Arrangement(String a_ID, String a_style, String a_size, String a_flower, String a_accessory, int a_priority, int a_TotalPrice,string a_date, string a_status) 
     Arrangement a1 = new Arrangement("A001","Elliptical flower","Large","Rose","Teddy bear",1,90,"10/12/18","Delivered");
     Arrangement a2 = new Arrangement("A002","Elliptical flower","Small","Lily","Teddy bear",2,50,"","Pending");
@@ -132,6 +133,9 @@ public class HomePage extends javax.swing.JFrame {
         OrderList.add(o6);
         OrderList.add(o7);
         OrderList.add(o8);
+        OrderList.add(o9);
+        OrderList.add(o10);
+        OrderList.add(o11);
         
         ProductList.add(p1);
         ProductList.add(p2);
@@ -255,6 +259,7 @@ public class HomePage extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -262,6 +267,7 @@ public class HomePage extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -305,7 +311,7 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel3.setText("Panda Flower System");
+        jLabel3.setText("Fiore Flower System");
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton7.setText("Delivery Route");
@@ -362,18 +368,21 @@ public class HomePage extends javax.swing.JFrame {
                         .addGap(185, 185, 185)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
+                        .addGap(173, 173, 173)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,7 +423,7 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel5.setText("Panda Flower");
+        jLabel5.setText("Fiore Flower System ");
 
         jButton6.setText("Back");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -427,24 +436,25 @@ public class HomePage extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addContainerGap(177, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(47, 47, 47)
+                .addGap(116, 116, 116)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addGap(95, 95, 95))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addGap(87, 87, 87))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,10 +464,12 @@ public class HomePage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton5))
@@ -607,6 +619,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

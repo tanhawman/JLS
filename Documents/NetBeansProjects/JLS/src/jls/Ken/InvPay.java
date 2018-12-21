@@ -27,7 +27,7 @@ public class InvPay extends javax.swing.JPanel {
         this.OrderList = OrderList;
         this.CustList = CustList;
         initComponents();
-        addRowToJTable(name);
+        // addRowToJTable(name);
     }
 
     @SuppressWarnings("unchecked")

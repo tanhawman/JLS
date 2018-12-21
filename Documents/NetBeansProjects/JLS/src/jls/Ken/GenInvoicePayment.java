@@ -264,7 +264,8 @@ public class GenInvoicePayment extends javax.swing.JFrame {
         name_txt = name.getText().toLowerCase();
         
         DefaultTableModel model = (DefaultTableModel) ip.jTable1.getModel();
-        for (int i = 0; i < ip.jTable1.getRowCount(); i++){ 
+        int lao = ip.jTable1.getRowCount();
+        for (int i = 0; i < lao; i++){ 
             model.removeRow(0);
         }
             
@@ -292,13 +293,13 @@ public class GenInvoicePayment extends javax.swing.JFrame {
     private void Cal_ChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cal_ChangeActionPerformed
         // TODO add your handling code here:
         try{
-            int cust_pay = Cal_Change(total_bill, Integer.parseInt(CustPay.getText()));
+            int cust_pay = Integer.parseInt(CustPay.getText());
+            Cal_Change(total_bill, Integer.parseInt(CustPay.getText()));
 
             if (cust_pay < total_bill ) {
                 JOptionPane.showMessageDialog(null, temp, "Payment", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                
-                for(int i= 1; i < CustList.getNumberOfEntries(); i++){
+                for(int i= 1; i <= CustList.getNumberOfEntries(); i++){
                     // set cust stat to Active, set Remaining credit limit to monthly limit, find by order id to update ispaid 
                     if(CustList.getEntry(i).getName().toLowerCase().equals(name_txt)){
                         CustList.getEntry(i).setStatus("Active");
@@ -308,6 +309,7 @@ public class GenInvoicePayment extends javax.swing.JFrame {
                 }
             
                 int row = 0;
+                int aherh = ip.jTable1.getRowCount();
                 for(int i=1; i <=OrderList.getNumberOfEntries(); i++){
                     if(row < ip.jTable1.getRowCount()){
                         if(OrderList.getEntry(i).getOrder_ID().equals(ip.jTable1.getValueAt(row, 0).toString())){
@@ -318,7 +320,8 @@ public class GenInvoicePayment extends javax.swing.JFrame {
                 }
                         
                 DefaultTableModel model = (DefaultTableModel) ip.jTable1.getModel();
-                for (int i = 0; i < ip.jTable1.getRowCount(); i++){ 
+                aherh = ip.jTable1.getRowCount();
+                for (int i = 0; i < aherh; i++){ 
                     model.removeRow(0);
                 }
         
