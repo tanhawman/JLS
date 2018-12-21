@@ -28,16 +28,17 @@ import jls.Product;
  *
  * @author Sushi
  */
-public class ShowOrder extends javax.swing.JFrame { 
+public class ShowOrder extends javax.swing.JFrame {
+
     LList<Order> OrderList;
     SListInterface<Arrangement> ArrangeList;
-    LList<Customer> CustList ;
-    LList<Product> ProductList ;
+    LList<Customer> CustList;
+    LList<Product> ProductList;
     GridBagLayout layout = new GridBagLayout();
-    PickUp pu ;
+    PickUp pu;
     Delivery de;
 
-    public ShowOrder(LList<Customer> CustList ,LList<Order> OrderList,LList<Product> ProductList, SListInterface<Arrangement> ArrangeList) {
+    public ShowOrder(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList, SListInterface<Arrangement> ArrangeList) {
         initComponents();
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
@@ -45,8 +46,8 @@ public class ShowOrder extends javax.swing.JFrame {
         this.ProductList = ProductList;
         addRowToJTable();
         jRadioButton1.setSelected(true);
-        pu = new PickUp(OrderList,ArrangeList, CustList,ProductList);
-        de = new Delivery(OrderList,ArrangeList, CustList,ProductList);
+        pu = new PickUp(OrderList, ArrangeList, CustList, ProductList);
+        de = new Delivery(OrderList, ArrangeList, CustList, ProductList);
         empty.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 150;
@@ -58,11 +59,11 @@ public class ShowOrder extends javax.swing.JFrame {
         pu.setVisible(true);
         de.setVisible(false);
     }
-    
-     public void addRowToJTable(){
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    Object rowData[] = new Object[4];
-        for(int i=1; i<=ArrangeList.getLength(); i++){
+
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Object rowData[] = new Object[4];
+        for (int i = 1; i <= ArrangeList.getLength(); i++) {
             rowData[0] = ArrangeList.getEntry(i).getA_ID();
             rowData[1] = ArrangeList.getEntry(i).getA_date();
             rowData[2] = ArrangeList.getEntry(i).getA_priority();
@@ -70,7 +71,6 @@ public class ShowOrder extends javax.swing.JFrame {
             model.addRow(rowData);
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -278,14 +278,21 @@ public class ShowOrder extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new HomePage( CustList,OrderList,ProductList, ArrangeList).setVisible(true);
+        new HomePage(CustList, OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new EditArrange(ArrangeList,jTable1.getModel(),jTable1.getSelectedRow()).setVisible(true);
+        if (jTable1.getSelectedRow() != -1) {
+            if (jTable1.getValueAt(jTable1.getSelectedRow(), 3).equals("Delivered")) {
+                JOptionPane.showMessageDialog(new JFrame(), "This order already delivered, cant update anymore", "Warning", JOptionPane.ERROR_MESSAGE);
+            } else {
+                new EditArrange(ArrangeList, jTable1.getModel(), jTable1.getSelectedRow()).setVisible(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "No Row is Selected, Please check again!!", "Warning", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

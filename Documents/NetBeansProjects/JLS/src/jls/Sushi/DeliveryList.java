@@ -16,6 +16,7 @@ import jls.Order;
 import ADT.LList;
 import ADT.SListInterface;
 import java.util.Random;
+import javax.swing.DefaultRowSorter;
 import jls.Arrangement;
 import jls.Customer;
 import jls.Product;
@@ -97,12 +98,20 @@ public class DeliveryList extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
-        jTable1.setRowSorter(sorter);
-
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
-        sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
-        sorter.setSortKeys(sortKeys);
+        //TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable1.getModel());
+        //            jTable1.setRowSorter(sorter);
+        //
+        //            List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
+        //            sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));
+        //            sorter.setSortKeys(sortKeys);
+        jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());
+        jTable1.setAutoCreateRowSorter(true);
+        // DefaultRowSorter has the sort() method
+        DefaultRowSorter sorter = ((DefaultRowSorter)jTable1.getRowSorter());
+        ArrayList list = new ArrayList();
+        list.add( new RowSorter.SortKey(2, SortOrder.ASCENDING) );
+        sorter.setSortKeys(list);
+        sorter.sort();
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

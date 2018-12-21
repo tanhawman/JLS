@@ -74,7 +74,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;TableModel&gt;(jTable1.getModel());&#xa;            jTable1.setRowSorter(sorter);&#xa;&#xa;            List&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;&gt;(25);&#xa;            sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));&#xa;            sorter.setSortKeys(sortKeys);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="//TableRowSorter&lt;TableModel&gt; sorter = new TableRowSorter&lt;TableModel&gt;(jTable1.getModel());&#xa;//            jTable1.setRowSorter(sorter);&#xa;//&#xa;//            List&lt;RowSorter.SortKey&gt; sortKeys = new ArrayList&lt;&gt;(25);&#xa;//            sortKeys.add(new RowSorter.SortKey(2, SortOrder.ASCENDING));&#xa;//            sorter.setSortKeys(sortKeys);&#xa;jTable1.setPreferredScrollableViewportSize(jTable1.getPreferredSize());&#xa;        jTable1.setAutoCreateRowSorter(true);&#xa;        // DefaultRowSorter has the sort() method&#xa;        DefaultRowSorter sorter = ((DefaultRowSorter)jTable1.getRowSorter()); &#xa;        ArrayList list = new ArrayList();&#xa;        list.add( new RowSorter.SortKey(2, SortOrder.ASCENDING) );&#xa;        sorter.setSortKeys(list);&#xa;        sorter.sort();"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="DeliveryList_jTable1"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

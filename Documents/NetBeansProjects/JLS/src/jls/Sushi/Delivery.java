@@ -12,6 +12,8 @@ import javax.swing.table.DefaultTableModel;
 import jls.Order;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableModel;
@@ -137,12 +139,15 @@ public class Delivery extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
         if(jTable1.getSelectedRow() != -1){
-            new EditOrder(jTable1.getModel(),jTable1.getSelectedRow(), OrderList).setVisible(true);
+           if (jTable1.getValueAt(jTable1.getSelectedRow(), 3).equals("Delivered")) {
+                JOptionPane.showMessageDialog(new JFrame(), "This order already delivered, cant update anymore", "Warning", JOptionPane.ERROR_MESSAGE);
+            } else {
+                new EditOrder(jTable1.getModel(), jTable1.getSelectedRow(), OrderList).setVisible(true);
+            }
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "No Row is Selected, Please check again!!", "Warning", JOptionPane.ERROR_MESSAGE);
         }
-            
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

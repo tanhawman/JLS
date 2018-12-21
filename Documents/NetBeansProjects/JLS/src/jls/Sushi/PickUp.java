@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableModel;
 import jls.Order;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.TableModel;
@@ -38,8 +40,12 @@ public class PickUp extends javax.swing.JPanel {
         this.CustList = CustList;
         this.ProductList = ProductList;
         addRowToJTable();
+        
     }
+    
 
+
+    
     public void addRowToJTable(){
     DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
     
@@ -96,12 +102,6 @@ public class PickUp extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        //TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(jTable2.getModel());
-        //            jTable2.setRowSorter(sorter);
-        //
-        //            List<RowSorter.SortKey> sortKeys = new ArrayList<>(25);
-        //            sortKeys.add(new RowSorter.SortKey(4, SortOrder.ASCENDING));
-        //            sorter.setSortKeys(sortKeys);
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setText("Edit");
@@ -136,9 +136,15 @@ public class PickUp extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+         
         if(jTable2.getSelectedRow() != -1){
-            new EditOrder(jTable2.getModel(),jTable2.getSelectedRow(), OrderList).setVisible(true);
+            if (jTable2.getValueAt(jTable2.getSelectedRow(), 4).equals("Delivered")) {
+                JOptionPane.showMessageDialog(new JFrame(), "This order already delivered, cant update anymore", "Warning", JOptionPane.ERROR_MESSAGE);
+            } else {
+                new EditOrder(jTable2.getModel(), jTable2.getSelectedRow(), OrderList).setVisible(true);
+            }
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "No Row is Selected, Please check again!!", "Warning", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
