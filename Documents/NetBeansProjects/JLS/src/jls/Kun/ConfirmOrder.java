@@ -112,7 +112,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
             .addGap(0, 330, Short.MAX_VALUE)
         );
 
-        btnCancel.setText("Back");
+        btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -174,6 +174,7 @@ public class ConfirmOrder extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
+        new HomePage(CustList, OrderList, ProductList, ArrangeList).setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void rdpickupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdpickupActionPerformed

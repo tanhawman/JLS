@@ -54,7 +54,7 @@ public class Bouquet extends javax.swing.JPanel {
         int qty = 0;
         int total = 0;
 
-        for (int i = 1; i < ProductList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= ProductList.getNumberOfEntries(); i++) {
             int discountRate = ProductList.getEntry(i).getDis_rate();
             int discount = 100 - discountRate;
             int discountPrice = ProductList.getEntry(i).getPrice() * discount / 100;
