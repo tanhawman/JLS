@@ -1,15 +1,83 @@
 package ADT;
 
 public class LList<T> implements ListInterface<T> {
-    
-  private Node<T> firstNode;
-  private int numberOfEntries;
+
+    private Node<T> first;
+    private int numOfEntries;
+
+    public boolean add(T newEntry) {
+
+        // <T> is a collection of object, just like array of object, but this implement the node.
+        Node<T> newNode = new Node<>(newEntry);
+
+        if (isEmpty()) {
+            // Case 1 : If the node List is empty, make the new node as the last node
+            first = newNode;
+        } else {
+            // This will get the last node by using the "numberOfEntries" which will store the last node's location
+            Node<T> lastNode = getNodeAt(numOfEntries);
+            // This will make make the last node's next reference to the new Node, and make the new node as the last node.
+            lastNode.setNext(newNode);
+        }
+        numOfEntries++;
+        return true;
+    }
+
+    public final void clear() {
+        // After runnning this functions, all the linkage between all node will lost.
+        first = null;
+        numOfEntries = 0;
+    }
+
+    // the LList is start from 1, not like other function starts with "0", this start with "1".
+    public T getEntry(int givenPosition) {
+        T result = null;
+
+        // Check within range of LList
+        if ((givenPosition >= 1) && (givenPosition <= numOfEntries)) {
+            result = getNodeAt(givenPosition).getData();
+        }
+        return result;
+    }
+
+    public int getNumberOfEntries() {
+        return numOfEntries;
+    }
+
+    public boolean isEmpty() {
+        boolean result;
+
+        if (numOfEntries == 0) {
+            result = true;
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+    private Node<T> getNodeAt(int givenPosition) {
+        Node<T> currentNode = first;
+
+        // go to the node at the given location.
+        for (int counter = 1; counter < givenPosition; counter++) {
+            currentNode = currentNode.getNext();
+        }
+        return currentNode;
+    }
+
+    public LList() {
+        clear();
+    }
 
     public class Node<T> {
-        private T data; // entry in list
-        private Node next; // link to next node
+        // This is a variable which allow us to store a collection of data. exmaple like: The whole Customer object.
+
+        private T data;
+        // Node is the thing that we used as a link to next node
+        private Node next;
 
         public Node(T data) {
+            // Initializing the node
             this.data = data;
             next = null;
         }
@@ -32,156 +100,7 @@ public class LList<T> implements ListInterface<T> {
         }
 
         public Node getNext() {
-          return next;
+            return next;
         }
-    }
-  
-    public LList() {
-      clear();
-    }
-
-    public final void clear() {
-      firstNode = null;
-      numberOfEntries = 0;
-    }
-
-    public boolean add(T newEntry){
-        Node<T> newNode = new Node<>(newEntry);
-
-        if (isEmpty()){
-            firstNode = newNode;
-        }else{
-            Node<T> lastNode = getNodeAt(numberOfEntries);
-            lastNode.setNext(newNode);
-        }
-        numberOfEntries++;
-        return true;
-    }
-
-    public boolean add(int newPosition, T newEntry) {
-        boolean isSuccessful = true;
-
-        if ((newPosition >= 1) && (newPosition <= numberOfEntries + 1)) {
-            Node<T> newNode = new Node<T>(newEntry);
-
-            if (isEmpty() || (newPosition == 1)) {     // case 1: add to beginning of list
-                newNode.setNext(firstNode);
-                firstNode = newNode;
-            } else {								                      // case 2: list is not empty and newPosition > 1
-                Node nodeBefore = getNodeAt(newPosition - 1);
-                Node nodeAfter = nodeBefore.getNext();
-                newNode.setNext(nodeAfter);
-                nodeBefore.setNext(newNode);
-            }
-            numberOfEntries++;
-        }else{
-            isSuccessful = false;
-        }
-        return isSuccessful;
-    }
-
-    public T remove(int givenPosition) {
-        T result = null;
-
-        if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
-            if (givenPosition == 1) {      // case 1: remove first entry
-                result = firstNode.getData();     // save entry to be removed 
-                firstNode = firstNode.getNext();
-            } else {                         // case 2: givenPosition > 1
-                Node<T> nodeBefore = getNodeAt(givenPosition - 1);
-                Node<T> nodeToRemove = nodeBefore.getNext();
-                Node<T> nodeAfter = nodeToRemove.getNext();
-                nodeBefore.setNext(nodeAfter); // disconnect the node to be removed
-                result = nodeToRemove.getData();  // save entry to be removed
-            }
-        numberOfEntries--;
-        }
-        return result;
-    }
-
-    public boolean replace(int givenPosition, T newEntry) {
-        boolean isSuccessful = true;
-
-        if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
-            Node<T> desiredNode = getNodeAt(givenPosition);
-            desiredNode.setData(newEntry);
-        } else{
-            isSuccessful = false;
-        }
-        return isSuccessful;
-    }
-
-    // for loop, int MUST START with "1", not 0
-    public T getEntry(int givenPosition) {
-        T result = null;
-
-        if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
-            result = getNodeAt(givenPosition).getData();
-        }
-        return result;
-    }
-
-    public boolean contains(T anEntry) {
-        boolean found = false;
-        Node<T> currentNode = firstNode;
-
-        while (!found && (currentNode != null)) {
-            if (anEntry.equals(currentNode.getData())) {
-                found = true;
-            } else {
-                currentNode = currentNode.getNext();
-            }
-        }
-        return found;
-    }
-
-    public int getNumberOfEntries() {
-        return numberOfEntries;
-    }
-
-    public boolean isEmpty() {
-        boolean result;
-
-        if (numberOfEntries == 0) {
-            result = true;
-        } else {
-            result = false;
-        }
-        return result;
-    }
-
-    public boolean isFull() {
-      return false;
-    }
-
-    public String toString() {
-        String outputStr = "";
-        Node<T> currentNode = firstNode;
-        while (currentNode != null) {
-            outputStr += currentNode.getData() + "\n";;
-            currentNode = currentNode.getNext();
-        }
-        return outputStr;
-    }
-
-    private void displayChain(Node nodeOne) {
-        if (nodeOne != null) {
-            System.out.print(nodeOne.getData() + " ");
-            displayChain(nodeOne.getNext());
-        }
-    }
-
-  /**
-   * Task: Returns a reference to the node at a given position. Precondition:
-   * List is not empty; 1 <= givenPosition <= numberOfEntries.
-   */
-    private Node<T> getNodeAt(int givenPosition) {
-        Node<T> currentNode = firstNode;
-
-        // traverse the list to locate the desired node
-        for (int counter = 1; counter < givenPosition; counter++) {
-            currentNode = currentNode.getNext();
-        }
-        return currentNode;
     }
 }
