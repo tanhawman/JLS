@@ -262,6 +262,7 @@ public class HomePage extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fiore Flower System");
 
         jLayeredPane1.setLayout(new java.awt.CardLayout());
 

@@ -337,7 +337,6 @@ public class RegisterForm extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, con_msg, "Confirmation", JOptionPane.INFORMATION_MESSAGE);
             
-            System.out.print(CustList.getEntry(CustList.getNumberOfEntries()).getName());
         }else{
             JOptionPane.showMessageDialog(null, "Looks like you mis-entered some information.\nPlease revise your input." + val_msg, "Opss..", JOptionPane.INFORMATION_MESSAGE);
             val_msg = "";
@@ -367,7 +366,7 @@ public class RegisterForm extends javax.swing.JFrame {
         }
         
         // Check if got duplicate IC
-        for(int i = 1; i < CustList.getNumberOfEntries(); i++ ){
+        for(int i = 1; i <= CustList.getNumberOfEntries(); i++ ){
             if(ic.getText().equals(CustList.getEntry(i).getIc())){
                 error += "\n This customer already existed (I.C existed) !! ";
             }

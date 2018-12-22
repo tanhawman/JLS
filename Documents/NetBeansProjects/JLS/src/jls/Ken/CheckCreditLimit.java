@@ -53,6 +53,7 @@ public class CheckCreditLimit extends javax.swing.JFrame {
         empty = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Check Monthly Credit Limit");
 
         backMenu.setText("Back to Menu");
         backMenu.addActionListener(new java.awt.event.ActionListener() {
