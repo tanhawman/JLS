@@ -129,6 +129,7 @@ public price1(){
         jLabel27 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Customize Flower");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bill", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
@@ -271,7 +272,7 @@ public price1(){
                                                                                 .addComponent(jLabel2)
                                                                                 .addGap(123, 123, 123)
                                                                                 .addComponent(jLabel22)))
-                                                                .addComponent(jLabel27))))
+                                                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addComponent(jLabel5)
                                         .addComponent(jLabel6)
                                         .addGroup(jPanel1Layout.createSequentialGroup()

@@ -52,8 +52,7 @@ public class CustomerOrder extends javax.swing.JFrame {
         for (int i = 1; i <= ArrangeList.getLength(); i++) {
             id = "A" + String.format("%03d", (i + 1));
         }
-
-//        jLabel3.setText((id));
+        jLabel3.setText((id));
 
     }
 
@@ -156,7 +155,7 @@ public class CustomerOrder extends javax.swing.JFrame {
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                                         .addComponent(jButton3)
                                                         .addGap(97, 97, 97)))
-                                        .addComponent(jLabel3)))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel3Layout.setVerticalGroup(
                 jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
