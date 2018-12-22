@@ -78,7 +78,7 @@ public class price1 extends javax.swing.JFrame {
         else{
             pr =3;
         }
-        String a_date = null;
+        String a_date = "";
         String a_state = "Pending";
         Arrangement newArr = new Arrangement(id, sty, sz, fw, acce, pr, Integer.valueOf(price),a_date,a_state);
 

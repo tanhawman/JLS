@@ -263,14 +263,14 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
 
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             p1.jTable1.setValueAt(order, i, 1);
-            p1.jTable1.setValueAt(qty, i, 3);
-            p1.jTable1.setValueAt(total, i, 4);
+            p1.jTable1.setValueAt(qty, i, 4);
+            p1.jTable1.setValueAt(total, i, 5);
         }
 
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             p2.jTable1.setValueAt(order, i, 1);
-            p2.jTable1.setValueAt(qty, i, 3);
-            p2.jTable1.setValueAt(total, i, 4);
+            p2.jTable1.setValueAt(qty, i, 4);
+            p2.jTable1.setValueAt(total, i, 5);
         }
 
         lblTotalPrice.setText("0");
@@ -281,7 +281,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
 
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
-            int p1qty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
+            int p1qty = Integer.parseInt(p1.jTable1.getValueAt(i, 4).toString());
             int p1price = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
 
@@ -290,18 +290,18 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                 break;
             } else if (p1chkOrder == true && p1qty > 0) {
                 int total = p1price * p1qty;
-                p1.jTable1.setValueAt(total, i, 4);
+                p1.jTable1.setValueAt(total, i, 5);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
             } else if (p1chkOrder == false && p1qty > 0) {
-                p1.jTable1.setValueAt(empty, i, 4);
+                p1.jTable1.setValueAt(empty, i, 5);
             }
 
         }
 
         for (int i = 0; i < p2.jTable1.getRowCount(); i++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(i, 1);
-            int p2qty = Integer.parseInt(p2.jTable1.getValueAt(i, 3).toString());
+            int p2qty = Integer.parseInt(p2.jTable1.getValueAt(i, 4).toString());
             int p2price = Integer.parseInt(p2.jTable1.getValueAt(i, 2).toString());
             String empty = "0";
 
@@ -310,11 +310,11 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                 break;
             } else if (p2chkOrder == true && p2qty > 0) {
                 int total = p2price * p2qty;
-                p2.jTable1.setValueAt(total, i, 4);
+                p2.jTable1.setValueAt(total, i, 5);
                 totalPrice += total;
                 lblTotalPrice.setText(Integer.toString(totalPrice));
             } else if (p2chkOrder == false && p2qty > 0) {
-                p2.jTable1.setValueAt(empty, i, 4);
+                p2.jTable1.setValueAt(empty, i, 5);
             }
 
         }
@@ -322,14 +322,18 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         DefaultTableModel model = (DefaultTableModel) p1.jTable1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) p1.jTable1.getModel();
         boolean error = false;
+        boolean error1 = false;
         int totalPrice = 0;
         int CreditLimit = Integer.parseInt(lblCreditLimit.getText().toString());
 
         for (int i = 0; i < p1.jTable1.getRowCount(); i++) {
             boolean p1chkOrder = (boolean) p1.jTable1.getValueAt(i, 1);
-            int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
+            int p1chkQty = Integer.parseInt(p1.jTable1.getValueAt(i, 4).toString());
             int p1price = Integer.parseInt(p1.jTable1.getValueAt(i, 2).toString());
+            int Stock = Integer.parseInt(p1.jTable1.getValueAt(i, 3).toString());
+            int remainingstock = Stock - p1chkQty;
 
             if (p1chkOrder == true && p1chkQty < 1) {
                 error = true;
@@ -338,13 +342,27 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                 int total = p1price * p1chkQty;
                 totalPrice += total;
 
+                if (p1chkQty > Stock) {
+                    error1 = true;
+                    break;
+                }
+
+                for (int Freshnum = 1; Freshnum < ProductList.getNumberOfEntries(); Freshnum++) {
+                    if (ProductList.getEntry(Freshnum).getName().equals(p1.jTable1.getValueAt(i, 0))) {
+                        ProductList.getEntry(Freshnum).setIn_stock(remainingstock);
+                        Freshnum++;
+                    }
+                }
+
             }
         }
 
         for (int k = 0; k < p2.jTable1.getRowCount(); k++) {
             boolean p2chkOrder = (boolean) p2.jTable1.getValueAt(k, 1);
-            int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(k, 3).toString());
+            int p2chkQty = Integer.parseInt(p2.jTable1.getValueAt(k, 4).toString());
             int p2price = Integer.parseInt(p2.jTable1.getValueAt(k, 2).toString());
+            int Stock = Integer.parseInt(p2.jTable1.getValueAt(k, 3).toString());
+            int remainingstock = Stock - p2chkQty;
 
             if (p2chkOrder == true && p2chkQty < 1) {
                 error = true;
@@ -352,17 +370,32 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
             } else if (p2chkOrder == true && p2chkQty > 0) {
                 int total = p2price * p2chkQty;
                 totalPrice += total;
+
+                if (p2chkQty > Stock) {
+                    error1 = true;
+                    break;
+                }
+
+                for (int Bouquetnum = 1; Bouquetnum < ProductList.getNumberOfEntries(); Bouquetnum++) {
+                    if (ProductList.getEntry(Bouquetnum).getName().equals(p2.jTable1.getValueAt(k, 0))) {
+                        ProductList.getEntry(Bouquetnum).setIn_stock(remainingstock);
+
+                    }
+                }
+
             }
         }
 
         if (error == true) {
             JOptionPane.showMessageDialog(rootPane, "Quantity cannot less than or equal 0.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        } else if (error1 == true) {
+            JOptionPane.showMessageDialog(rootPane, "The stock is not enough.", "Warning", JOptionPane.INFORMATION_MESSAGE);
         } else if (totalPrice > CreditLimit) {
             JOptionPane.showMessageDialog(rootPane, "The Monthly Credit Limit no enough.", "Warning", JOptionPane.INFORMATION_MESSAGE);
         } else {
             int select = JOptionPane.showConfirmDialog(rootPane, "Confirm Order??", "Process to select pick-up priority", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (select == 0) {
-                
+
                 int remainingcreditlimit = CreditLimit - totalPrice;
 
                 for (int j = 1; j < CustList.getNumberOfEntries(); j++) {
@@ -370,7 +403,9 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
                         CustList.getEntry(j).setRemaincredit(remainingcreditlimit);
                     }
                 }
+
                 model.fireTableDataChanged();
+                model2.fireTableDataChanged();
                 this.dispose();
                 new ConfirmOrder(p1, p2, selectitem, CustList, OrderList, this, homepage, ProductList, ArrangeList).setVisible(true);
             }
@@ -389,7 +424,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
-        new HomePage(CustList,OrderList, ProductList,ArrangeList, this).setVisible(true);
+        new HomePage(CustList, OrderList, ProductList, ArrangeList, this).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
 

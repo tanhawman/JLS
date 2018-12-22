@@ -16,7 +16,7 @@ import jls.Product;
  */
 public class Bouquet extends javax.swing.JPanel {
 
-    LList<Product> ProductList = new LList<>();
+    LList<Product> ProductList;
 
     /**
      * Creates new form Bouquet
@@ -33,12 +33,14 @@ public class Bouquet extends javax.swing.JPanel {
         public String item;
         public boolean order;
         public int price;
+        public int stock;
         public int quantity;
         public int total;
 
-        public Item(String Item, boolean Order, int Price, int Quantity, int Total) {
+        public Item(String Item, boolean Order, int Price, int Stock, int Quantity, int Total) {
             this.item = Item;
             this.order = Order;
+            this.stock = Stock;
             this.price = Price;
             this.quantity = Quantity;
             this.total = Total;
@@ -47,18 +49,23 @@ public class Bouquet extends javax.swing.JPanel {
 
     public void addRowToJTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Object rowData[] = new Object[5];
+        Object rowData[] = new Object[6];
         boolean order = false;
         int qty = 0;
         int total = 0;
 
         for (int i = 1; i < ProductList.getNumberOfEntries(); i++) {
+            int discountRate = ProductList.getEntry(i).getDis_rate();
+            int discount = 100 - discountRate;
+            int discountPrice = ProductList.getEntry(i).getPrice() * discount / 100;
+
             if (ProductList.getEntry(i).getCategory().equals("bouquet")) {
                 rowData[0] = ProductList.getEntry(i).getName();
                 rowData[1] = order;
-                rowData[2] = ProductList.getEntry(i).getPrice();
-                rowData[3] = qty;
-                rowData[4] = total;
+                rowData[2] = discountPrice;
+                rowData[3] = ProductList.getEntry(i).getIn_stock();
+                rowData[4] = qty;
+                rowData[5] = total;
                 model.addRow(rowData);
             }
         }
@@ -81,14 +88,14 @@ public class Bouquet extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Item", "Order", "Price (RM)", "Quantity", "Price (RM)"
+                "Item", "Order", "Price (RM)", "Stock", "Quantity", "Price (RM)"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Boolean.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Boolean.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, true, false
+                false, true, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
