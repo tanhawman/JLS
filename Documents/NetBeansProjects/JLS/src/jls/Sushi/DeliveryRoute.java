@@ -83,6 +83,7 @@ public class DeliveryRoute extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Delivery Route");
 
         jLabel1.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
         jLabel1.setText("Delivery Route");

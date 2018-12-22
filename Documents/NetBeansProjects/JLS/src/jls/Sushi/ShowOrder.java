@@ -176,7 +176,7 @@ public class ShowOrder extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Order List", jPanel1);
+        jTabbedPane1.addTab("Catalog", jPanel1);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -77,6 +77,7 @@ public class EditArrange extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Arrangement");
 
         jLabel3.setFont(new java.awt.Font("Myanmar Text", 1, 36)); // NOI18N
         jLabel3.setText("Edit Arrangement");

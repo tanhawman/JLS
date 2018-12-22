@@ -20,19 +20,22 @@ import javax.swing.DefaultRowSorter;
 import jls.Arrangement;
 import jls.Customer;
 import jls.Product;
+
 /**
  *
  * @author Sushi
  */
 public class DeliveryList extends javax.swing.JPanel {
+
     LList<Order> OrderList;
     SListInterface<Arrangement> ArrangeList;
-    LList<Customer> CustList ;
+    LList<Customer> CustList;
     LList<Product> ProductList;
+
     /**
      * Creates new form DeliveryList
      */
-    public DeliveryList(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList,LList<Customer> CustList ,LList<Product> ProductList) {
+    public DeliveryList(LList<Order> OrderList, SListInterface<Arrangement> ArrangeList, LList<Customer> CustList, LList<Product> ProductList) {
         this.OrderList = OrderList;
         this.ArrangeList = ArrangeList;
         this.CustList = CustList;
@@ -41,27 +44,28 @@ public class DeliveryList extends javax.swing.JPanel {
         addRowToJTable();
         //jTable1.putClientProperty("terminateEditOnFocusLost", Boolean.TRUE);
     }
-        
-    public void addRowToJTable(){
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    Random random = new Random();
-    int randnum = random.nextInt(900) + 100;
-    Object rowData[] = new Object[3];
-        
-        for(int i=1; i<=OrderList.getNumberOfEntries(); i++){
-            if(OrderList.getEntry(i).getStatus().equals("Pending") && OrderList.getEntry(i).getPickup_date().equals("Delivery") &&OrderList.getEntry(i).getPickup_time().equals("Delivery")){
-                if(OrderList.getEntry(i).getDistance()==0){
+
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        Random random = new Random();
+        int randnum = random.nextInt(900) + 100;
+        Object rowData[] = new Object[3];
+
+        for (int i = 1; i <= OrderList.getNumberOfEntries(); i++) {
+            if (OrderList.getEntry(i).getStatus().equals("Pending") && OrderList.getEntry(i).getPickup_date().equals("Delivery") && OrderList.getEntry(i).getPickup_time().equals("Delivery")) {
+                if (OrderList.getEntry(i).getDistance() == 0) {
                     OrderList.getEntry(i).setDistance(randnum);
                 }
-            rowData[0] = OrderList.getEntry(i).getOrder_ID();
-            rowData[1] = OrderList.getEntry(i).getDel_date();
-            rowData[2] = OrderList.getEntry(i).getDistance();
+                if (!OrderList.getEntry(i).getDel_date().equals("")) {
+                    rowData[0] = OrderList.getEntry(i).getOrder_ID();
+                    rowData[1] = OrderList.getEntry(i).getDel_date();
+                    rowData[2] = OrderList.getEntry(i).getDistance();
 
-            model.addRow(rowData);
+                    model.addRow(rowData);
+                }
             }
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
