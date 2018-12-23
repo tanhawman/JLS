@@ -271,29 +271,32 @@ public class EditOrder extends javax.swing.JFrame {
     private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
         // TODO add your handling code here:
         Calendar cal = Calendar.getInstance();
-//        Date date = cal.getTime();
+        Date date = cal.getTime();
         Date time = cal.getTime();
         Date datepick = jXDatePicker1.getDate();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
         DateFormat timeFormat = new SimpleDateFormat("HH:MM a");
         String updatetime = timeFormat.format(time);
-//        String updatedate =dateFormat.format(date);
+        String recentdate = dateFormat.format(date);
         String updatedate = dateFormat.format(datepick);
-
-        for (int i = 1; i <= OrderList.getNumberOfEntries(); i++) {
-            if (tablemodel.getColumnCount() == 4) {
-                if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
-                    tablemodel.setValueAt(updatedate, rownumber, 2);
-                    OrderList.getEntry(i).setDel_date(updatedate);
-                }
-            } else if (tablemodel.getColumnCount() == 5) {
-                if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
-                    tablemodel.setValueAt(updatedate, rownumber, 2);
-                    tablemodel.setValueAt(updatedate, rownumber, 3);
-                    OrderList.getEntry(i).setPickup_date(updatedate);
-                    OrderList.getEntry(i).setPickup_time(updatetime);
+        if (!datepick.before(date)) {
+            for (int i = 1; i <= OrderList.getNumberOfEntries(); i++) {
+                if (tablemodel.getColumnCount() == 4) {
+                    if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
+                        tablemodel.setValueAt(updatedate, rownumber, 2);
+                        OrderList.getEntry(i).setDel_date(updatedate);
+                    }
+                } else if (tablemodel.getColumnCount() == 5) {
+                    if (tablemodel.getValueAt(rownumber, 0).equals(OrderList.getEntry(i).getOrder_ID())) {
+                        tablemodel.setValueAt(updatedate, rownumber, 2);
+                        tablemodel.setValueAt(updatedate, rownumber, 3);
+                        OrderList.getEntry(i).setPickup_date(updatedate);
+                        OrderList.getEntry(i).setPickup_time(updatetime);
+                    }
                 }
             }
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "Can't choose today & previous date!", "Warning", JOptionPane.ERROR_MESSAGE);
         }
         dispose();
     }//GEN-LAST:event_jXDatePicker1ActionPerformed

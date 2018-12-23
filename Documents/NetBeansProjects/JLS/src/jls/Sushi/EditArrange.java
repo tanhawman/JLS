@@ -22,19 +22,22 @@ import jls.Order;
  * @author Sushi
  */
 public class EditArrange extends javax.swing.JFrame {
+
     SListInterface<Arrangement> ArrangeList;
     private TableModel tablemodel;
     private int rownumber;
+
     /**
      * Creates new form EditArrange
+     *
      * @param ArrangeList
      */
-    public EditArrange(SListInterface<Arrangement> ArrangeList,TableModel dtm, int rownumber) {
+    public EditArrange(SListInterface<Arrangement> ArrangeList, TableModel dtm, int rownumber) {
         initComponents();
         this.ArrangeList = ArrangeList;
-        jLabel5.setText((String)dtm.getValueAt(rownumber, 0));
-        jLabel6.setText((String)dtm.getValueAt(rownumber, 1));
-        for(int i=1; i<=ArrangeList.getLength(); i++){
+        jLabel5.setText((String) dtm.getValueAt(rownumber, 0));
+        jLabel6.setText((String) dtm.getValueAt(rownumber, 1));
+        for (int i = 1; i <= ArrangeList.getLength(); i++) {
             switch (ArrangeList.getEntry(i).getA_priority()) {
                 case 1:
                     jLabel7.setText("Express");
@@ -48,9 +51,9 @@ public class EditArrange extends javax.swing.JFrame {
             }
         }
 //        jLabel7.setText((String) dtm.getValueAt(rownumber, 2));
-        jLabel9.setText((String)dtm.getValueAt(rownumber, 3));
+        jLabel9.setText((String) dtm.getValueAt(rownumber, 3));
         this.tablemodel = dtm;
-        this.rownumber=rownumber;
+        this.rownumber = rownumber;
     }
 
     /**
@@ -211,29 +214,36 @@ public class EditArrange extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String status = "Delivered";
-        if(tablemodel.getValueAt(rownumber, 1).equals("")){
+        if (tablemodel.getValueAt(rownumber, 1).equals("")) {
             JOptionPane.showMessageDialog(new JFrame(), "Date is not selected", "Warning", JOptionPane.ERROR_MESSAGE);
-        }else {
-        for(int i=1; i<=ArrangeList.getLength(); i++){
-                if(tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())){
+        } else {
+            for (int i = 1; i <= ArrangeList.getLength(); i++) {
+                if (tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())) {
                     tablemodel.setValueAt(status, rownumber, 3);
                     ArrangeList.getEntry(i).setA_status(status);
                 }
-        }
+            }
         }
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
-//        Calendar cal = Calendar. getInstance();
+        Calendar cal = Calendar. getInstance();
+        Date date = cal.getTime();
         Date datepick = jXDatePicker1.getDate();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
-        String updatedate =dateFormat.format(datepick);
-        for(int i=1; i<=ArrangeList.getLength(); i++){
-            if(tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())){
-                tablemodel.setValueAt(updatedate, rownumber, 1);
-                ArrangeList.getEntry(i).setA_date(updatedate);
+        String updatedate = dateFormat.format(datepick);
+        String recentdate = dateFormat.format(date);
+        if (!datepick.before(date)) {
+            for (int i = 1; i <= ArrangeList.getLength(); i++) {
+                if (tablemodel.getValueAt(rownumber, 0).equals(ArrangeList.getEntry(i).getA_ID())) {
+                    tablemodel.setValueAt(updatedate, rownumber, 1);
+                    ArrangeList.getEntry(i).setA_date(updatedate);
+                }
             }
+        }
+        else{
+            JOptionPane.showMessageDialog(new JFrame(), "Can't choose today & previous date!", "Warning", JOptionPane.ERROR_MESSAGE);
         }
         dispose();
     }//GEN-LAST:event_jXDatePicker1ActionPerformed

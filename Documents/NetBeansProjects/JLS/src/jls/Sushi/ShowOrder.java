@@ -74,8 +74,8 @@ public class ShowOrder extends javax.swing.JFrame {
                 rowData[2] = "Express";
             }else if(ArrangeList.getEntry(i).getA_priority() == 2){
                 rowData[2] = "Normal";
-            }else{
-                rowData[3] = "Flexi";
+            }else if(ArrangeList.getEntry(i).getA_priority() == 3){
+                rowData[2] = "Flexi";
             }
             rowData[3] = ArrangeList.getEntry(i).getA_status();
             model.addRow(rowData);
