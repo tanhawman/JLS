@@ -56,7 +56,7 @@ public class Priority_Table extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Customize Flower");
+        setTitle("Priority Table");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Priority Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 14))); // NOI18N
 
