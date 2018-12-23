@@ -33,6 +33,8 @@ public class Priority_Table extends javax.swing.JFrame {
         initComponents();
         this.ArrangeList = ArrangeList;
         this.ProductList = ProductList;
+        this.CustList =  CustList;
+        this.OrderList = OrderList;
         
         addRowToJTable();
 
