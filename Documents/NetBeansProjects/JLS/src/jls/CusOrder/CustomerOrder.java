@@ -55,6 +55,22 @@ public class CustomerOrder extends javax.swing.JFrame {
         jLabel3.setText((id));
 
     }
+    public CustomerOrder(LList<Customer> CustList, LList<Order> OrderList, LList<Product> ProductList,SListInterface<Arrangement> ArrangeList,price1 aThis) {
+        this.CustList = CustList;
+        this.OrderList = OrderList;
+        this.ProductList = ProductList;
+        this.ArrangeList = ArrangeList;
+        initComponents();
+        addRowToJTable3();
+        addRowToJTable4();
+        CheckData();
+
+        for (int i = 1; i <= ArrangeList.getLength(); i++) {
+            id = "A" + String.format("%03d", (i + 1));
+        }
+        jLabel3.setText((id));
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -489,11 +505,15 @@ public class CustomerOrder extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
        
+         int confirm = JOptionPane.showConfirmDialog(null, "Generate Your Bill?", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+          if (confirm == 0) {
         if (jTable1.getSelectedRow() != -1 && jTable2.getSelectedRow() != -1 && jTable3.getSelectedRow() != -1 && jTable4.getSelectedRow() != -1 && jTable5.getSelectedRow() != -1) {
             this.dispose();
             new price1(id, jTable1.getModel(), jTable1.getSelectedRow(), jTable2.getModel(), jTable2.getSelectedRow(), jTable3.getModel(), jTable3.getSelectedRow(), jTable4.getModel(), jTable4.getSelectedRow(), jTable5.getModel(), jTable5.getSelectedRow(), CustList,OrderList, ProductList,ArrangeList,this).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(new JFrame(), "You Missing Select Some Step, Please Check It!!!", "Warning", JOptionPane.ERROR_MESSAGE);
+        }
+          }else {
         }
 
     }

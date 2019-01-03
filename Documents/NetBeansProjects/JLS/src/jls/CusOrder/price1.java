@@ -109,7 +109,7 @@ public price1(){
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+//        jButton2 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -164,13 +164,13 @@ public price1(){
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setText("...");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+//        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+//        jButton2.setText("Back");
+//        jButton2.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                jButton2ActionPerformed(evt);
+//            }
+//        });
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("...");
@@ -276,8 +276,8 @@ public price1(){
                                         .addComponent(jLabel5)
                                         .addComponent(jLabel6)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(55, 55, 55)
-                                                .addComponent(jButton2)))
+                                                .addGap(55, 55, 55)))
+//                                                .addComponent(jButton2)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -338,8 +338,8 @@ public price1(){
                                         .addComponent(jLabel12))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1)
-                                        .addComponent(jButton2))
+                                        .addComponent(jButton1))
+//                                        .addComponent(jButton2))
                                 .addGap(4, 4, 4))
         );
 
@@ -369,9 +369,10 @@ public price1(){
         pack();
     }// </editor-fold>                        
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose();
-    }
+//    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+//        this.dispose();
+//        new CustomerOrder(CustList,OrderList, ProductList,ArrangeList,this).setVisible(true);
+//    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
@@ -392,7 +393,7 @@ public price1(){
      */
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+//    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

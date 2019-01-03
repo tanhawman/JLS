@@ -27,12 +27,12 @@ public class SList<T extends Comparable<? super T>> implements SListInterface<T>
         // Find the suitable position to store the data.
         // newEntry is the object data you throw in, then "newEntry.compareTo" is to call the override funtions in your newEntry obejct class.
         // e.g: you thrown in the Arrangement, then "newEntry.compareTo" = Arrangement.compareTo();
-        while (i < length && newEntry.compareTo(SList[i]) > 0) {
+        while (i < length && newEntry.compareTo(SList[i]) >= 0) {
             // To find the suitable position in the list
             i++;
         }
         // Throw in the new position + 1, because it is > found-position(i), and < next-position (not sure)
-        makeRoom(i + 1);
+        makeRoom(i);
         // make the found position duplication (done in makeRoom(i+1)), and add the newEntry to the duplicate data.
         SList[i] = newEntry;
         length++;
@@ -78,7 +78,7 @@ public class SList<T extends Comparable<? super T>> implements SListInterface<T>
     private void makeRoom(int newPosition) {
         // newPosition is the found-position + 1
         // newIndex = newPosition - 1, == foundPosition, not sure why +1 then - 1 again;
-        int newIndex = newPosition - 1;
+        int newIndex = newPosition;
         // to find the lastIndex, used in the for-loop;
         int lastIndex = length - 1;
 
