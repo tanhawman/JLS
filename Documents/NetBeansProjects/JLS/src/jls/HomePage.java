@@ -27,7 +27,7 @@ public class HomePage extends javax.swing.JFrame {
     Customer c1 = new Customer("Tong Chun Ken","male","corp_cust","910102-24-6533","No.123 Jalan awda","0123456789","Active", 300, 500);
     Customer c2 = new Customer("Soh Shi Yee","male","consumer","910102-12-1234","No.987 Taman Big","0123452341", "Active", 0, 0);
     Customer c3 = new Customer("Tan Yee Kun","male","consumer","900706-24-6533","No.123 Jalan awda","0123456789", "Active", 0, 0);
-    Customer c4 = new Customer("Tan Haw Man","male","corp_cust","921102-14-2313","No.10 Kampung Room","0162837465", "Active", 100, 200); 
+    Customer c4 = new Customer("Tan Haw Man","male","corp_cust","6","No.10 Kampung Room","0162837465", "Active", 100, 200); 
     Customer c5 = new Customer("Teo Jun Jie","female","corp_cust","801212-10-2222","No. 2 Monster Hunter World Iceborne","0112312221", "Freeze", 0, 100);
     Customer c6 = new Customer("Teo Zhuo Yang","male","consumer","890813-16-5412","No.27 Mie Jin Long","0124312889", "Active", 0, 0);
     
