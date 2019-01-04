@@ -64,7 +64,7 @@ public class SelectItem extends javax.swing.JFrame {
     }
 
     public void showName() {
-        for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= CustList.getNumberOfEntries(); i++) {
             if (purchase.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
                 jLabel3.setText(CustList.getEntry(i).getName());
             }

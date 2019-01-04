@@ -63,7 +63,7 @@ public class SelectItem_CorCust extends javax.swing.JFrame {
     }
 
     public void showName() {
-        for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= CustList.getNumberOfEntries(); i++) {
             if (homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
                 jLabel3.setText(CustList.getEntry(i).getName());
                 lblCreditLimit.setText(Integer.toString(CustList.getEntry(i).getRemaincredit()));

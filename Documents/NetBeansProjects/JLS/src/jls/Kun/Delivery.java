@@ -67,9 +67,10 @@ public class Delivery extends javax.swing.JPanel {
                 row[2] = model2.getValueAt(i, 4);
                 row[3] = total;
                 model.addRow(row);
+                totalPrice += total;
 
             }
-            totalPrice += total;
+            
             lblTotalPrice.setText(Integer.toString(totalPrice));
 
         }

@@ -70,10 +70,11 @@ public class SelfPickup extends javax.swing.JPanel {
                 row[1] = model1.getValueAt(i, 2);
                 row[2] = model1.getValueAt(i, 4);
                 row[3] = total;
-                model.addRow(row);    
+                model.addRow(row);   
+                totalPrice += total;
                 
             }
-                totalPrice += total;
+                
                 lblTotalPrice.setText(Integer.toString(totalPrice));
             
         }

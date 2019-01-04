@@ -69,7 +69,7 @@ public class SalesOrder extends javax.swing.JFrame {
 
         jLabel10.setText(order_id);
 
-        for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= CustList.getNumberOfEntries(); i++) {
             if (homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
                 if (CustList.getEntry(i).getType().equals("consumer")) {
                     jLabel11.setText(selectitem.jLabel3.getText());
@@ -79,7 +79,7 @@ public class SalesOrder extends javax.swing.JFrame {
             }
         }
 
-        for (int i = 1; i < CustList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= CustList.getNumberOfEntries(); i++) {
             if (homepage.jTextField1.getText().equals(CustList.getEntry(i).getIc())) {
                 if (CustList.getEntry(i).getType().equals("consumer")) {
                     jLabel12.setText(CustList.getEntry(i).getContact());
